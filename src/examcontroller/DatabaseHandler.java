@@ -70,6 +70,26 @@ public class DatabaseHandler
         return ret;
     }
     
+    public int checkPassword(int id, String password)
+    {
+        int ret = -1;
+        /* -1 - не удалось подключиться к БД
+         * 0 - неправильный пароль
+         * 1 - правильный пароль
+        */
+        try {
+            Statement st = getDBConnection().createStatement();
+            ResultSet result = st.executeQuery("select count(id) from user where id="
+                    + id + " and pswd = \'" + password + "\'"); //если возвращается ноль, значит у пользователя с таким id другой пароль, иначе вернется единица
+            
+            if((result.next())&&(result.getInt(1)==1)) //если была получен всего один пользователь, значит правильный логин и пароль
+                ret = 1;
+            else ret = 0;            
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace();}   
+        return ret;
+    }
+    
     public ArrayList<UsersTableList> getUsers() //получение списка всех пользователей
     {
         ArrayList<UsersTableList> al = new ArrayList<>();        
@@ -137,6 +157,20 @@ public class DatabaseHandler
         int success = 1;
         try {
             getDBConnection().prepareStatement("update user set login='" + login + "', pswd='" + password + "' where id=" + id + ";").execute();
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace(); success=0;} //установка success в ноль - не удалось обновить
+        return success;
+    }
+    
+    public int updateUser(int id, String login, String password, int type, String surname, String name, String patronymic, String phone, String mail)
+    {
+        int success = 1;
+        try {
+            getDBConnection().prepareStatement("update user set login='" + login +
+                    "', pswd='" + password + "', type=" + type + ", surname='" + surname +
+                    "', name='" + name + "', patronymic='" + patronymic +
+                    "', phone='" + phone + "', mail='" + mail +
+                    "' where id=" + id + ";").execute();
             closeDB();
         } catch(SQLException e) {e.printStackTrace(); success=0;} //установка success в ноль - не удалось обновить
         return success;

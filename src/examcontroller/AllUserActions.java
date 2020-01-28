@@ -41,7 +41,7 @@ public class AllUserActions
         stage.setScene(new Scene(root));
         stage.setTitle(GLOBAL.TITLE + " - Настройки профиля");
         stage.setMinWidth(560);
-        stage.setMinHeight(400);
+        stage.setMinHeight(420);
         stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
         stage.show();
     }
