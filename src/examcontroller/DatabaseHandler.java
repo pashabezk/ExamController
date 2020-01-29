@@ -238,6 +238,26 @@ public class DatabaseHandler
         return al;
     }
     
+    public void createStudent(String surname, String name, String patronymic, int group, String phone, String mail) //создание нового студента
+    {
+        try {
+            getDBConnection().prepareStatement("insert into student values (default, '" +
+                    surname + "', '" + name + "', '" + patronymic + "', " +
+                    group + ", 1, '" + phone + "', '"+ mail + "');").execute();
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace();} 
+    }
+    
+    public int deleteStudent(int id) //удаление студента
+    {
+        int success = 1;
+        try {
+            getDBConnection().prepareStatement("delete from student where num="+ id +";").execute();
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace(); success=0;} //установка success в ноль - не удалось удалить
+        return success;
+    }
+    
     public ArrayList<MarkTableList> getMarks() //возвращает список оценок
     {
         ArrayList<MarkTableList> al = new ArrayList<>();        
@@ -424,5 +444,19 @@ public class DatabaseHandler
             if(c2>0) return 2; //группу нельзя удалить: к группе привязаны студенты
             else return 3; //группу нельзя удалить: к группе привязаны экзамены
         } 
+    }
+    
+    public int isStudentCanBeDeleted(int id) //проверка, привязаны ли какие-то оценки к студенту
+    {
+        int c = -1;
+        try {
+            ResultSet result = getDBConnection().createStatement().executeQuery("select count(mark) from mark where num_rb=" + id + ";"); //подсчёт количества оценок, привязанных к студенту
+            if(result.next())
+                c = result.getInt(1);
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace();}
+        if (c==0) return 1; //студента можно удалять
+        else if (c==-1) return -1; //не удалось подключиться к БД/ошибка в выполнении запроса
+        else return 0; //студента нельзя удалить
     }
 }

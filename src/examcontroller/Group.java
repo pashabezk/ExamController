@@ -27,4 +27,7 @@ public class Group
     public String getName() {return name;}
     public int getCourse() {return course;}
     public int getYear() {return year;}
+    
+    @Override
+    public String toString() {return this.name;}
 }

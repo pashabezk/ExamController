@@ -47,14 +47,14 @@ public class AMainWindowController implements Initializable
     private String selectdedTableName = "Пользователи";
     
     @FXML
-    private void handleButtonSettings(ActionEvent event)
+    private void handleButtonSettings(ActionEvent event) //кнопка "настройки"
     {
         AllUserActions a = new AllUserActions();
         a.openSettingsWindow();
     }
 
     @FXML
-    private void handleButtonExit(ActionEvent event)
+    private void handleButtonExit(ActionEvent event) //кнопка "выйти"
     {
         ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно        
         AllUserActions a = new AllUserActions();
@@ -62,7 +62,7 @@ public class AMainWindowController implements Initializable
     }
     
     @FXML
-    private void handleButtonAdd(ActionEvent event)
+    private void handleButtonAdd(ActionEvent event) //кнопка "добавить"
     {
         FXMLLoader loader = new FXMLLoader();
         Stage stage = new Stage();
@@ -73,6 +73,13 @@ public class AMainWindowController implements Initializable
                 stage.setTitle(GLOBAL.TITLE + " - создание группы");
                 stage.setMinWidth(290);
                 stage.setMinHeight(250);
+                break;
+                
+            case "Студенты":
+                loader.setLocation(getClass().getResource("AddStudent.fxml"));
+                stage.setTitle(GLOBAL.TITLE + " - создание студента");
+                stage.setMinWidth(630);
+                stage.setMinHeight(330);
                 break;
                 
             default:
@@ -91,7 +98,7 @@ public class AMainWindowController implements Initializable
     }    
     
     @FXML
-    private void handleButtonDelete(ActionEvent event)
+    private void handleButtonDelete(ActionEvent event) //кнопка "удалить"
     {
         Attenuation pushUp = new Attenuation(labelPushUp); //добавление эффекта затухания
         DatabaseHandler dbHandler = new DatabaseHandler();
@@ -133,9 +140,24 @@ public class AMainWindowController implements Initializable
                     case 3: labelPushUp.setText("ОШИБКА: к группе привязаны экзамены"); break;
                 }
                 break;
+                
+            case "Студенты":
+                switch(dbHandler.isStudentCanBeDeleted(selectedItemId))
+                {
+                    case 1: //в случае, если к студенту не привязаны оценки
+                        if (dbHandler.deleteStudent(selectedItemId) == 1)
+                        {
+                            labelPushUp.setText("Запись удалёна");
+                            labelPushUp.setTextFill(Color.web("#0000ff"));
+                            initTableStudents(); //перерисовка таблицы
+                        }
+                        else labelPushUp.setText("ОШИБКА: удалить запись не удалось");
+                        break;
+                    case -1: labelPushUp.setText("ОШИБКА: не удалось подключиться к БД"); break;
+                    case 0: labelPushUp.setText("ОШИБКА: к студенту привязаны оценки"); break;
+                }
+                break;
         }
-        
-        
         pushUp.playAnim();
     }
     
