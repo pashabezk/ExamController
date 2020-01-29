@@ -68,17 +68,24 @@ public class AMainWindowController implements Initializable
         Stage stage = new Stage();
         switch(selectdedTableName) //выбор открытия окна в зависимости от выбранного элемента списка
         {
+            case "Группы":
+                loader.setLocation(getClass().getResource("AddGroup.fxml"));
+                stage.setTitle(GLOBAL.TITLE + " - создание группы");
+                stage.setMinWidth(290);
+                stage.setMinHeight(250);
+                break;
+                
             default:
                 loader.setLocation(getClass().getResource("AddUser.fxml"));
                 stage.setTitle(GLOBAL.TITLE + " - создание пользователя");
+                stage.setMinWidth(560);
+                stage.setMinHeight(400);
                 break;
         }           
         try{ loader.load();
         } catch (IOException ex) {ex.printStackTrace();}
         Parent root = loader.getRoot();
         stage.setScene(new Scene(root));
-        stage.setMinWidth(560);
-        stage.setMinHeight(400);
         stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
         stage.show();
     }    
@@ -90,12 +97,12 @@ public class AMainWindowController implements Initializable
         DatabaseHandler dbHandler = new DatabaseHandler();
         labelPushUp.setTextFill(Color.web("#ff0000"));
         
-        switch(dbHandler.isUserCanBeDeleted(selectedItemId))
+        switch(selectdedTableName) //удаление в зависимости от выбранного элемента списка
         {
-            case 1: //в случае, если пользователя не привязан к экзаменам или оценкам
-                switch(selectdedTableName) //удаление в зависимости от выбранного элемента списка
+            case "Пользователи":
+                switch(dbHandler.isUserCanBeDeleted(selectedItemId))
                 {
-                    default:
+                    case 1: //в случае, если пользователя не привязан к экзаменам или оценкам
                         if (dbHandler.deleteUser(selectedItemId) == 1)
                         {
                             labelPushUp.setText("Запись удалёна");
@@ -104,11 +111,31 @@ public class AMainWindowController implements Initializable
                         }
                         else labelPushUp.setText("ОШИБКА: удалить запись не удалось");
                         break;
+                    case -1: labelPushUp.setText("ОШИБКА: не удалось подключиться к БД"); break;
+                    default: labelPushUp.setText("ОШИБКА: к пользователю привязаны экзамены"); break;
                 }
                 break;
-            case -1: labelPushUp.setText("ОШИБКА: не удалось подключиться к БД"); break;
-            default: labelPushUp.setText("ОШИБКА: к этому пользователю привязаны экзамены"); break;
+                
+            case "Группы":
+                switch(dbHandler.isGroupCanBeDeleted(selectedItemId))
+                {
+                    case 1: //в случае, если к группе не привязаны студенты или экзамены
+                        if (dbHandler.deleteGroup(selectedItemId) == 1)
+                        {
+                            labelPushUp.setText("Запись удалёна");
+                            labelPushUp.setTextFill(Color.web("#0000ff"));
+                            initTableGroups(); //перерисовка таблицы
+                        }
+                        else labelPushUp.setText("ОШИБКА: удалить запись не удалось");
+                        break;
+                    case -1: labelPushUp.setText("ОШИБКА: не удалось подключиться к БД"); break;
+                    case 2: labelPushUp.setText("ОШИБКА: к группе привязаны студенты"); break;
+                    case 3: labelPushUp.setText("ОШИБКА: к группе привязаны экзамены"); break;
+                }
+                break;
         }
+        
+        
         pushUp.playAnim();
     }
     

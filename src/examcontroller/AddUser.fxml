@@ -52,7 +52,7 @@
       <TextField fx:id="sMail" layoutX="119.0" layoutY="196.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="185.0" />
       <ComboBox fx:id="sUserType" layoutX="120.0" layoutY="218.0" prefWidth="200.0" promptText="Тип пользователя" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="220.0" />
       <TextField fx:id="sLogin" layoutX="119.0" layoutY="240.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="255.0" />
-      <Label alignment="CENTER" layoutX="180.0" layoutY="14.0" text="Настройки профиля" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+      <Label alignment="CENTER" layoutX="180.0" layoutY="14.0" text="Создание профиля" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="16.0" />
          </font>

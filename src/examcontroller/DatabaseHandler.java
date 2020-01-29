@@ -332,6 +332,25 @@ public class DatabaseHandler
         return al;
     }
     
+    public void createGroup(String name, int course, int year) //создание новой группы
+    {
+        try {
+            getDBConnection().prepareStatement("insert into groupp values (default, '" +
+                    name + "', " + course + ", " + year + ");").execute();
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace();} 
+    }
+    
+    public int deleteGroup(int id) //удаление группы
+    {
+        int success = 1;
+        try {
+            getDBConnection().prepareStatement("delete from groupp where id="+ id +";").execute();
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace(); success=0;} //установка success в ноль - не удалось удалить
+        return success;
+    }
+
     public ArrayList<RatingGroupTableList> getRatingGroups() //возвращает список с рейтингом студентов
     {
         ArrayList<RatingGroupTableList> al = new ArrayList<>();        
@@ -383,5 +402,27 @@ public class DatabaseHandler
         if (c==0) return 1; //пользователя можно удалять
         else if (c==-1) return -1; //не удалось подключиться к БД/ошибка в выполнении запроса
         else return 0; //пользователя нельзя удалить
+    }
+    
+    public int isGroupCanBeDeleted(int id) //проверка, можно ли удалить группу (привязаны ли к ней экзамены или студенты)
+    {
+        int c = -1, c2=0, c3=0;
+        try {
+            ResultSet result = getDBConnection().createStatement().executeQuery("select c1, c2 from (select count(num) as c1 from student where gr=" + id + ") t1, (select count(id) as c2 from exam where gr=" + id + ") t2;"); //подсчёт количества экзаменов и оценок, привязанных к пользователю
+            if(result.next())
+            {
+                c2 = result.getInt(1);
+                c3 = result.getInt(2);
+            }
+            c = c2 + c3;
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace();}
+        if (c==0) return 1; //группу можно удалять
+        else if (c==-1) return -1; //не удалось подключиться к БД/ошибка в выполнении запроса
+        else
+        {
+            if(c2>0) return 2; //группу нельзя удалить: к группе привязаны студенты
+            else return 3; //группу нельзя удалить: к группе привязаны экзамены
+        } 
     }
 }
