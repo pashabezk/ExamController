@@ -40,4 +40,7 @@ public class UsersTableList
     public String getPatronymic() {return patronymic;}
     public String getPhone() {return phone;}
     public String getMail() {return mail;}
+
+    @Override
+    public String toString() {return surname + " " + name + " " + patronymic;}
 }

@@ -206,6 +206,25 @@ public class DatabaseHandler
         return al;
     }
     
+    public void createExam(String name, int markStatus, int teaherId, int groupId, String date) //создание нового экзамена
+    {
+        try {
+            getDBConnection().prepareStatement("insert into exam values (default, '" + name +"', " +
+                    markStatus + ", " + teaherId + ", " + groupId + ", '" + date + "');").execute();
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace();} 
+    }
+    
+    public int deleteExam(int id) //удаление экзамена
+    {
+        int success = 1;
+        try {
+            getDBConnection().prepareStatement("delete from exam where id="+ id +";").execute();
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace(); success=0;} //установка success в ноль - не удалось удалить
+        return success;
+    }
+    
     public ArrayList<StudentTableList> getStudents() //возвращает список всех студентов
     {
         ArrayList<StudentTableList> al = new ArrayList<>();        
@@ -451,6 +470,20 @@ public class DatabaseHandler
         int c = -1;
         try {
             ResultSet result = getDBConnection().createStatement().executeQuery("select count(mark) from mark where num_rb=" + id + ";"); //подсчёт количества оценок, привязанных к студенту
+            if(result.next())
+                c = result.getInt(1);
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace();}
+        if (c==0) return 1; //студента можно удалять
+        else if (c==-1) return -1; //не удалось подключиться к БД/ошибка в выполнении запроса
+        else return 0; //студента нельзя удалить
+    }
+    
+    public int isExamCanBeDeleted(int id) //проверка, привязаны ли какие-то оценки к экзамену
+    {
+        int c = -1;
+        try {
+            ResultSet result = getDBConnection().createStatement().executeQuery("select count(mark) from mark where exam=" + id + ";"); //подсчёт количества оценок, привязанных к экзамену
             if(result.next())
                 c = result.getInt(1);
             closeDB();

@@ -82,6 +82,13 @@ public class AMainWindowController implements Initializable
                 stage.setMinHeight(330);
                 break;
                 
+            case "Экзамены":
+                loader.setLocation(getClass().getResource("AddExam.fxml"));
+                stage.setTitle(GLOBAL.TITLE + " - создание экзамена");
+                stage.setMinWidth(630);
+                stage.setMinHeight(300);
+                break;
+                
             default:
                 loader.setLocation(getClass().getResource("AddUser.fxml"));
                 stage.setTitle(GLOBAL.TITLE + " - создание пользователя");
@@ -155,6 +162,23 @@ public class AMainWindowController implements Initializable
                         break;
                     case -1: labelPushUp.setText("ОШИБКА: не удалось подключиться к БД"); break;
                     case 0: labelPushUp.setText("ОШИБКА: к студенту привязаны оценки"); break;
+                }
+                break;
+                
+            case "Экзамены":
+                switch(dbHandler.isExamCanBeDeleted(selectedItemId))
+                {
+                    case 1: //в случае, если к экзамену не привязаны оценки
+                        if (dbHandler.deleteExam(selectedItemId) == 1)
+                        {
+                            labelPushUp.setText("Запись удалёна");
+                            labelPushUp.setTextFill(Color.web("#0000ff"));
+                            initTableExams(); //перерисовка таблицы
+                        }
+                        else labelPushUp.setText("ОШИБКА: удалить запись не удалось");
+                        break;
+                    case -1: labelPushUp.setText("ОШИБКА: не удалось подключиться к БД"); break;
+                    case 0: labelPushUp.setText("ОШИБКА: к экзамену привязаны оценки"); break;
                 }
                 break;
         }
