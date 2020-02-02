@@ -21,22 +21,14 @@ import javafx.stage.Stage;
 
 public class AddUserController implements Initializable
 {
-    @FXML
-    private TextField sName;
-    @FXML
-    private TextField sSurname;
-    @FXML
-    private TextField sPatronymic;
-    @FXML
-    private TextField sPhone;
-    @FXML
-    private TextField sMail;
-    @FXML
-    private TextField sLogin;
-    @FXML
-    private Label sErrMsg;    
-    @FXML
-    private ComboBox<UserType> sUserType;
+    @FXML private TextField sName;
+    @FXML private TextField sSurname;
+    @FXML private TextField sPatronymic;
+    @FXML private TextField sPhone;
+    @FXML private TextField sMail;
+    @FXML private TextField sLogin;
+    @FXML private Label sErrMsg;    
+    @FXML private ComboBox<UserType> sUserType;
     
     @FXML
     private void handleButtonCancel(ActionEvent event) //кнопка "Отмена"

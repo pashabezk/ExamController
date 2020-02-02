@@ -10,13 +10,16 @@ public class ExamTableList
     private int groupId; //идентификатор группы
     private String group; //группа, у которой проводится экзамен    
     private String date; //дата экзамена
+    
+    public static String MARK_ST_DIFF = "диф"; //дифференцированный зачёт
+    public static String MARK_ST_NOT_DIFF = "н/диф"; //недифференцированный зачёт
 
     public ExamTableList(int id, String name, int mark_st, int teacherId, String teacher, int groupId, String group, String date)
     {
         this.id = id;
         this.name = name;
-        if(mark_st==1)  this.mark_st = "н/диф";
-        else this.mark_st = "диф";
+        if(mark_st==1)  this.mark_st = MARK_ST_DIFF;
+        else this.mark_st = MARK_ST_NOT_DIFF;
         this.teacherId = teacherId;
         this.teacher = teacher;
         this.groupId = groupId;
@@ -32,4 +35,7 @@ public class ExamTableList
     public int getGroupID() {return groupId;}
     public String getGroup() {return group;}
     public String getDate() {return date;}
+    
+    @Override
+    public String toString() {return name + " - " + teacher + " (" + date + ")";}
 }

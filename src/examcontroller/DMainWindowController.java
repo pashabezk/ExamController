@@ -258,7 +258,7 @@ public class DMainWindowController implements Initializable
                             if(data.getRetake()<3) //если сдач экзамена меньше 3
                             {
                                 DatabaseHandler dh = new DatabaseHandler();
-                                dh.createMark(examSelected.getId(), data.getStId(), data.getRetake()+1); //создание пересдачи
+                                dh.createMark(examSelected.getId(), data.getStId(), GLOBAL.user.getId(), 0, data.getRetake()+1); //создание пересдачи
                                 initTableMarks(); //перерисовка таблицы с оценками
                             }
                             else

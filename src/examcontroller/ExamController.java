@@ -16,10 +16,10 @@ public class ExamController extends Application
     @Override
     public void start(Stage stage) throws Exception
     {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(new File("src/config.txt")));
-            GLOBAL.DBURL = "//" + reader.readLine() + "/sessia"; //получение IP адреса устройства, на котором установлена БД
-        } catch (FileNotFoundException e) {e.printStackTrace();}
+//        try {
+//            BufferedReader reader = new BufferedReader(new FileReader(new File("src/config.txt")));
+//            GLOBAL.DBURL = "//" + reader.readLine() + "/sessia"; //получение IP адреса устройства, на котором установлена БД
+//        } catch (FileNotFoundException e) {e.printStackTrace();}
         
         Parent root = FXMLLoader.load(getClass().getResource("Authorization.fxml"));        
         Scene scene = new Scene(root);        

@@ -36,14 +36,12 @@ import javafx.util.Callback;
 
 public class AMainWindowController implements Initializable
 {
-    @FXML
-    private ListView<String> AMListView;
-    @FXML
-    private TableView AMTable;
-    @FXML
-    private Label labelPushUp;
+    @FXML private ListView<String> AMListView;
+    @FXML private TableView AMTable;
+    @FXML private Label labelPushUp;
     
-    private int selectedItemId = 0;
+    private int selectedItemId = 0; //идентификатор объекта, на который было совершено нажатие
+    MarkTableList selectedMark; //оценка, которая была выбрана
     private String selectdedTableName = "Пользователи";
     
     @FXML
@@ -89,13 +87,20 @@ public class AMainWindowController implements Initializable
                 stage.setMinHeight(300);
                 break;
                 
-            default:
+            case "Оценки":
+                loader.setLocation(getClass().getResource("AddMark.fxml"));
+                stage.setTitle(GLOBAL.TITLE + " - добавление оценки");
+                stage.setMinWidth(630);
+                stage.setMinHeight(270);
+                break;
+                
+            default: //пользователи
                 loader.setLocation(getClass().getResource("AddUser.fxml"));
                 stage.setTitle(GLOBAL.TITLE + " - создание пользователя");
                 stage.setMinWidth(560);
                 stage.setMinHeight(400);
                 break;
-        }           
+        }
         try{ loader.load();
         } catch (IOException ex) {ex.printStackTrace();}
         Parent root = loader.getRoot();
@@ -181,6 +186,22 @@ public class AMainWindowController implements Initializable
                     case 0: labelPushUp.setText("ОШИБКА: к экзамену привязаны оценки"); break;
                 }
                 break;
+                
+            case "Оценки":
+                int retake = dbHandler.getNumberOfRetakes(selectedMark.getStudentID(), selectedMark.getExamID());
+                if(retake == -1) labelPushUp.setText("ОШИБКА: не удалось подключиться к БД");
+                else if(retake==1) labelPushUp.setText("ОШИБКА: нельзя удалить первую сдачу");
+                else
+                {
+                    if (dbHandler.deleteMark(selectedItemId) == 1)
+                    {
+                        labelPushUp.setText("Запись удалёна");
+                        labelPushUp.setTextFill(Color.web("#0000ff"));
+                        initTableMarks(); //перерисовка таблицы
+                    }
+                    else labelPushUp.setText("ОШИБКА: удалить запись не удалось");
+                }
+                break;
         }
         pushUp.playAnim();
     }
@@ -225,7 +246,10 @@ public class AMainWindowController implements Initializable
                     case "Студенты": selectedItemId = ((StudentTableList) AMTable.getSelectionModel().getSelectedItem()).getId(); break;
                     case "Группы": selectedItemId = ((Group) AMTable.getSelectionModel().getSelectedItem()).getId(); break;
                     case "Экзамены": selectedItemId = ((ExamTableList) AMTable.getSelectionModel().getSelectedItem()).getId(); break;
-                    case "Оценки": selectedItemId = ((MarkTableList) AMTable.getSelectionModel().getSelectedItem()).getId(); break;
+                    case "Оценки":
+                        selectedItemId = ((MarkTableList) AMTable.getSelectionModel().getSelectedItem()).getId();
+                        selectedMark = (MarkTableList) AMTable.getSelectionModel().getSelectedItem();
+                        break;
                 }
             }
         });
