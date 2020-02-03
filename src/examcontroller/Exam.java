@@ -42,5 +42,4 @@ public class Exam
     public void setId_t(int id_t) {this.id_t = id_t;}
     public void setGroup(int group) {this.group = group;}
     public void setDate(String date) {this.date = date;}
-    
 }

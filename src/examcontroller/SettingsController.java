@@ -14,26 +14,16 @@ import javafx.stage.Stage;
 
 public class SettingsController implements Initializable
 {
-    @FXML
-    private TextField sName;
-    @FXML
-    private TextField sSurname;
-    @FXML
-    private TextField sPatronymic;
-    @FXML
-    private TextField sPhone;
-    @FXML
-    private TextField sMail;
-    @FXML
-    private TextField sLogin;
-    @FXML
-    private TextField sPassword;
-    @FXML
-    private PasswordField sNewPassword;
-    @FXML
-    private PasswordField sNewPassword2;
-    @FXML
-    private Label sErrMsg; 
+    @FXML private TextField sName;
+    @FXML private TextField sSurname;
+    @FXML private TextField sPatronymic;
+    @FXML private TextField sPhone;
+    @FXML private TextField sMail;
+    @FXML private TextField sLogin;
+    @FXML private TextField sPassword;
+    @FXML private PasswordField sNewPassword;
+    @FXML private PasswordField sNewPassword2;
+    @FXML private Label sErrMsg; 
 
     @FXML
     private void handleButtonCancel(ActionEvent event)

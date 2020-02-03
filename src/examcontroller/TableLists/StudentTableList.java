@@ -43,4 +43,7 @@ public class StudentTableList
     public String getStatusSTR() {return statusSTR;}
     public String getPhone() {return phone;}
     public String getMail() {return mail;}
+    
+    @Override
+    public String toString() {return group + ": " + surname + " " + name + " " + patronymic;}
 }

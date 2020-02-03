@@ -315,21 +315,38 @@ public class DatabaseHandler
         } catch(SQLException e) {e.printStackTrace();} 
     }
     
-    public void createMark(int examId, int studentId, int retake) //создание пересдачи (внесение новой оценки в таблицу)
+    public void createMark(int examId, int studentId, int teacherId, int mark, int retake) //создание пересдачи (внесение новой оценки в таблицу)
     {
         try {
-            getDBConnection().prepareStatement("insert into mark values (default, "+examId+", "+
-                    studentId + ", " + GLOBAL.user.getId() + ", 2, curdate(), " + retake +");").execute();
+            getDBConnection().prepareStatement("insert into mark values (default, " + examId + ", "+
+                    studentId + ", " + teacherId + ", " + mark + ", curdate(), " + retake +");").execute();
             closeDB();
         } catch(SQLException e) {e.printStackTrace();} 
     }
     
-    public void deleteMark(int id) //удаление пересдачи (удаление оценки)
+    public int getNumberOfRetakes(int studentId, int examId) //получить количество сдач у студента за данный экзамен
     {
+        int retake = -1;
+        // -1 - не удалось подключиться к БД
+        // 0 - студент не сдавал данный экзамен
+        // >0 - колчество сдач
+        try {
+            ResultSet result = getDBConnection().createStatement().executeQuery("select count(retake) from mark where num_rb=" + studentId + " and exam=" + examId + ";");
+            if(result.next())
+                retake = result.getInt(1);
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace();}
+        return retake;
+    }
+    
+    public int deleteMark(int id) //удаление пересдачи (удаление оценки)
+    {
+        int success = 1;
         try {
             getDBConnection().prepareStatement("delete from mark where id="+ id +";").execute();
             closeDB();
-        } catch(SQLException e) {e.printStackTrace();} 
+        } catch(SQLException e) {e.printStackTrace(); success=0;} //установка success в ноль - не удалось удалить
+        return success;
     }
     
     public ArrayList<Group> getGroups() //возвращает список групп
