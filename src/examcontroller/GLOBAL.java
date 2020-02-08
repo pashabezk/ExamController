@@ -7,11 +7,11 @@ public class GLOBAL
     
     //используемые константы
     public static String TITLE = "Exam Controller"; //название программы, используется в заголовке окна
-    public static String DBURL = "//192.168.1.17/sessia"; //адрес подключения к БД
+    public static String DBURL = "//localhost/sessia"; //адрес подключения к БД
     public static String ICONURL = "resources/icon.png"; //местоположение иконки приложения
 }
 
-//нужно авторизацию переснести в allusersactiom
+//нужно авторизацию переснести в allusersaction
 
 //после завершения проекта, посмотри: нужна ли по итогу инкапсуляция полей? Если нет, то затри её
 

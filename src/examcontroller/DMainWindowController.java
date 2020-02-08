@@ -31,32 +31,24 @@ import javafx.util.Callback;
 
 public class DMainWindowController implements Initializable
 {
-    @FXML
-    private TableView<examTableList> tblMarks;
-    @FXML
-    private ButtonBar btnTMSettings;
-    @FXML
-    private Button btnTMExit;
-    @FXML
-    private ListView<String> DMListView;
+    @FXML private TableView<examTableList> tblMarks;
+    @FXML private ButtonBar btnTMSettings;
+    @FXML private Button btnTMExit;
+    @FXML private ListView<String> DMListView;
     
     public Exam examSelected; //поле, в котором содерижтся объект экзамена, для которого выводдятся оценки
     public ArrayList<Exam> exam; //список экзаменов преподавателя
     public ObservableList<Mark> markList; //список оценок
     
     @FXML
-    private void handleButtonSettings(ActionEvent event)
-    {
-        AllUserActions a = new AllUserActions();
-        a.openSettingsWindow();
-    }
+    private void handleButtonSettings(javafx.event.ActionEvent event) //кнопка "настройки"
+    {AllUserActions.openSettingsWindow(); }
 
     @FXML
-    private void handleButtonExit(ActionEvent event)
+    private void handleButtonExit(javafx.event.ActionEvent event) //кнопка "выход"
     {
-        ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно        
-        AllUserActions a = new AllUserActions();
-        a.exit();
+        ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно
+        AllUserActions.exitAndAuth();
     }
 
     @FXML

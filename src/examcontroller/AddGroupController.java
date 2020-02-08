@@ -17,14 +17,10 @@ import javafx.stage.Stage;
 
 public class AddGroupController implements Initializable
 {
-    @FXML
-    private TextField fxName;
-    @FXML
-    private ComboBox fxCourse;
-    @FXML
-    private ComboBox<Integer> fxYear;
-    @FXML
-    private Label sErrMsg;
+    @FXML private TextField fxName;
+    @FXML private ComboBox fxCourse;
+    @FXML private ComboBox<Integer> fxYear;
+    @FXML private Label sErrMsg;
     
     @FXML
     private void handleButtonCancel(ActionEvent event) //кнопка "Отмена"

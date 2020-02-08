@@ -1,0 +1,328 @@
+# скрипт для создания БД Сессии
+# вставлять необходимо через MySQL Workbench, через командную строку слетает русская кодировка
+
+# добавление пользователя, через которого будет осуществляться подключение к БД
+use mysql
+create user 'user1'@'%' identified by '1234';
+grant all privileges on *.* to 'user1'@'%';
+flush privileges;
+# SELECT Host, User, Password FROM user;
+
+# разрешение подключения к пользователю root удалённо
+# UPDATE user SET Host='%' WHERE User='root' AND Host='localhost';
+# FLUSH PRIVILEGES;
+
+drop database sessia;
+
+create database sessia default charset cp1251;
+use sessia;
+
+#создание таблиц: группа, студент, экзамен, пользователь, оценка
+create table groupp (id int primary key auto_increment, name char(5), course int, year int) engine=MyISAM;
+
+create table student (num int primary key auto_increment, surname char(64), name varchar(64), patronymic char(64), gr int, status int, phone char(11), mail char(64), foreign key(gr) references groupp(id)) engine=MyISAM;
+
+create table exam (id int primary key auto_increment, name char(64), mark_st int, id_t int, gr int, ddate date, foreign key(id_t) references user(id), foreign key(gr) references groupp(id)) engine=MyISAM;
+
+create table user (id int primary key auto_increment, login char(32), pswd char(32), type int, surname char(64), name char(64), patronymic char(64), phone char(11), mail char(64)) engine=MyISAM;
+
+create table mark (id int primary key auto_increment, exam int, num_rb int, id_t int, mark int, ddate date, retake int, foreign key(exam) references exam(id), foreign key(num_rb) references student(num), foreign key(id_t) references user(id)) engine=MyISAM;
+
+#заполнение таблиц
+insert into groupp values (1, 'Y2331', 3, 2016);
+insert into groupp values (2, 'Y2332', 3, 2016);
+insert into groupp values (3, 'Y2231', 2, 2017);
+insert into groupp values (4, 'Y2232', 2, 2017);
+insert into groupp values (5, 'Y2131', 1, 2018);
+insert into groupp values (6, 'Y2132', 1, 2018);
+
+insert into student values (1, 'Беззеленко', 'Андрей', 'Александрович', 1, 1, '89278942513', 'zelenoboy@mail.ru');
+insert into student values (2, 'Таранова', 'Адриана', 'Владимировна', 1, 1, '89053012154', 'taranyou@mail.ru');
+insert into student values (3, 'Пашкова', 'Анна', 'Сергеевна', 1, 1, '89635987423', 'aannaa@yandex.ru');
+insert into student values (4, 'Крыленко', 'Алиса', 'Родионовна', 1, 1, '89356254578', 'youareawecome@gmail.com');
+insert into student values (5, 'Абраменко', 'Полина', 'Глебовна', 1, 1, '89124853625', 'mandaringirl@mail.ru');
+insert into student values (6, 'Студёный', 'Валерий', 'Григорьевич', 2, 1, '89561478496', 'verycool@gmail.com');
+insert into student values (7, 'Волоселенко', 'Виктор', 'Антонович', 2, 1, '89356214585', 'donotwriteme@yandex.ru');
+insert into student values (8, 'Весёлая', 'Екатерина', 'Олеговна', 2, 1, '89357845419', 'happykate@mail.ru');
+insert into student values (9, 'Бескозыркина', 'Алёна', 'Игоревна', 2, 1, '89054879648', 'nokozyr@gmail.com');
+insert into student values (10, 'Питунин', 'Сергей', 'Сергеевич', 2, 1, '89051239654', 'seregaman@gmail.com');
+insert into student values (11, 'Костин', 'Павел', 'Иванович', 3, 1, '89632784593', 'boneswithyou@gmail.com');
+insert into student values (12, 'Медицына', 'Лолита', 'Денисовна', 3, 1, '89632737126', 'lolya@yandex.ru');
+insert into student values (13, 'Потницкая', 'Мария', 'Александровна', 3, 1, '89647814879', 'mamasha@yandex.ru');
+insert into student values (14, 'Петросянко', 'Евгений', 'Владимирович', 3, 1, '89054861278', 'originally@mail.ru');
+insert into student values (15, 'Веденский', 'Анатолий', 'Данилович', 3, 1, '89264831237', 'enterexit@mail.ru');
+insert into student values (16, 'Шишко', 'Лилия', 'Витольдовна', 4, 1, '89995794237', 'pilink@mail.ru');
+insert into student values (17, 'Заречный', 'Михаил', 'Алексеевич', 4, 1, '89042004786', 'grizlybear@gmail.com');
+insert into student values (18, 'Попарный', 'Ибрагим', 'Юсупович', 4, 1, '89768967412', 'ibragimpm@yandex.ru');
+insert into student values (19, 'Никитёнок', 'Николай', 'Эдуардович', 4, 1, '89871459826', 'ayanikita@mail.ru');
+insert into student values (20, 'Наспоренный', 'Денис', 'Олегович', 4, 1, '89015478967', 'denisdenis@mail.ru');
+insert into student values (21, 'Пистоленко', 'Александр', 'Егорович', 5, 1, '89846324571', 'piupiupiu@yandex.ru');
+insert into student values (22, 'Курицын', 'Вячеслав', 'Сергеевич', 5, 1, '89095781633', 'kyrizin@gmail.com');
+insert into student values (23, 'Порошкова', 'Татьяна', 'Дмитриевна', 5, 1, '89873697418', 'pemoluks@mail.ru');
+insert into student values (24, 'Пересядкина', 'Марина', 'Валерьевна', 5, 1, '89471597538', 'peresyadmarina@gmail.com');
+insert into student values (25, 'Запретный', 'Владимир', 'Михайлович', 5, 1, '89873697418', 'ostanovis@mail.ru');
+insert into student values (26, 'Перегаров', 'Дмитрий', 'Геннадьевич', 6, 1, '89986973645', 'dotalover@mail.ru');
+insert into student values (27, 'Дятлов', 'Леонид', 'Николаевич', 6, 1, '89905478974', 'lenchiks@yandex.ru');
+insert into student values (28, 'Пупырышкин', 'Иосиф', 'Борисович', 6, 1, '89883641588', 'onerasnopi@mail.ru');
+insert into student values (29, 'Грозделенко', 'Светлана', 'Юрьевна', 6, 1, '89632584711', 'svetlana_lana@mail.ru');
+insert into student values (30, 'Баранов', 'Илья', 'Леонидович', 6, 1, '89098715968', 'iliabaran@mail.ru');
+
+insert into user values (1, 'gromov', '4567', 1, 'Громов', 'Владимир', 'Анатольевич', '89057770505', 'gromov@gmail.com');
+insert into user values (2, 'zubaev', '1234', 1, 'Зубаев', 'Антон', 'Владимирович', '89051234857', 'zubaev@mail.ru');
+insert into user values (3, 'pvrol', '1234', 1, 'Поварницына', 'Ольга', 'Витальевна', '89050264129', 'littlepovar@gmail.com');
+insert into user values (4, 'glad', '1234', 2, 'Гладышева', 'Ирина', 'Владиславовна', '89059568715', 'irglad@mail.ru');
+insert into user values (5, 'kyzya', '1234', 2, 'Кузьмин', 'Игорь', 'Сергеевич', '89058951245', 'bigbang@yandex.ru');
+insert into user values (6, 'sharova', '1234', 2, 'Шарова', 'Елена', 'Равильевна', '89455941258', 'sharova@mail.ru');
+insert into user values (7, 'grigoreva', '1234', 2, 'Григорьева', 'Ольга', 'Ивановна', '89074851269', 'grolg@gmail.com');
+insert into user values (8, 'sedlova', '1234', 2, 'Седлова', 'Лилия', 'Евгеньевна', '89012457841', 'lovelov@mail.ru');
+insert into user values (9, 'zhuk', '1234', 3, 'Жульчик', 'Евгений', 'Романович', '89474581536', 'zhukoman@mail.ru');
+
+insert into exam values (1, 'Математика', 2, 5, 1, '2016-01-15');
+insert into exam values (2, 'Математика', 2, 6, 2, '2016-01-16');
+insert into exam values (3, 'Русский язык', 2, 4, 1, '2016-01-20');
+insert into exam values (4, 'Русский язык', 2, 4, 2, '2016-01-21');
+insert into exam values (5, 'Математика', 2, 5, 1, '2016-06-23');
+insert into exam values (6, 'Математика', 2, 6, 2, '2016-06-23');
+insert into exam values (7, 'Основы программирования', 1, 7, 1, '2017-01-14');
+insert into exam values (8, 'Основы программирования', 1, 7, 2, '2017-01-15');
+insert into exam values (9, 'Математика', 2, 5, 3, '2017-01-15');
+insert into exam values (10, 'Математика', 2, 6, 4, '2017-01-16');
+insert into exam values (11, 'Русский язык', 2, 4, 3, '2017-01-18');
+insert into exam values (12, 'Русский язык', 2, 4, 4, '2017-01-19');
+insert into exam values (13, 'Математика', 2, 5, 3, '2017-06-21');
+insert into exam values (14, 'Математика', 2, 6, 4, '2017-06-22');
+insert into exam values (15, 'Базы данных', 2, 3, 1, '2017-06-24');
+insert into exam values (16, 'Базы данных', 2, 3, 2, '2017-06-25');
+insert into exam values (17, 'Основы программирования', 1, 7, 3, '2018-01-18');
+insert into exam values (18, 'Основы программирования', 1, 7, 4, '2018-01-19');
+insert into exam values (19, 'Математика', 2, 5, 5, '2018-01-19');
+insert into exam values (20, 'Математика', 2, 6, 6, '2018-01-20');
+insert into exam values (21, 'Мобильные приложения', 2, 7, 1, '2018-01-20');
+insert into exam values (22, 'Мобильные приложения', 2, 7, 2, '2018-01-21');
+insert into exam values (23, 'Русский язык', 2, 4, 5, '2018-01-22');
+insert into exam values (24, 'Русский язык', 2, 4, 6, '2018-01-23');
+insert into exam values (25, 'Менеджмент', 1, 8, 1, '2018-01-23');
+insert into exam values (26, 'Менеджмент', 1, 8, 2, '2018-01-24');
+insert into exam values (27, 'Математика', 2, 5, 5, '2018-06-24');
+insert into exam values (28, 'Математика', 2, 6, 6, '2018-06-25');
+insert into exam values (29, 'Базы данных', 2, 3, 3, '2018-06-25');
+insert into exam values (30, 'Базы данных', 2, 3, 4, '2018-06-26');
+
+insert into mark values (1, 1, 1, 5, 5, '2016-01-15', 1);
+insert into mark values (2, 1, 2, 5, 5, '2016-01-15', 1);
+insert into mark values (3, 1, 3, 5, 5, '2016-01-15', 1);
+insert into mark values (4, 1, 4, 5, 3, '2016-01-15', 1);
+insert into mark values (5, 1, 5, 5, 4, '2016-01-15', 1);
+insert into mark values (6, 2, 6, 6, 5, '2016-01-16', 1);
+insert into mark values (7, 2, 7, 6, 4, '2016-01-16', 1);
+insert into mark values (8, 2, 8, 6, 4, '2016-01-16', 1);
+insert into mark values (9, 2, 9, 6, 3, '2016-01-16', 1);
+insert into mark values (10, 2, 10, 6, 5, '2016-01-16', 1);
+insert into mark values (11, 3, 1, 4, 5, '2016-01-20', 1);
+insert into mark values (12, 3, 2, 4, 4, '2016-01-20', 1);
+insert into mark values (13, 3, 3, 4, 5, '2016-01-20', 1);
+insert into mark values (14, 3, 4, 4, 2, '2016-01-20', 1);
+insert into mark values (15, 3, 5, 4, 5, '2016-01-20', 1);
+insert into mark values (16, 3, 4, 4, 4, '2016-01-21', 2);
+insert into mark values (17, 4, 6, 4, 4, '2016-01-21', 1);
+insert into mark values (18, 4, 7, 4, 2, '2016-01-21', 1);
+insert into mark values (19, 4, 8, 4, 3, '2016-01-21', 1);
+insert into mark values (20, 4, 9, 4, 2, '2016-01-21', 1);
+insert into mark values (21, 4, 10, 4, 5, '2016-01-21', 1);
+insert into mark values (22, 4, 7, 4, 2, '2016-01-23', 2);
+insert into mark values (23, 4, 7, 4, 3, '2016-01-25', 3);
+insert into mark values (24, 4, 9, 4, 4, '2016-01-23', 2);
+insert into mark values (25, 5, 1, 5, 5, '2016-06-23', 1);
+insert into mark values (26, 5, 2, 5, 4, '2016-06-23', 1);
+insert into mark values (27, 5, 3, 5, 3, '2016-06-23', 1);
+insert into mark values (28, 5, 4, 5, 2, '2016-06-23', 1);
+insert into mark values (29, 5, 5, 5, 5, '2016-06-23', 1);
+insert into mark values (30, 5, 4, 5, 3, '2016-06-25', 2);
+insert into mark values (31, 6, 6, 6, 5, '2016-06-23', 1);
+insert into mark values (32, 6, 7, 6, 4, '2016-06-23', 1);
+insert into mark values (33, 6, 8, 6, 5, '2016-06-23', 1);
+insert into mark values (34, 6, 9, 6, 3, '2016-06-23', 1);
+insert into mark values (35, 6, 10, 6, 5, '2016-06-23', 1);
+insert into mark values (36, 7, 1, 7, 1, '2017-01-14', 1);
+insert into mark values (37, 7, 2, 7, 1, '2017-01-14', 1);
+insert into mark values (38, 7, 3, 7, 0, '2017-01-14', 1);
+insert into mark values (39, 7, 4, 7, 1, '2017-01-14', 1);
+insert into mark values (40, 7, 5, 7, 1, '2017-01-14', 1);
+insert into mark values (41, 7, 3, 7, 1, '2017-01-15', 2);
+insert into mark values (42, 8, 6, 7, 1, '2017-01-15', 1);
+insert into mark values (43, 8, 7, 7, 1, '2017-01-15', 1);
+insert into mark values (44, 8, 8, 7, 0, '2017-01-15', 1);
+insert into mark values (45, 8, 9, 7, 0, '2017-01-15', 1);
+insert into mark values (46, 8, 10, 7, 1, '2017-01-15', 1);
+insert into mark values (47, 8, 8, 7, 1, '2017-01-16', 2);
+insert into mark values (48, 8, 9, 7, 1, '2017-01-16', 2);
+insert into mark values (49, 9, 11, 5, 4, '2017-01-15', 1);
+insert into mark values (50, 9, 12, 5, 5, '2017-01-15', 1);
+insert into mark values (51, 9, 13, 5, 3, '2017-01-15', 1);
+insert into mark values (52, 9, 14, 5, 3, '2017-01-15', 1);
+insert into mark values (53, 9, 15, 5, 5, '2017-01-15', 1);
+insert into mark values (54, 10, 16, 6, 5, '2017-01-16', 1);
+insert into mark values (55, 10, 17, 6, 4, '2017-01-16', 1);
+insert into mark values (56, 10, 18, 6, 3, '2017-01-16', 1);
+insert into mark values (57, 10, 19, 6, 2, '2017-01-16', 1);
+insert into mark values (58, 10, 20, 6, 3, '2017-01-16', 1);
+insert into mark values (59, 10, 19, 6, 2, '2017-01-18', 2);
+insert into mark values (60, 10, 19, 6, 3, '2017-01-19', 3);
+insert into mark values (61, 11, 11, 4, 5, '2017-01-18', 1);
+insert into mark values (62, 11, 12, 4, 5, '2017-01-18', 1);
+insert into mark values (63, 11, 13, 4, 5, '2017-01-18', 1);
+insert into mark values (64, 11, 14, 4, 5, '2017-01-18', 1);
+insert into mark values (65, 11, 15, 4, 5, '2017-01-18', 1);
+insert into mark values (66, 12, 16, 4, 5, '2017-01-19', 1);
+insert into mark values (67, 12, 17, 4, 4, '2017-01-19', 1);
+insert into mark values (68, 12, 18, 4, 3, '2017-01-19', 1);
+insert into mark values (69, 12, 19, 4, 5, '2017-01-19', 1);
+insert into mark values (70, 12, 20, 4, 3, '2017-01-19', 1);
+insert into mark values (71, 13, 11, 5, 3, '2017-06-21', 1);
+insert into mark values (72, 13, 12, 5, 4, '2017-06-21', 1);
+insert into mark values (73, 13, 13, 5, 5, '2017-06-21', 1);
+insert into mark values (74, 13, 14, 5, 5, '2017-06-21', 1);
+insert into mark values (75, 13, 15, 5, 2, '2017-06-21', 1);
+insert into mark values (76, 13, 15, 5, 4, '2017-06-22', 2);
+insert into mark values (77, 14, 16, 6, 4, '2017-06-22', 1);
+insert into mark values (78, 14, 17, 6, 5, '2017-06-22', 1);
+insert into mark values (79, 14, 18, 6, 3, '2017-06-22', 1);
+insert into mark values (80, 14, 19, 6, 2, '2017-06-22', 1);
+insert into mark values (81, 14, 20, 6, 4, '2017-06-22', 1);
+insert into mark values (82, 14, 19, 6, 3, '2017-06-24', 2);
+insert into mark values (83, 15, 1, 3, 5, '2017-06-24', 1);
+insert into mark values (84, 15, 2, 3, 4, '2017-06-24', 1);
+insert into mark values (85, 15, 3, 3, 2, '2017-06-24', 1);
+insert into mark values (86, 15, 4, 3, 3, '2017-06-24', 1);
+insert into mark values (87, 15, 5, 3, 5, '2017-06-24', 1);
+insert into mark values (88, 15, 3, 3, 4, '2017-06-25', 2);
+insert into mark values (89, 16, 6, 3, 4, '2017-06-25', 1);
+insert into mark values (90, 16, 7, 3, 5, '2017-06-25', 1);
+insert into mark values (91, 16, 8, 3, 5, '2017-06-25', 1);
+insert into mark values (92, 16, 9, 3, 5, '2017-06-25', 1);
+insert into mark values (93, 16, 10, 3, 2, '2017-06-25', 1);
+insert into mark values (94, 16, 10, 3, 4, '2017-06-26', 2);
+insert into mark values (95, 17, 11, 7, 1, '2018-01-18', 1);
+insert into mark values (96, 17, 12, 7, 0, '2018-01-18', 1);
+insert into mark values (97, 17, 13, 7, 1, '2018-01-18', 1);
+insert into mark values (98, 17, 14, 7, 1, '2018-01-18', 1);
+insert into mark values (99, 17, 15, 7, 1, '2018-01-18', 1);
+insert into mark values (100, 17, 12, 7, 1, '2018-01-19', 2);
+insert into mark values (101, 18, 16, 7, 1, '2018-01-19', 1);
+insert into mark values (102, 18, 17, 7, 1, '2018-01-19', 1);
+insert into mark values (103, 18, 18, 7, 1, '2018-01-19', 1);
+insert into mark values (104, 18, 19, 7, 1, '2018-01-19', 1);
+insert into mark values (105, 18, 20, 7, 1, '2018-01-19', 1);
+insert into mark values (106, 19, 21, 5, 5, '2018-01-19', 1);
+insert into mark values (107, 19, 22, 5, 3, '2018-01-19', 1);
+insert into mark values (108, 19, 23, 5, 4, '2018-01-19', 1);
+insert into mark values (109, 19, 24, 5, 5, '2018-01-19', 1);
+insert into mark values (110, 19, 25, 5, 2, '2018-01-19', 1);
+insert into mark values (111, 19, 25, 5, 3, '2018-01-21', 2);
+insert into mark values (112, 20, 26, 6, 5, '2018-01-20', 1);
+insert into mark values (113, 20, 27, 6, 3, '2018-01-20', 1);
+insert into mark values (114, 20, 28, 6, 2, '2018-01-20', 1);
+insert into mark values (115, 20, 29, 6, 5, '2018-01-20', 1);
+insert into mark values (116, 20, 30, 6, 4, '2018-01-20', 1);
+insert into mark values (117, 20, 28, 6, 2, '2018-01-21', 2);
+insert into mark values (118, 20, 28, 6, 3, '2018-01-24', 3);
+insert into mark values (119, 21, 1, 7, 5, '2018-01-20', 1);
+insert into mark values (120, 21, 2, 7, 5, '2018-01-20', 1);
+insert into mark values (121, 21, 3, 7, 3, '2018-01-20', 1);
+insert into mark values (122, 21, 4, 7, 2, '2018-01-20', 1);
+insert into mark values (123, 21, 5, 7, 5, '2018-01-20', 1);
+insert into mark values (124, 21, 4, 7, 5, '2018-01-22', 2);
+insert into mark values (125, 22, 6, 7, 5, '2018-01-21', 1);
+insert into mark values (126, 22, 7, 7, 4, '2018-01-21', 1);
+insert into mark values (127, 22, 8, 7, 3, '2018-01-21', 1);
+insert into mark values (128, 22, 9, 7, 5, '2018-01-21', 1);
+insert into mark values (129, 22, 10, 7, 2, '2018-01-21', 1);
+insert into mark values (130, 22, 10, 7, 4, '2018-01-22', 2);
+insert into mark values (131, 23, 21, 4, 5, '2018-01-22', 1);
+insert into mark values (132, 23, 22, 4, 5, '2018-01-22', 1);
+insert into mark values (133, 23, 23, 4, 2, '2018-01-22', 1);
+insert into mark values (134, 23, 24, 4, 3, '2018-01-22', 1);
+insert into mark values (135, 23, 25, 4, 5, '2018-01-22', 1);
+insert into mark values (136, 23, 23, 4, 4, '2018-01-23', 2);
+insert into mark values (137, 24, 26, 4, 4, '2018-01-23', 1);
+insert into mark values (138, 24, 27, 4, 5, '2018-01-23', 1);
+insert into mark values (139, 24, 28, 4, 3, '2018-01-23', 1);
+insert into mark values (140, 24, 29, 4, 5, '2018-01-23', 1);
+insert into mark values (141, 24, 30, 4, 5, '2018-01-23', 1);
+insert into mark values (142, 25, 1, 8, 1, '2018-01-23', 1);
+insert into mark values (143, 25, 2, 8, 1, '2018-01-23', 1);
+insert into mark values (144, 25, 3, 8, 0, '2018-01-23', 1);
+insert into mark values (145, 25, 4, 8, 0, '2018-01-23', 1);
+insert into mark values (146, 25, 5, 8, 1, '2018-01-23', 1);
+insert into mark values (147, 25, 3, 8, 0, '2018-01-24', 2);
+insert into mark values (148, 25, 3, 8, 1, '2018-01-25', 3);
+insert into mark values (149, 25, 4, 8, 1, '2018-01-24', 2);
+insert into mark values (150, 26, 6, 8, 1, '2018-01-24', 1);
+insert into mark values (151, 26, 7, 8, 1, '2018-01-24', 1);
+insert into mark values (152, 26, 8, 8, 1, '2018-01-24', 1);
+insert into mark values (153, 26, 9, 8, 1, '2018-01-24', 1);
+insert into mark values (154, 26, 10, 8, 0, '2018-01-24', 1);
+insert into mark values (155, 26, 10, 8, 1, '2018-01-25', 2);
+insert into mark values (156, 27, 21, 5, 4, '2018-06-24', 1);
+insert into mark values (157, 27, 22, 5, 5, '2018-06-24', 1);
+insert into mark values (158, 27, 23, 5, 5, '2018-06-24', 1);
+insert into mark values (159, 27, 24, 5, 3, '2018-06-24', 1);
+insert into mark values (160, 27, 25, 5, 2, '2018-06-24', 1);
+insert into mark values (161, 27, 25, 5, 3, '2018-06-25', 2);
+insert into mark values (162, 28, 26, 6, 4, '2018-06-25', 1);
+insert into mark values (163, 28, 27, 6, 5, '2018-06-25', 1);
+insert into mark values (164, 28, 28, 6, 4, '2018-06-25', 1);
+insert into mark values (165, 28, 29, 6, 2, '2018-06-25', 1);
+insert into mark values (166, 28, 30, 6, 4, '2018-06-25', 1);
+insert into mark values (167, 28, 29, 6, 4, '2018-06-26', 2);
+insert into mark values (168, 29, 11, 3, 5, '2018-06-25', 1);
+insert into mark values (169, 29, 12, 3, 3, '2018-06-25', 1);
+insert into mark values (170, 29, 13, 3, 5, '2018-06-25', 1);
+insert into mark values (171, 29, 14, 3, 4, '2018-06-25', 1);
+insert into mark values (172, 29, 15, 3, 2, '2018-06-25', 1);
+insert into mark values (173, 29, 15, 3, 5, '2018-06-26', 2);
+insert into mark values (174, 30, 16, 3, 4, '2018-06-26', 1);
+insert into mark values (175, 30, 17, 3, 5, '2018-06-26', 1);
+insert into mark values (176, 30, 18, 3, 5, '2018-06-26', 1);
+insert into mark values (177, 30, 19, 3, 3, '2018-06-26', 1);
+insert into mark values (178, 30, 20, 3, 2, '2018-06-26', 1);
+insert into mark values (179, 30, 20, 3, 2, '2018-06-27', 2);
+insert into mark values (180, 30, 20, 3, 3, '2018-06-28', 3);
+
+select * from groupp;
+select * from user;
+select * from exam;
+select * from student;
+select * from mark;
+
+####################полный список экзаменов (для таблицы)
+select exam.id, exam.name, mark_st, exam.id_t, t_name, exam.gr, gr_name, ddate from exam, (select id, CONCAT(surname, " ", name, " ", patronymic) as t_name from user) t1, (select id, name as gr_name from groupp) t2 where exam.id_t=t1.id and exam.gr=t2.id;
+####################полный список студентов (для таблицы)
+select num, surname, name, patronymic, gr, gr_name, status, phone, mail from student, (select id, name as gr_name from groupp) t1 where gr=t1.id;
+####################список оценок (для таблицы)
+select mark.id, exam, exam.name as exam_name, num_rb, CONCAT(student.surname, " ", student.name, " ", student.patronymic) as student, mark.id_t, CONCAT(user.surname, " ", user.name, " ", user.patronymic) as teacher, mark, mark.ddate, retake from mark, exam, student, user where mark.exam=exam.id and num_rb=num and user.id=mark.id_t;
+####################рассчет среднего балла студентов (рейтинг студентов)
+select course, gr_name, CONCAT(surname, " ", name, " ", patronymic) as student, amark from student, (select num_rb, avg(mark) as amark from mark where mark.mark>=2 group by num_rb) t1, (select id, name as gr_name, course from groupp) t2 where num=num_rb and student.gr=t2.id order by gr, -amark;
+####################рейтинг групп
+select course, gr_name, aamark from (select course, gr_name, avg(amark) as aamark from (select course, gr, gr_name, num, amark from student, (select num_rb, avg(mark) as amark from mark group by num_rb) t1, (select course, id, name as gr_name from groupp) t2 where num=t1.num_rb and t2.id=gr )t3 group by gr_name) t4 order by course, -aamark;
+####################список к "отчислению"
+select CONCAT(surname, " ", name, " ", patronymic) as student, debt from student, (select num_rb, count(mark) as debt from mark where mark.mark=2 or mark.mark=0  group by num_rb having debt>2) t1 where num=num_rb;
+####################расчёт стипендии
+select gr_name, CONCAT(surname, " ", name, " ", patronymic) as student, if(amark>=4, if(amark=5.0, 2000, 800), 0) as stipend from student, (select num, amark from student, (select num_rb, avg(mark) as amark from mark where mark.mark>=2 group by num_rb) t1 where num=num_rb) t1, (select course, id, name as gr_name from groupp) t2 where student.num=t1.num and t2.id=gr order by gr_name, student; 
+
+###### пояснения:
+
+# тип пользователя:
+# 1 - администрация
+# 2 - педагог
+# 3 - администратор БД
+
+# статус оценки
+# 1 - зачет/незачет
+# 2 - оценка
+
+# статус студента
+# 1 - учится
+# 2 - отчислен
+# 3 - академ отпуск
+# 4 - закончил обучение

@@ -20,18 +20,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 public class AMainWindowController implements Initializable
@@ -39,24 +34,21 @@ public class AMainWindowController implements Initializable
     @FXML private ListView<String> AMListView;
     @FXML private TableView AMTable;
     @FXML private Label labelPushUp;
+    @FXML private SplitPane fxSplitPane;
     
     private int selectedItemId = 0; //идентификатор объекта, на который было совершено нажатие
     MarkTableList selectedMark; //оценка, которая была выбрана
     private String selectdedTableName = "Пользователи";
-    
-    @FXML
-    private void handleButtonSettings(ActionEvent event) //кнопка "настройки"
-    {
-        AllUserActions a = new AllUserActions();
-        a.openSettingsWindow();
-    }
 
     @FXML
-    private void handleButtonExit(ActionEvent event) //кнопка "выйти"
+    private void handleButtonSettings(javafx.event.ActionEvent event) //кнопка "настройки"
+    {AllUserActions.openSettingsWindow(); }
+
+    @FXML
+    private void handleButtonExit(javafx.event.ActionEvent event) //кнопка "выход"
     {
-        ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно        
-        AllUserActions a = new AllUserActions();
-        a.exit();
+        ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно
+        AllUserActions.exitAndAuth();
     }
     
     @FXML
@@ -106,6 +98,19 @@ public class AMainWindowController implements Initializable
         Parent root = loader.getRoot();
         stage.setScene(new Scene(root));
         stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
+        stage.setOnHidden(new EventHandler<WindowEvent>() { //действия при закрытии окна
+            @Override
+            public void handle(WindowEvent event) {
+                switch(selectdedTableName) //обновление таблицы в зависимости от выбранного элемента списка
+                {
+                    case "Пользователи": initTableUsers(); break;
+                    case "Группы": initTableGroups(); break;
+                    case "Студенты": initTableStudents(); break;
+                    case "Экзамены": initTableExams(); break;
+                    case "Оценки": initTableMarks(); break;
+                }
+            }
+        });
         stage.show();
     }    
     
@@ -369,6 +374,9 @@ public class AMainWindowController implements Initializable
 
         AMTable.setItems(FXCollections.observableArrayList(new DatabaseHandler().getMarks())); //добавление информации в таблицу
         AMTable.getColumns().addAll(idColumn, examColumn, studentColumn, teacherColumn, markColumn, dateColumn, retakeColumn); //добавление колонок
+
+        idColumn.getTableView().getSortOrder().add(idColumn);
+        idColumn.setSortType(TableColumn.SortType.DESCENDING); //установка сортировки по умолчанию
     }
     
     private class CallbackImplRestorePassword implements Callback<TableColumn<UsersTableList, Void>, TableCell<UsersTableList, Void>> //работа с кнопкой "пересдача"

@@ -281,7 +281,7 @@ public class DatabaseHandler
     {
         ArrayList<MarkTableList> al = new ArrayList<>();        
         try {
-            ResultSet result = getDBConnection().createStatement().executeQuery("select mark.id, exam, exam.name as exam_name, num_rb, CONCAT(student.surname, \" \", student.name, \" \", student.patronymic) as student, mark.id_t, CONCAT(user.surname, \" \", user.name, \" \", user.patronymic) as teacher, mark, mark.ddate, retake from mark, exam, student, user where mark.id=exam.id and num_rb=num and user.id=mark.id_t;"); //получение списка оценок
+            ResultSet result = getDBConnection().createStatement().executeQuery("select mark.id, exam, exam.name as exam_name, num_rb, CONCAT(student.surname, \" \", student.name, \" \", student.patronymic) as student, mark.id_t, CONCAT(user.surname, \" \", user.name, \" \", user.patronymic) as teacher, mark, mark.ddate, retake from mark, exam, student, user where mark.exam=exam.id and num_rb=num and mark.id_t=user.id;"); //получение списка оценок
             while(result.next()) {
                 al.add(new MarkTableList(result.getInt("id"), result.getInt("exam"), result.getString("exam_name"),
                     result.getInt("num_rb"), result.getString("student"), result.getInt("id_t"), result.getString("teacher"),
