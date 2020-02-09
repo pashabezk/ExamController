@@ -11,23 +11,6 @@ import javafx.stage.Stage;
 
 public class AllUserActions
 {
-//    public static void auth()
-//    {
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(AllUserActions.class.getResource("Authorization.fxml"));
-//        try{ loader.load();
-//        } catch (IOException ex) {ex.printStackTrace();}
-//
-//        Parent root = loader.getRoot();
-//        Scene scene = new Scene(root);
-//        Stage stage = new Stage();
-//        stage.setScene(scene);
-//        stage.setResizable(false);
-//        stage.setTitle(GLOBAL.TITLE);
-//        stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
-//        stage.show();
-//    }
-
     public static void exitAndAuth()
     {
         FXMLLoader loader = new FXMLLoader();

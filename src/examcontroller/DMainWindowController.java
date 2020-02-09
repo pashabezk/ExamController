@@ -18,7 +18,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -32,8 +31,6 @@ import javafx.util.Callback;
 public class DMainWindowController implements Initializable
 {
     @FXML private TableView<examTableList> tblMarks;
-    @FXML private ButtonBar btnTMSettings;
-    @FXML private Button btnTMExit;
     @FXML private ListView<String> DMListView;
     
     public Exam examSelected; //поле, в котором содерижтся объект экзамена, для которого выводдятся оценки
@@ -129,12 +126,12 @@ public class DMainWindowController implements Initializable
     public void initExamList() //отображения списка экзаменов в окне справа
     {
         ObservableList<String> list = FXCollections.observableArrayList(); //список, из которого будет происходить вывод на экран        
-        exam = new DatabaseHandler().getExamsByUID(GLOBAL.user.getId()); //список экзаменов, откуда будет браться информация
+        exam = DatabaseHandler.getExamsByUID(GLOBAL.user.getId()); //список экзаменов, откуда будет браться информация
         Group gr;
         
         for (int i = exam.size()-1; i >= 0; i--)
         {
-           gr = new DatabaseHandler().getGroupByID(exam.get(i).getGroup());
+           gr = DatabaseHandler.getGroupByID(exam.get(i).getGroup());
            list.add(gr.getName() + " " + exam.get(i).getName() + " (" + exam.get(i).getDate() + ")");            
         }
         
@@ -173,8 +170,7 @@ public class DMainWindowController implements Initializable
         {
             Mark m = markList.get(event.getTablePosition().getRow()); //получение оценки
             m.setMark(event.getNewValue()); //запись в оценку нового результата
-            DatabaseHandler dh = new DatabaseHandler();
-            dh.updateMark(m); //внесение исправленной оценки в базу данных
+            DatabaseHandler.updateMark(m); //внесение исправленной оценки в базу данных
             initTableMarks(); //перерисовка таблицы с оценками
         });
         
@@ -193,8 +189,8 @@ public class DMainWindowController implements Initializable
     public ObservableList<DMainWindowController.examTableList> getMarkTableList() //возвращает список студентов группы, у которой проходит экхамен вместе с имеющимися оценками
     {
         ObservableList<DMainWindowController.examTableList> list = FXCollections.observableArrayList();
-        markList = new DatabaseHandler().getMarksByEID(examSelected.getId()); //получение списка оценок за экзамен
-        ArrayList<Student> stList= new DatabaseHandler().getStudentsByGrID(examSelected.getGroup()); //получение списка студентов группы, у которой проводится экзамен
+        markList = DatabaseHandler.getMarksByEID(examSelected.getId()); //получение списка оценок за экзамен
+        ArrayList<Student> stList= DatabaseHandler.getStudentsByGrID(examSelected.getGroup()); //получение списка студентов группы, у которой проводится экзамен
         
         int id, i, j, isFound;
         for (i = 0; i< stList.size(); i++)
@@ -249,8 +245,7 @@ public class DMainWindowController implements Initializable
                             DMainWindowController.examTableList data = getTableView().getItems().get(getIndex()); //получение строчки на которую было произведено нажатие                          
                             if(data.getRetake()<3) //если сдач экзамена меньше 3
                             {
-                                DatabaseHandler dh = new DatabaseHandler();
-                                dh.createMark(examSelected.getId(), data.getStId(), GLOBAL.user.getId(), 0, data.getRetake()+1); //создание пересдачи
+                                DatabaseHandler.createMark(examSelected.getId(), data.getStId(), GLOBAL.user.getId(), 0, data.getRetake()+1); //создание пересдачи
                                 initTableMarks(); //перерисовка таблицы с оценками
                             }
                             else
@@ -295,8 +290,7 @@ public class DMainWindowController implements Initializable
                             DMainWindowController.examTableList data = getTableView().getItems().get(getIndex()); //получение строчки на которую было произведено нажатие                      
                             if(data.getRetake()>1) //если сдач экзамена больше 1
                             {
-                                DatabaseHandler dh = new DatabaseHandler();
-                                dh.deleteMark(data.getId()); //удаление пересдачи
+                                DatabaseHandler.deleteMark(data.getId()); //удаление пересдачи
                                 initTableMarks(); //перерисовка таблицы с оценками
                             }
                             else

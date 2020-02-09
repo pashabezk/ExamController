@@ -33,7 +33,6 @@ public class SettingsController implements Initializable
     private void handleButtonSave(ActionEvent event)
     {
         Shake errMsgAnim = new Shake(sErrMsg);
-        DatabaseHandler db = new DatabaseHandler();
         if((sName.getText().equals(""))||(sSurname.getText().equals(""))||(sLogin.getText().equals("")))
         {
             sErrMsg.setText("не все поля заполнены");
@@ -41,7 +40,7 @@ public class SettingsController implements Initializable
         }
         else
         {
-            int isLoginExists = db.isLoginExists(sLogin.getText());
+            int isLoginExists = DatabaseHandler.isLoginExists(sLogin.getText());
             if((!sLogin.getText().equals(GLOBAL.user.getLogin()))&&(isLoginExists!=0)) //если было изменение логина и такой логин уже существует
             {
                 
@@ -63,7 +62,7 @@ public class SettingsController implements Initializable
             }
             else
             {
-                int a = db.checkPassword(GLOBAL.user.getId(), sPassword.getText()); //проверка, правильно ли введён текущий пароль
+                int a = DatabaseHandler.checkPassword(GLOBAL.user.getId(), sPassword.getText()); //проверка, правильно ли введён текущий пароль
                 switch(a)
                 {
                     case -1:
@@ -86,7 +85,7 @@ public class SettingsController implements Initializable
                             }
                             else if(sNewPassword.getText().equals(sNewPassword2.getText()))
                             {
-                                int c = db.updateUser(GLOBAL.user.getId(), sLogin.getText(), sNewPassword.getText(),
+                                int c = DatabaseHandler.updateUser(GLOBAL.user.getId(), sLogin.getText(), sNewPassword.getText(),
                                         GLOBAL.user.getType(), sSurname.getText(), sName.getText(),
                                         sPatronymic.getText(), sPhone.getText(), sMail.getText());
                                 if (c==0)
@@ -104,7 +103,7 @@ public class SettingsController implements Initializable
                         }
                         else //если меняется только информация профиля (без смены пароля)
                         {
-                            int c = db.updateUser(GLOBAL.user.getId(), sLogin.getText(), sPassword.getText(),
+                            int c = DatabaseHandler.updateUser(GLOBAL.user.getId(), sLogin.getText(), sPassword.getText(),
                                     GLOBAL.user.getType(), sSurname.getText(), sName.getText(),
                                     sPatronymic.getText(), sPhone.getText(), sMail.getText());
                             if (c==0)

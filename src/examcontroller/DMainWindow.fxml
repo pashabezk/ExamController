@@ -25,10 +25,10 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <ButtonBar fx:id="btnTMSettings" layoutX="775.0" layoutY="-16.0" prefHeight="40.0" prefWidth="215.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+      <ButtonBar layoutX="775.0" layoutY="-16.0" prefHeight="40.0" prefWidth="215.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
         <buttons>
           <Button mnemonicParsing="false" onAction="#handleButtonSettings" text="Настройки" />
-            <Button fx:id="btnTMExit" mnemonicParsing="false" onAction="#handleButtonExit" text="Выход" />
+            <Button mnemonicParsing="false" onAction="#handleButtonExit" text="Выход" />
         </buttons>
       </ButtonBar>
       <Label alignment="TOP_LEFT" layoutY="-2.0" prefHeight="43.0" prefWidth="213.0" text="Exam Controller" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">

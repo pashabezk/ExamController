@@ -31,7 +31,6 @@ public class AddStudentController implements Initializable
     private void handleButtonCreate(ActionEvent event) //кнопка "Создать"
     {
         Shake errMsgAnim = new Shake(sErrMsg);
-        DatabaseHandler dbHandler = new DatabaseHandler();
         if((sName.getText().equals(""))||(sSurname.getText().equals("")))
         {
             sErrMsg.setText("не все поля заполнены");
@@ -44,7 +43,7 @@ public class AddStudentController implements Initializable
         }
         else
         {
-            dbHandler.createStudent(sSurname.getText(), sName.getText(),
+            DatabaseHandler.createStudent(sSurname.getText(), sName.getText(),
                     sPatronymic.getText(), sGroup.getValue().getId(),
                     sPhone.getText(), sMail.getText());
             ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно

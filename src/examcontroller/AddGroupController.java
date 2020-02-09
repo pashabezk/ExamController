@@ -30,7 +30,6 @@ public class AddGroupController implements Initializable
     private void handleButtonCreate(ActionEvent event) //кнопка "Создать"
     {
         Shake errMsgAnim = new Shake(sErrMsg);
-        DatabaseHandler dbHandler = new DatabaseHandler();
         if(fxName.getText().equals(""))
         {
             sErrMsg.setText("не заполнено имя группы");
@@ -38,7 +37,7 @@ public class AddGroupController implements Initializable
         }
         else
         {
-            dbHandler.createGroup(fxName.getText(),
+            DatabaseHandler.createGroup(fxName.getText(),
                     Integer.parseInt(fxCourse.getValue().toString()),
                     fxYear.getValue());
             ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно

@@ -20,10 +20,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class MonitoringWindowController implements Initializable
 {
-    @FXML
-    private ListView<String> ASListView;
-    @FXML
-    private TableView tblStatement;
+    @FXML private ListView<String> ASListView;
+    @FXML private TableView tblStatement;
     
     public ArrayList<ExamTableList> exams; //список экзаменов преподавателя
         
@@ -74,7 +72,7 @@ public class MonitoringWindowController implements Initializable
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date")); 
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("mark_st"));
 
-        tblStatement.setItems(FXCollections.observableArrayList(new DatabaseHandler().getExams())); //добавление информации в таблицу
+        tblStatement.setItems(FXCollections.observableArrayList(DatabaseHandler.getExams())); //добавление информации в таблицу
         tblStatement.getColumns().addAll(groupColumn, examColumn, teacherColumn, dateColumn, typeColumn); //добавление колонок
 
         dateColumn.getTableView().getSortOrder().add(dateColumn); 
@@ -99,7 +97,7 @@ public class MonitoringWindowController implements Initializable
         phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
         mailColumn.setCellValueFactory(new PropertyValueFactory<>("mail"));
 
-        tblStatement.setItems(FXCollections.observableArrayList(new DatabaseHandler().getStudents())); //добавление информации в таблицу
+        tblStatement.setItems(FXCollections.observableArrayList(DatabaseHandler.getStudents())); //добавление информации в таблицу
         tblStatement.getColumns().addAll(grouppColumn, surnameColumn, nameColumn, patronymicColumn, statusColumn, phoneColumn, mailColumn); //добавление колонок
 
         grouppColumn.getTableView().getSortOrder().add(grouppColumn); 
@@ -122,7 +120,7 @@ public class MonitoringWindowController implements Initializable
         phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
         mailColumn.setCellValueFactory(new PropertyValueFactory<>("mail"));
 
-        tblStatement.setItems(FXCollections.observableArrayList(new DatabaseHandler().getUsers())); //добавление информации в таблицу
+        tblStatement.setItems(FXCollections.observableArrayList(DatabaseHandler.getUsers())); //добавление информации в таблицу
         tblStatement.getColumns().addAll(surnameColumn, nameColumn, patronymicColumn, typeColumn, phoneColumn, mailColumn); //добавление колонок
 
         surnameColumn.getTableView().getSortOrder().add(surnameColumn); 
@@ -141,7 +139,7 @@ public class MonitoringWindowController implements Initializable
         studentColumn.setCellValueFactory(new PropertyValueFactory<>("student"));
         markColumn.setCellValueFactory(new PropertyValueFactory<>("mark"));
 
-        tblStatement.setItems(FXCollections.observableArrayList(new DatabaseHandler().getRatingStudents())); //добавление информации в таблицу
+        tblStatement.setItems(FXCollections.observableArrayList(DatabaseHandler.getRatingStudents())); //добавление информации в таблицу
         tblStatement.getColumns().addAll(courseColumn, groupColumn, studentColumn, markColumn); //добавление колонок
     }
     
@@ -155,7 +153,7 @@ public class MonitoringWindowController implements Initializable
         groupColumn.setCellValueFactory(new PropertyValueFactory<>("group"));
         markColumn.setCellValueFactory(new PropertyValueFactory<>("mark"));
 
-        tblStatement.setItems(FXCollections.observableArrayList(new DatabaseHandler().getRatingGroups())); //добавление информации в таблицу
+        tblStatement.setItems(FXCollections.observableArrayList(DatabaseHandler.getRatingGroups())); //добавление информации в таблицу
         tblStatement.getColumns().addAll(courseColumn, groupColumn, markColumn); //добавление колонок
     }
     
@@ -167,7 +165,7 @@ public class MonitoringWindowController implements Initializable
         studentColumn.setCellValueFactory(new PropertyValueFactory<>("student")); 
         debtColumn.setCellValueFactory(new PropertyValueFactory<>("debt"));
 
-        tblStatement.setItems(FXCollections.observableArrayList(new DatabaseHandler().getExpellList())); //добавление информации в таблицу
+        tblStatement.setItems(FXCollections.observableArrayList(DatabaseHandler.getExpellList())); //добавление информации в таблицу
         tblStatement.getColumns().addAll(studentColumn, debtColumn); //добавление колонок
     }
     
@@ -181,7 +179,7 @@ public class MonitoringWindowController implements Initializable
         studentColumn.setCellValueFactory(new PropertyValueFactory<>("student")); 
         stipendColumn.setCellValueFactory(new PropertyValueFactory<>("stipend"));
 
-        tblStatement.setItems(FXCollections.observableArrayList(new DatabaseHandler().getStipendList())); //добавление информации в таблицу
+        tblStatement.setItems(FXCollections.observableArrayList(DatabaseHandler.getStipendList())); //добавление информации в таблицу
         tblStatement.getColumns().addAll(groupColumn, studentColumn, stipendColumn); //добавление колонок
     }
 }

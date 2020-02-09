@@ -2,7 +2,7 @@
 # вставлять необходимо через MySQL Workbench, через командную строку слетает русская кодировка
 
 # добавление пользователя, через которого будет осуществляться подключение к БД
-use mysql
+use mysql;
 create user 'user1'@'%' identified by '1234';
 grant all privileges on *.* to 'user1'@'%';
 flush privileges;

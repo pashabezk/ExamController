@@ -38,8 +38,7 @@ public class AddUserController implements Initializable
     private void handleButtonCreate(ActionEvent event) //кнопка "Создать"
     {
         Shake errMsgAnim = new Shake(sErrMsg);
-        DatabaseHandler dbHandler = new DatabaseHandler();
-        int isLoginExists = dbHandler.isLoginExists(sLogin.getText());
+        int isLoginExists = DatabaseHandler.isLoginExists(sLogin.getText());
         if((sName.getText().equals(""))||(sSurname.getText().equals(""))||(sLogin.getText().equals("")))
         {
             sErrMsg.setText("не все поля заполнены");
@@ -62,7 +61,7 @@ public class AddUserController implements Initializable
                 case 0:
                     int paswrd = (int) (Math.random() * 900000) + 99999;
                     sErrMsg.setText(""); //убрать лейбл с выводом ошибок
-                    dbHandler.createUser(sLogin.getText(), paswrd+"", sUserType.getValue().getCode(),
+                    DatabaseHandler.createUser(sLogin.getText(), paswrd+"", sUserType.getValue().getCode(),
                             sSurname.getText(), sName.getText(), sPatronymic.getText(),
                             sPhone.getText(), sMail.getText());
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);

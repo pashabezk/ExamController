@@ -22,9 +22,9 @@ import javafx.collections.ObservableList;
 
 public class DatabaseHandler
 {
-    Connection DBConnection = null;
+    private static Connection DBConnection = null;
     
-    public Connection getDBConnection() throws SQLException
+    public static Connection getDBConnection() throws SQLException
     {        
         if (DBConnection == null) //проверка не открыт ли уже доступ к БД
         {
@@ -38,13 +38,13 @@ public class DatabaseHandler
         return DBConnection;
     }
     
-    public void closeDB() throws SQLException
+    public static void closeDB() throws SQLException
     {
         DBConnection.close();
         DBConnection = null;
     }
     
-    public int signIn(String login, String password)
+    public static int signIn(String login, String password)
     {
         int ret = -1;
         /* -1 - не удалось подключиться к БД
@@ -70,7 +70,7 @@ public class DatabaseHandler
         return ret;
     }
     
-    public int checkPassword(int id, String password)
+    public static int checkPassword(int id, String password)
     {
         int ret = -1;
         /* -1 - не удалось подключиться к БД
@@ -90,7 +90,7 @@ public class DatabaseHandler
         return ret;
     }
     
-    public ArrayList<UsersTableList> getUsers() //получение списка всех пользователей
+    public static ArrayList<UsersTableList> getUsers() //получение списка всех пользователей
     {
         ArrayList<UsersTableList> al = new ArrayList<>();        
         try {
@@ -105,7 +105,7 @@ public class DatabaseHandler
         return al;
     }
     
-    public User getUserByID(int id) //получение информации о пользователе по идентификатору
+    public static User getUserByID(int id) //получение информации о пользователе по идентификатору
     {
         User user = new User();
         try {
@@ -120,7 +120,7 @@ public class DatabaseHandler
         return user;
     }
     
-    public int isLoginExists(String login) //проверка, существует ли такой логин в системе
+    public static int isLoginExists(String login) //проверка, существует ли такой логин в системе
     {
         int isExists = -1; //в случае, если не удастся подключиться к БД, будет возвращена -1
         try {
@@ -132,7 +132,7 @@ public class DatabaseHandler
         return isExists;
     }
     
-    public void createUser(String login, String password, int type, String surname, String name, String patronymic, String phone, String mail) //создание нового пользователя
+    public static void createUser(String login, String password, int type, String surname, String name, String patronymic, String phone, String mail) //создание нового пользователя
     {
         try {
             getDBConnection().prepareStatement("insert into user values (default, '"+ login +"', '"+
@@ -142,7 +142,7 @@ public class DatabaseHandler
         } catch(SQLException e) {e.printStackTrace();} 
     }
     
-    public int deleteUser(int id) //удаление пользователя
+    public static int deleteUser(int id) //удаление пользователя
     {
         int success = 1;
         try {
@@ -152,7 +152,7 @@ public class DatabaseHandler
         return success;
     }
     
-    public int updateUserLoginAndPassword(int id, String login, String password) //восстановление пароля
+    public static int updateUserLoginAndPassword(int id, String login, String password) //восстановление пароля
     {
         int success = 1;
         try {
@@ -162,7 +162,7 @@ public class DatabaseHandler
         return success;
     }
     
-    public int updateUser(int id, String login, String password, int type, String surname, String name, String patronymic, String phone, String mail)
+    public static int updateUser(int id, String login, String password, int type, String surname, String name, String patronymic, String phone, String mail)
     {
         int success = 1;
         try {
@@ -176,7 +176,7 @@ public class DatabaseHandler
         return success;
     }
     
-    public ArrayList<ExamTableList> getExams() //возвращает список всех экзаменов
+    public static ArrayList<ExamTableList> getExams() //возвращает список всех экзаменов
     {
         ArrayList<ExamTableList> al = new ArrayList<>();        
         try {
@@ -191,7 +191,7 @@ public class DatabaseHandler
         return al;
     }
     
-    public ArrayList<Exam> getExamsByUID(int id) //возвращает список экзаменов, привязанный к идентификатору пользователя
+    public static ArrayList<Exam> getExamsByUID(int id) //возвращает список экзаменов, привязанный к идентификатору пользователя
     {
         ArrayList<Exam> al = new ArrayList<>();        
         try {
@@ -206,7 +206,7 @@ public class DatabaseHandler
         return al;
     }
     
-    public void createExam(String name, int markStatus, int teaherId, int groupId, String date) //создание нового экзамена
+    public static void createExam(String name, int markStatus, int teaherId, int groupId, String date) //создание нового экзамена
     {
         try {
             getDBConnection().prepareStatement("insert into exam values (default, '" + name +"', " +
@@ -215,7 +215,7 @@ public class DatabaseHandler
         } catch(SQLException e) {e.printStackTrace();} 
     }
     
-    public int deleteExam(int id) //удаление экзамена
+    public static int deleteExam(int id) //удаление экзамена
     {
         int success = 1;
         try {
@@ -225,7 +225,7 @@ public class DatabaseHandler
         return success;
     }
     
-    public ArrayList<StudentTableList> getStudents() //возвращает список всех студентов
+    public static ArrayList<StudentTableList> getStudents() //возвращает список всех студентов
     {
         ArrayList<StudentTableList> al = new ArrayList<>();        
         try {
@@ -241,7 +241,7 @@ public class DatabaseHandler
         return al;
     }
     
-    public ArrayList<Student> getStudentsByGrID(int id) //возвращает список студентов по идентификатору группы
+    public static ArrayList<Student> getStudentsByGrID(int id) //возвращает список студентов по идентификатору группы
     {
         ArrayList<Student> al = new ArrayList<>();        
         try {
@@ -257,7 +257,7 @@ public class DatabaseHandler
         return al;
     }
     
-    public void createStudent(String surname, String name, String patronymic, int group, String phone, String mail) //создание нового студента
+    public static void createStudent(String surname, String name, String patronymic, int group, String phone, String mail) //создание нового студента
     {
         try {
             getDBConnection().prepareStatement("insert into student values (default, '" +
@@ -267,7 +267,7 @@ public class DatabaseHandler
         } catch(SQLException e) {e.printStackTrace();} 
     }
     
-    public int deleteStudent(int id) //удаление студента
+    public static int deleteStudent(int id) //удаление студента
     {
         int success = 1;
         try {
@@ -277,7 +277,7 @@ public class DatabaseHandler
         return success;
     }
     
-    public ArrayList<MarkTableList> getMarks() //возвращает список оценок
+    public static ArrayList<MarkTableList> getMarks() //возвращает список оценок
     {
         ArrayList<MarkTableList> al = new ArrayList<>();        
         try {
@@ -292,7 +292,7 @@ public class DatabaseHandler
         return al;
     }
     
-    public ObservableList<Mark> getMarksByEID(int id) //возвращает список оценок, привязанных к идентификатору экзамена
+    public static ObservableList<Mark> getMarksByEID(int id) //возвращает список оценок, привязанных к идентификатору экзамена
     {
         ObservableList<Mark> list = FXCollections.observableArrayList();        
         try {
@@ -307,7 +307,7 @@ public class DatabaseHandler
         return list;
     }
     
-    public void updateMark(Mark mark) //обновление данных об оценке
+    public static void updateMark(Mark mark) //обновление данных об оценке
     {
         try {
             getDBConnection().prepareStatement("update mark set mark="+mark.getMark()+" where id="+mark.getId()+";").executeUpdate();            
@@ -315,7 +315,7 @@ public class DatabaseHandler
         } catch(SQLException e) {e.printStackTrace();} 
     }
     
-    public void createMark(int examId, int studentId, int teacherId, int mark, int retake) //создание пересдачи (внесение новой оценки в таблицу)
+    public static void createMark(int examId, int studentId, int teacherId, int mark, int retake) //создание пересдачи (внесение новой оценки в таблицу)
     {
         try {
             getDBConnection().prepareStatement("insert into mark values (default, " + examId + ", "+
@@ -324,7 +324,7 @@ public class DatabaseHandler
         } catch(SQLException e) {e.printStackTrace();} 
     }
     
-    public int getNumberOfRetakes(int studentId, int examId) //получить количество сдач у студента за данный экзамен
+    public static int getNumberOfRetakes(int studentId, int examId) //получить количество сдач у студента за данный экзамен
     {
         int retake = -1;
         // -1 - не удалось подключиться к БД
@@ -339,7 +339,7 @@ public class DatabaseHandler
         return retake;
     }
     
-    public int deleteMark(int id) //удаление пересдачи (удаление оценки)
+    public static int deleteMark(int id) //удаление пересдачи (удаление оценки)
     {
         int success = 1;
         try {
@@ -349,7 +349,7 @@ public class DatabaseHandler
         return success;
     }
     
-    public ArrayList<Group> getGroups() //возвращает список групп
+    public static ArrayList<Group> getGroups() //возвращает список групп
     {
         ArrayList<Group> al = new ArrayList<>();        
         try{
@@ -362,7 +362,7 @@ public class DatabaseHandler
         return al;
     }
     
-    public Group getGroupByID(int id) //получение информации о группе, по её идентификатору
+    public static Group getGroupByID(int id) //получение информации о группе, по её идентификатору
     {
         Group gr = new Group();        
         try{
@@ -374,7 +374,7 @@ public class DatabaseHandler
         return gr;
     }
     
-    public ArrayList<RatingStudentTableList> getRatingStudents() //возвращает список с рейтингом студентов
+    public static ArrayList<RatingStudentTableList> getRatingStudents() //возвращает список с рейтингом студентов
     {
         ArrayList<RatingStudentTableList> al = new ArrayList<>();        
         try {
@@ -388,7 +388,7 @@ public class DatabaseHandler
         return al;
     }
     
-    public void createGroup(String name, int course, int year) //создание новой группы
+    public static void createGroup(String name, int course, int year) //создание новой группы
     {
         try {
             getDBConnection().prepareStatement("insert into groupp values (default, '" +
@@ -397,7 +397,7 @@ public class DatabaseHandler
         } catch(SQLException e) {e.printStackTrace();} 
     }
     
-    public int deleteGroup(int id) //удаление группы
+    public static int deleteGroup(int id) //удаление группы
     {
         int success = 1;
         try {
@@ -407,7 +407,7 @@ public class DatabaseHandler
         return success;
     }
 
-    public ArrayList<RatingGroupTableList> getRatingGroups() //возвращает список с рейтингом студентов
+    public static ArrayList<RatingGroupTableList> getRatingGroups() //возвращает список с рейтингом студентов
     {
         ArrayList<RatingGroupTableList> al = new ArrayList<>();        
         try {
@@ -420,7 +420,7 @@ public class DatabaseHandler
         return al;
     }
     
-    public ArrayList<ExpellTableList> getExpellList() //возвращает список студентов "к отчислению"
+    public static ArrayList<ExpellTableList> getExpellList() //возвращает список студентов "к отчислению"
     {
         ArrayList<ExpellTableList> al = new ArrayList<>();        
         try {
@@ -433,7 +433,7 @@ public class DatabaseHandler
         return al;
     }
     
-    public ArrayList<StipendTableList> getStipendList() //возвращает список студентов "к отчислению"
+    public static ArrayList<StipendTableList> getStipendList() //возвращает список студентов "к отчислению"
     {
         ArrayList<StipendTableList> al = new ArrayList<>();        
         try {
@@ -446,7 +446,7 @@ public class DatabaseHandler
         return al;
     }
     
-    public int isUserCanBeDeleted(int id) //проверка, привязаны ли какие-то экзамены или оценки к пользователю
+    public static int isUserCanBeDeleted(int id) //проверка, привязаны ли какие-то экзамены или оценки к пользователю
     {
         int c = -1;
         try {
@@ -460,7 +460,7 @@ public class DatabaseHandler
         else return 0; //пользователя нельзя удалить
     }
     
-    public int isGroupCanBeDeleted(int id) //проверка, можно ли удалить группу (привязаны ли к ней экзамены или студенты)
+    public static int isGroupCanBeDeleted(int id) //проверка, можно ли удалить группу (привязаны ли к ней экзамены или студенты)
     {
         int c = -1, c2=0, c3=0;
         try {
@@ -482,7 +482,7 @@ public class DatabaseHandler
         } 
     }
     
-    public int isStudentCanBeDeleted(int id) //проверка, привязаны ли какие-то оценки к студенту
+    public static int isStudentCanBeDeleted(int id) //проверка, привязаны ли какие-то оценки к студенту
     {
         int c = -1;
         try {
@@ -496,7 +496,7 @@ public class DatabaseHandler
         else return 0; //студента нельзя удалить
     }
     
-    public int isExamCanBeDeleted(int id) //проверка, привязаны ли какие-то оценки к экзамену
+    public static int isExamCanBeDeleted(int id) //проверка, привязаны ли какие-то оценки к экзамену
     {
         int c = -1;
         try {

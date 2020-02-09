@@ -18,14 +18,9 @@ import javafx.stage.Stage;
 
 public class AuthorizationController implements Initializable
 {
-    User user;
-    
-    @FXML
-    private TextField tfLogin;
-    @FXML
-    private TextField tfPassword;
-    @FXML
-    private Label lbMsgAuth;
+    @FXML private TextField tfLogin;
+    @FXML private TextField tfPassword;
+    @FXML private Label lbMsgAuth;
     
     @FXML
     private void handleButtonAauthorization(ActionEvent event)
@@ -39,9 +34,8 @@ public class AuthorizationController implements Initializable
         }
         else
         {
-            DatabaseHandler dbHandler = new DatabaseHandler();
-            int userID = dbHandler.signIn(tfLogin.getText(), tfPassword.getText());
-                        
+            int userID = DatabaseHandler.signIn(tfLogin.getText(), tfPassword.getText());
+
             switch (userID)
             {
                 case -1:
@@ -58,7 +52,7 @@ public class AuthorizationController implements Initializable
                     lbMsgAuth.setText(""); //убрать лейбл с выводом ошибок
                     ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть окно аторизации
                     
-                    GLOBAL.user = dbHandler.getUserByID(userID); //получение параметров авторизовавшегося пользователя
+                    GLOBAL.user = DatabaseHandler.getUserByID(userID); //получение параметров авторизовавшегося пользователя
                     
                     FXMLLoader loader = new FXMLLoader();                    
                     switch (GLOBAL.user.getType()) //загрузка разных страниц в зависимости, от типа пользователя

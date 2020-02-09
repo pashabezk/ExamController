@@ -54,7 +54,7 @@ public class AddExamController implements Initializable
         }
         else
         {
-            new DatabaseHandler().createExam(fxSubject.getText(),
+            DatabaseHandler.createExam(fxSubject.getText(),
                     fxType.getValue().getCode(), fxTeacher.getValue().getId(),
                     fxGroup.getValue().getId(), fxDate.getValue().toString());
             ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно
@@ -81,9 +81,8 @@ public class AddExamController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        DatabaseHandler db = new DatabaseHandler();
-        fxTeacher.setItems(FXCollections.observableArrayList(db.getUsers())); //получение списка преподавателей
-        fxGroup.setItems(FXCollections.observableArrayList(db.getGroups())); //получение списка групп
+        fxTeacher.setItems(FXCollections.observableArrayList(DatabaseHandler.getUsers())); //получение списка преподавателей
+        fxGroup.setItems(FXCollections.observableArrayList(DatabaseHandler.getGroups())); //получение списка групп
         fxType.setItems(FXCollections.observableArrayList(new ExamType(1, "Недифференцированный"), new ExamType(2, "Дифференцированный"))); //установка значений "тип экзамена"
         fxType.getSelectionModel().selectLast(); //установка значения "Дифференцированный" по умолчанию
     }

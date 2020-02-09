@@ -118,16 +118,15 @@ public class AMainWindowController implements Initializable
     private void handleButtonDelete(ActionEvent event) //кнопка "удалить"
     {
         Attenuation pushUp = new Attenuation(labelPushUp); //добавление эффекта затухания
-        DatabaseHandler dbHandler = new DatabaseHandler();
         labelPushUp.setTextFill(Color.web("#ff0000"));
         
         switch(selectdedTableName) //удаление в зависимости от выбранного элемента списка
         {
             case "Пользователи":
-                switch(dbHandler.isUserCanBeDeleted(selectedItemId))
+                switch(DatabaseHandler.isUserCanBeDeleted(selectedItemId))
                 {
                     case 1: //в случае, если пользователя не привязан к экзаменам или оценкам
-                        if (dbHandler.deleteUser(selectedItemId) == 1)
+                        if (DatabaseHandler.deleteUser(selectedItemId) == 1)
                         {
                             labelPushUp.setText("Запись удалёна");
                             labelPushUp.setTextFill(Color.web("#0000ff"));
@@ -141,10 +140,10 @@ public class AMainWindowController implements Initializable
                 break;
                 
             case "Группы":
-                switch(dbHandler.isGroupCanBeDeleted(selectedItemId))
+                switch(DatabaseHandler.isGroupCanBeDeleted(selectedItemId))
                 {
                     case 1: //в случае, если к группе не привязаны студенты или экзамены
-                        if (dbHandler.deleteGroup(selectedItemId) == 1)
+                        if (DatabaseHandler.deleteGroup(selectedItemId) == 1)
                         {
                             labelPushUp.setText("Запись удалёна");
                             labelPushUp.setTextFill(Color.web("#0000ff"));
@@ -159,10 +158,10 @@ public class AMainWindowController implements Initializable
                 break;
                 
             case "Студенты":
-                switch(dbHandler.isStudentCanBeDeleted(selectedItemId))
+                switch(DatabaseHandler.isStudentCanBeDeleted(selectedItemId))
                 {
                     case 1: //в случае, если к студенту не привязаны оценки
-                        if (dbHandler.deleteStudent(selectedItemId) == 1)
+                        if (DatabaseHandler.deleteStudent(selectedItemId) == 1)
                         {
                             labelPushUp.setText("Запись удалёна");
                             labelPushUp.setTextFill(Color.web("#0000ff"));
@@ -176,10 +175,10 @@ public class AMainWindowController implements Initializable
                 break;
                 
             case "Экзамены":
-                switch(dbHandler.isExamCanBeDeleted(selectedItemId))
+                switch(DatabaseHandler.isExamCanBeDeleted(selectedItemId))
                 {
                     case 1: //в случае, если к экзамену не привязаны оценки
-                        if (dbHandler.deleteExam(selectedItemId) == 1)
+                        if (DatabaseHandler.deleteExam(selectedItemId) == 1)
                         {
                             labelPushUp.setText("Запись удалёна");
                             labelPushUp.setTextFill(Color.web("#0000ff"));
@@ -193,12 +192,12 @@ public class AMainWindowController implements Initializable
                 break;
                 
             case "Оценки":
-                int retake = dbHandler.getNumberOfRetakes(selectedMark.getStudentID(), selectedMark.getExamID());
+                int retake = DatabaseHandler.getNumberOfRetakes(selectedMark.getStudentID(), selectedMark.getExamID());
                 if(retake == -1) labelPushUp.setText("ОШИБКА: не удалось подключиться к БД");
                 else if(retake==1) labelPushUp.setText("ОШИБКА: нельзя удалить первую сдачу");
                 else
                 {
-                    if (dbHandler.deleteMark(selectedItemId) == 1)
+                    if (DatabaseHandler.deleteMark(selectedItemId) == 1)
                     {
                         labelPushUp.setText("Запись удалёна");
                         labelPushUp.setTextFill(Color.web("#0000ff"));
@@ -283,7 +282,7 @@ public class AMainWindowController implements Initializable
         Callback<TableColumn<UsersTableList, Void>, TableCell<UsersTableList, Void>> cellFactoryRestorePassword = new CallbackImplRestorePassword();
         btnColumn.setCellFactory(cellFactoryRestorePassword); //добавление кнопок "пересдача"
 
-        AMTable.setItems(FXCollections.observableArrayList(new DatabaseHandler().getUsers())); //добавление информации в таблицу
+        AMTable.setItems(FXCollections.observableArrayList(DatabaseHandler.getUsers())); //добавление информации в таблицу
         AMTable.getColumns().addAll(idColumn, surnameColumn, nameColumn, patronymicColumn, typeColumn, phoneColumn, mailColumn, btnColumn); //добавление колонок
     }
 
@@ -308,7 +307,7 @@ public class AMainWindowController implements Initializable
         phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
         mailColumn.setCellValueFactory(new PropertyValueFactory<>("mail"));
 
-        AMTable.setItems(FXCollections.observableArrayList(new DatabaseHandler().getStudents())); //добавление информации в таблицу
+        AMTable.setItems(FXCollections.observableArrayList(DatabaseHandler.getStudents())); //добавление информации в таблицу
         AMTable.getColumns().addAll(idColumn, grouppColumn, surnameColumn, nameColumn, patronymicColumn, statusColumn, phoneColumn, mailColumn); //добавление колонок
     }
     
@@ -325,7 +324,7 @@ public class AMainWindowController implements Initializable
         grouppColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
 
-        AMTable.setItems(FXCollections.observableArrayList(new DatabaseHandler().getGroups())); //добавление информации в таблицу
+        AMTable.setItems(FXCollections.observableArrayList(DatabaseHandler.getGroups())); //добавление информации в таблицу
         AMTable.getColumns().addAll(idColumn, courseColumn, grouppColumn, yearColumn); //добавление колонок
     }
     
@@ -346,7 +345,7 @@ public class AMainWindowController implements Initializable
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date")); 
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("mark_st"));
 
-        AMTable.setItems(FXCollections.observableArrayList(new DatabaseHandler().getExams())); //добавление информации в таблицу
+        AMTable.setItems(FXCollections.observableArrayList(DatabaseHandler.getExams())); //добавление информации в таблицу
         AMTable.getColumns().addAll(idColumn, groupColumn, examColumn, teacherColumn, dateColumn, typeColumn); //добавление колонок
         
         idColumn.getTableView().getSortOrder().add(idColumn); 
@@ -372,7 +371,7 @@ public class AMainWindowController implements Initializable
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         retakeColumn.setCellValueFactory(new PropertyValueFactory<>("retake"));
 
-        AMTable.setItems(FXCollections.observableArrayList(new DatabaseHandler().getMarks())); //добавление информации в таблицу
+        AMTable.setItems(FXCollections.observableArrayList(DatabaseHandler.getMarks())); //добавление информации в таблицу
         AMTable.getColumns().addAll(idColumn, examColumn, studentColumn, teacherColumn, markColumn, dateColumn, retakeColumn); //добавление колонок
 
         idColumn.getTableView().getSortOrder().add(idColumn);
@@ -400,7 +399,7 @@ public class AMainWindowController implements Initializable
                             UsersTableList data = getTableView().getItems().get(getIndex()); //получение строчки на которую было произведено нажатие
                             String login = Translit.cyr2lat(data.getSurname()+data.getName()); //генерация логина из имени и фамилии
                             String password = ((int) (Math.random() * 900000) + 99999) + ""; //генерация пароля
-                            if(new DatabaseHandler().updateUserLoginAndPassword(data.getId(), login, password) == 1) //если восстановление логина и пароля удастся
+                            if(DatabaseHandler.updateUserLoginAndPassword(data.getId(), login, password) == 1) //если восстановление логина и пароля удастся
                             {
                                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                                 alert.setTitle("Восстановление уч. записи");                                
@@ -417,7 +416,6 @@ public class AMainWindowController implements Initializable
                                 labelPushUp.setTextFill(Color.web("#ff0000"));
                                 pushUp.playAnim();
                             }
-                            System.out.println(data.getId());
                         }
                     });
                     
