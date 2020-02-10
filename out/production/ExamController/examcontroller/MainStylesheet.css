@@ -18,11 +18,13 @@
 
 .text-field, .password-field {
     -fx-text-box-border: none;
+    /*-fx-border: none;*/
+    -fx-border-bottom: 2px solid green;
     -fx-font-size: 10pt;
 }
 
 .button {
-    -fx-font-size: 11pt;
+    -fx-font-size: 10pt;
     -fx-cursor: hand;
     -fx-effect: dropshadow(three-pass-box, #d6d6d6, 8, 0, 0, 4);
 }
@@ -49,12 +51,25 @@
     -fx-text-fill: #ffffff;
 }
 
+.table-view .button {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #d6d6d6;
+    /*-fx-border-color: #d6d6d6;*/
+    -fx-border-radius: 10;
+}
+.table-view .button:hover {
+    -fx-background-color: #3e3e3e;
+    -fx-text-fill: #ffffff;
+    /*-fx-border-color: #3e3e3e;*/
+    -fx-border-radius: 10;
+}
+
 
 
 
 .list-view .list-cell {
     -fx-background-color: #ffffff;
-    -fx-font-size: 13pt;
+    -fx-font-size: 11pt;
     -fx-cursor: hand;
 }
 
@@ -64,7 +79,7 @@
 
 .combo-box {
     -fx-background-color: #FFDF8A;
-    -fx-font-size: 13pt;
+    -fx-font-size: 11pt;
     -fx-cursor: hand;
 }
 
@@ -85,7 +100,7 @@
 .table-view .column-header, .table-view .column-header-background .filler {
     -fx-background-color: #ffdf8a;
     -fx-table-cell-border-color: #ffdf8a;
-    -fx-font-size: 13pt;
+    -fx-font-size: 11pt;
     -fx-font-weight: normal;
 }
 

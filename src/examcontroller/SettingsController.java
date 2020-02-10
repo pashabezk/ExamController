@@ -35,7 +35,7 @@ public class SettingsController implements Initializable
         Shake errMsgAnim = new Shake(sErrMsg);
         if((sName.getText().equals(""))||(sSurname.getText().equals(""))||(sLogin.getText().equals("")))
         {
-            sErrMsg.setText("не все поля заполнены");
+            sErrMsg.setText("Не все поля заполнены");
             errMsgAnim.playAnim();
         }
         else
@@ -46,18 +46,18 @@ public class SettingsController implements Initializable
                 
                 if(isLoginExists == -1)
                 {
-                    sErrMsg.setText("не удалось подключиться к БД");
+                    sErrMsg.setText("Не удалось подключиться к БД");
                     errMsgAnim.playAnim();
                 }
                 else
                 {
-                    sErrMsg.setText("аккаунт с таким логином уже существует");
+                    sErrMsg.setText("Аккаунт с таким логином уже существует");
                     errMsgAnim.playAnim();
                 }
             }
             else if(sPassword.getText().equals(""))
             {
-                sErrMsg.setText("поле 'текущий пароль' должно быть заполненным");
+                sErrMsg.setText("Поле 'текущий пароль' должно быть заполненным");
                 errMsgAnim.playAnim();
             }
             else
@@ -66,12 +66,12 @@ public class SettingsController implements Initializable
                 switch(a)
                 {
                     case -1:
-                        sErrMsg.setText("не удается подключиться к БД");
+                        sErrMsg.setText("Не удается подключиться к БД");
                         errMsgAnim.playAnim();
                         break;
 
                     case 0:
-                        sErrMsg.setText("неправильно введён текущий пароль");
+                        sErrMsg.setText("Неправильно введён текущий пароль");
                         errMsgAnim.playAnim();
                         break;
 
@@ -80,7 +80,7 @@ public class SettingsController implements Initializable
                         {
                             if(sNewPassword.getText().length()<8)
                             {
-                                sErrMsg.setText("пароль должен состоять минимум из 8 символов");
+                                sErrMsg.setText("Пароль должен состоять минимум из 8 символов");
                                 errMsgAnim.playAnim();
                             }
                             else if(sNewPassword.getText().equals(sNewPassword2.getText()))
@@ -90,14 +90,14 @@ public class SettingsController implements Initializable
                                         sPatronymic.getText(), sPhone.getText(), sMail.getText());
                                 if (c==0)
                                 {
-                                    sErrMsg.setText("ошибка при выполнении запроса");
+                                    sErrMsg.setText("Ошибка при выполнении запроса");
                                     errMsgAnim.playAnim();
                                 }
                                 else ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно
                             }
                             else
                             {
-                                sErrMsg.setText("'новый пароль' и 'подтверждение' должны совпадать");
+                                sErrMsg.setText("'Новый пароль' и 'подтверждение' должны совпадать");
                                 errMsgAnim.playAnim();
                             }
                         }
@@ -108,7 +108,7 @@ public class SettingsController implements Initializable
                                     sPatronymic.getText(), sPhone.getText(), sMail.getText());
                             if (c==0)
                             {
-                                sErrMsg.setText("ошибка при выполнении запроса");
+                                sErrMsg.setText("Ошибка при выполнении запроса");
                                 errMsgAnim.playAnim();
                             }
                             else ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно
