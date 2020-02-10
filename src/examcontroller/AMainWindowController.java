@@ -60,35 +60,35 @@ public class AMainWindowController implements Initializable
         {
             case "Группы":
                 loader.setLocation(getClass().getResource("AddGroup.fxml"));
-                stage.setTitle(GLOBAL.TITLE + " - создание группы");
+                stage.setTitle(GLOBAL.TITLE + " - Создание группы");
                 stage.setMinWidth(290);
                 stage.setMinHeight(250);
                 break;
                 
             case "Студенты":
                 loader.setLocation(getClass().getResource("AddStudent.fxml"));
-                stage.setTitle(GLOBAL.TITLE + " - создание студента");
+                stage.setTitle(GLOBAL.TITLE + " - Создание студента");
                 stage.setMinWidth(630);
                 stage.setMinHeight(330);
                 break;
                 
             case "Экзамены":
                 loader.setLocation(getClass().getResource("AddExam.fxml"));
-                stage.setTitle(GLOBAL.TITLE + " - создание экзамена");
+                stage.setTitle(GLOBAL.TITLE + " - Создание экзамена");
                 stage.setMinWidth(630);
                 stage.setMinHeight(300);
                 break;
                 
             case "Оценки":
                 loader.setLocation(getClass().getResource("AddMark.fxml"));
-                stage.setTitle(GLOBAL.TITLE + " - добавление оценки");
+                stage.setTitle(GLOBAL.TITLE + " - Добавление оценки");
                 stage.setMinWidth(630);
                 stage.setMinHeight(270);
                 break;
                 
             default: //пользователи
                 loader.setLocation(getClass().getResource("AddUser.fxml"));
-                stage.setTitle(GLOBAL.TITLE + " - создание пользователя");
+                stage.setTitle(GLOBAL.TITLE + " - Создание пользователя");
                 stage.setMinWidth(560);
                 stage.setMinHeight(400);
                 break;

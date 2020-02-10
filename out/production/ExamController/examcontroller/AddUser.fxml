@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examcontroller.AddUserController">
+<AnchorPane id="AnchorPane" stylesheets="@MainStylesheet.css" prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examcontroller.AddUserController">
     <children>
       <Button layoutX="218.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonCancel" text="Отмена" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="30.0" />
       <Label layoutX="30.0" layoutY="80.0" text="Фамилия:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="45.0">

@@ -7,45 +7,40 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="250.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examcontroller.AddMarkController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="800.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examcontroller.AddMarkController">
     <children>
-      <Button layoutX="218.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonCancel" text="Отмена" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="30.0" />
-      <Label layoutX="30.0" layoutY="80.0" text="Экзамен:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="45.0">
+      <Button layoutX="218.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonCancel" prefWidth="100.0" styleClass="wbtn" text="Отмена" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="220.0" />
+      <Label layoutX="155.0" layoutY="75.0" text="Экзамен:" textAlignment="RIGHT" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="75.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="30.0" layoutY="85.0" text="Предподаватель:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="80.0">
+      <Label layoutX="87.0" layoutY="137.0" text="Предподаватель:" textAlignment="RIGHT" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="135.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <ComboBox fx:id="fxExam" layoutX="157.0" layoutY="83.0" prefWidth="200.0" promptText="Экзамен" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="45.0" />
-      <Label alignment="CENTER" layoutX="180.0" layoutY="14.0" text="Добавление оценки" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
+      <ComboBox fx:id="fxExam" layoutX="220.0" layoutY="45.0" prefWidth="200.0" promptText="Экзамен" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="70.0" />
       <Label fx:id="sErrMsg" layoutX="181.0" layoutY="349.0" textFill="RED" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="170.0" />
-      <Label layoutX="30.0" layoutY="123.0" text="Студент:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="115.0">
+      <Label layoutX="151.0" layoutY="195.0" text="Студент:" textAlignment="RIGHT" AnchorPane.leftAnchor="151.0" AnchorPane.topAnchor="195.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="27.0" layoutY="207.0" text="Оценка:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="150.0">
+      <Label layoutX="155.0" layoutY="254.0" text="Оценка:" textAlignment="RIGHT" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="255.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <ComboBox fx:id="fxTeacher" layoutX="167.0" layoutY="93.0" prefWidth="200.0" promptText="Преподаватель" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="80.0" />
-      <ComboBox fx:id="fxStudent" layoutX="177.0" layoutY="103.0" prefWidth="200.0" promptText="Студент" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="115.0" />
-      <ComboBox fx:id="fxMark" layoutX="150.0" layoutY="153.0" prefWidth="90.0" promptText="Оценка" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="150.0" />
-      <DatePicker fx:id="fxDate" layoutX="383.0" layoutY="155.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="150.0" />
-      <Label layoutX="284.0" layoutY="158.0" text="Дата:" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="150.0">
+      <ComboBox fx:id="fxTeacher" layoutX="220.0" layoutY="80.0" prefWidth="200.0" promptText="Преподаватель" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="130.0" />
+      <ComboBox fx:id="fxStudent" layoutX="256.0" layoutY="191.0" prefWidth="200.0" promptText="Студент" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="190.0" />
+      <ComboBox fx:id="fxMark" layoutX="255.0" layoutY="250.0" prefHeight="32.0" prefWidth="132.0" promptText="Оценка" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="250.0" />
+      <DatePicker fx:id="fxDate" layoutX="480.0" layoutY="250.0" prefHeight="30.0" AnchorPane.leftAnchor="480.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="250.0" />
+      <Label layoutX="420.0" layoutY="255.0" text="Дата:" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="255.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="156.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonCreate" text="Создать" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="100.0" />
+      <Button layoutX="347.0" layoutY="206.0" mnemonicParsing="false" onAction="#handleButtonCreate" prefWidth="100.0" styleClass="ybtn" text="Создать" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="100.0" />
    </children>
 </AnchorPane>
