@@ -19,7 +19,7 @@ public class AddGroupController implements Initializable
     @FXML private ComboBox fxCourse;
     @FXML private ComboBox<Integer> fxYear;
     @FXML private Label sErrMsg;
-    
+
     @FXML
     private void handleButtonCancel(ActionEvent event) //кнопка "Отмена"
     {((Stage)((Node) event.getSource()).getScene().getWindow()).close();} //закрыть текущее окно
@@ -28,7 +28,6 @@ public class AddGroupController implements Initializable
     private void handleButtonCreate(ActionEvent event) //кнопка "Создать"
     {
         Shake errMsgAnim = new Shake(sErrMsg);
-        DatabaseHandler dbHandler = new DatabaseHandler();
         if(fxName.getText().equals(""))
         {
             sErrMsg.setText("не заполнено имя группы");
@@ -36,20 +35,20 @@ public class AddGroupController implements Initializable
         }
         else
         {
-            dbHandler.createGroup(fxName.getText(),
+            DatabaseHandler.createGroup(fxName.getText(),
                     Integer.parseInt(fxCourse.getValue().toString()),
                     fxYear.getValue());
             ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно
         }
     }
-    
-    
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
         fxCourse.setItems(FXCollections.observableArrayList(1, 2, 3, 4));
         fxCourse.getSelectionModel().selectFirst(); //установка значения по умолчанию
-        
+
         ObservableList list = FXCollections.observableArrayList();
         for (int i=Calendar.getInstance().get(Calendar.YEAR); i>1999; i--) //получение текущего года и создание списка
             list.add(i); //установка списка "год начала обучения"
@@ -57,3 +56,4 @@ public class AddGroupController implements Initializable
         fxYear.getSelectionModel().selectFirst(); //установка значения по умолчанию
     }
 }
+

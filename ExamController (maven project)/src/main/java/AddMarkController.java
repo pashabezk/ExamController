@@ -40,13 +40,12 @@ public class AddMarkController implements Initializable
         else if (fxDate.getValue()==null) sErrMsg.setText("не указана дата");
         else
         {
-            DatabaseHandler db = new DatabaseHandler();
-            int retake = db.getNumberOfRetakes(fxStudent.getValue().getId(), fxExam.getValue().getId());
+            int retake = DatabaseHandler.getNumberOfRetakes(fxStudent.getValue().getId(), fxExam.getValue().getId());
             if(retake >= 3) sErrMsg.setText("у этого студента уже есть три сдачи");
             else if(retake>=0) //если сдач было меньше трёх или вообще не было
             {
-                db.createMark(fxExam.getValue().getId(), fxStudent.getValue().getId(),
-                    fxTeacher.getValue().getId(), fxMark.getValue(), retake+1);
+                DatabaseHandler.createMark(fxExam.getValue().getId(), fxStudent.getValue().getId(),
+                        fxTeacher.getValue().getId(), fxMark.getValue(), retake+1);
                 ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно
             }
             else sErrMsg.setText("не удалось подключиться к БД");
@@ -57,11 +56,10 @@ public class AddMarkController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        DatabaseHandler db = new DatabaseHandler();
-        fxExam.setItems(FXCollections.observableArrayList(db.getExams())); //получение списка экзаменов
-        fxTeacher.setItems(FXCollections.observableArrayList(db.getUsers())); //получение списка преподавателей
-        fxStudent.setItems(FXCollections.observableArrayList(db.getStudents())); //получение списка студентов
-        
+        fxExam.setItems(FXCollections.observableArrayList(DatabaseHandler.getExams())); //получение списка экзаменов
+        fxTeacher.setItems(FXCollections.observableArrayList(DatabaseHandler.getUsers())); //получение списка преподавателей
+        fxStudent.setItems(FXCollections.observableArrayList(DatabaseHandler.getStudents())); //получение списка студентов
+
         fxExam.valueProperty().addListener(new ChangeListener<ExamTableList>() //установка прослушивателя на выбор экзамена, чтобы заполнять список оценок
         {
             @Override
@@ -70,7 +68,6 @@ public class AddMarkController implements Initializable
                 if(newValue.getMark_st().equals(ExamTableList.MARK_ST_DIFF)) //если зачёт дифференцированный
                     fxMark.setItems(FXCollections.observableArrayList(2, 3, 4, 5)); //создание списка оценок: 2, 3, 4, 5
                 else fxMark.setItems(FXCollections.observableArrayList(0, 1)); //зачёт недифференцированный: 0 - незач, 1 - зачёт
-                throw new UnsupportedOperationException("Not supported yet.");
             }
         });
     }

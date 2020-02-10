@@ -25,19 +25,18 @@ public class AddUserController implements Initializable
     @FXML private TextField sPhone;
     @FXML private TextField sMail;
     @FXML private TextField sLogin;
-    @FXML private Label sErrMsg;    
+    @FXML private Label sErrMsg;
     @FXML private ComboBox<UserType> sUserType;
-    
+
     @FXML
     private void handleButtonCancel(ActionEvent event) //кнопка "Отмена"
     {((Stage)((Node) event.getSource()).getScene().getWindow()).close();} //закрыть текущее окно
-    
+
     @FXML
     private void handleButtonCreate(ActionEvent event) //кнопка "Создать"
     {
         Shake errMsgAnim = new Shake(sErrMsg);
-        DatabaseHandler dbHandler = new DatabaseHandler();
-        int isLoginExists = dbHandler.isLoginExists(sLogin.getText());
+        int isLoginExists = DatabaseHandler.isLoginExists(sLogin.getText());
         if((sName.getText().equals(""))||(sSurname.getText().equals(""))||(sLogin.getText().equals("")))
         {
             sErrMsg.setText("не все поля заполнены");
@@ -60,13 +59,13 @@ public class AddUserController implements Initializable
                 case 0:
                     int paswrd = (int) (Math.random() * 900000) + 99999;
                     sErrMsg.setText(""); //убрать лейбл с выводом ошибок
-                    dbHandler.createUser(sLogin.getText(), paswrd+"", sUserType.getValue().getCode(),
+                    DatabaseHandler.createUser(sLogin.getText(), paswrd+"", sUserType.getValue().getCode(),
                             sSurname.getText(), sName.getText(), sPatronymic.getText(),
                             sPhone.getText(), sMail.getText());
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Пользователь создан");                                
+                    alert.setTitle("Пользователь создан");
                     alert.setHeaderText(null);
-                    alert.setContentText("Данные для входа:\nЛогин: " + 
+                    alert.setContentText("Данные для входа:\nЛогин: " +
                             sLogin.getText()+"\nПароль: " + paswrd);
                     Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
                     stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
@@ -81,7 +80,7 @@ public class AddUserController implements Initializable
             }
         }
     }
-    
+
     public class UserType
     {
         public int code;
@@ -103,14 +102,14 @@ public class AddUserController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
         sUserType.setItems(FXCollections.observableArrayList(new UserType(1, "Сотрудник администрации"), new UserType(2, "Преподаватель"), new UserType(3, "Администратор БД")));
-        
+
         sSurname.textProperty().addListener(new ChangeListener<String>() { //установка прослушивателя на ввод фамилии для автоматической генерации логина пользователя
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String oldString, String newString) {
                 sLogin.setText(Translit.cyr2lat(sSurname.getText()+sName.getText()));
             }
         });
-        
+
         sName.textProperty().addListener(new ChangeListener<String>() { //установка прослушивателя на ввод имени для автоматической генерации логина пользователя
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String oldString, String newString) {
@@ -119,3 +118,4 @@ public class AddUserController implements Initializable
         });
     }
 }
+
