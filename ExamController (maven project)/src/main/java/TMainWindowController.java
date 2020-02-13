@@ -5,6 +5,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,6 +43,13 @@ public class TMainWindowController implements Initializable
     {
         ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно
         AllUserActions.exitAndAuth();
+    }
+
+    public void handleButtonRetake(ActionEvent actionEvent)
+    {
+    }
+
+    public void handleButtonDelete(ActionEvent actionEvent) {
     }
 
     public class examTableList //класс отображения таблицы
@@ -147,7 +155,7 @@ public class TMainWindowController implements Initializable
         {
             Mark m = markList.get(event.getTablePosition().getRow()); //получение оценки
             m.setMark(event.getNewValue()); //запись в оценку нового результата
-            DatabaseHandler.updateMark(m); //внесение исправленной оценки в базу данных
+            //DatabaseHandler.updateMark(m); //внесение исправленной оценки в базу данных
             initTableMarks(); //перерисовка таблицы с оценками
         });
 
@@ -166,7 +174,7 @@ public class TMainWindowController implements Initializable
     public ObservableList<examTableList> getMarkTableList() //возвращает список студентов группы, у которой проходит экхамен вместе с имеющимися оценками
     {
         ObservableList<examTableList> list = FXCollections.observableArrayList();
-        markList = DatabaseHandler.getMarksByEID(examSelected.getId()); //получение списка оценок за экзамен
+       // markList = DatabaseHandler.getMarksByEID(examSelected.getId()); //получение списка оценок за экзамен
         ArrayList<Student> stList= DatabaseHandler.getStudentsByGrID(examSelected.getGroup()); //получение списка студентов группы, у которой проводится экзамен
 
         int id, i, j, isFound;

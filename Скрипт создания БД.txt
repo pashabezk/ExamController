@@ -289,6 +289,26 @@ insert into mark values (178, 30, 20, 3, 2, '2018-06-26', 1);
 insert into mark values (179, 30, 20, 3, 2, '2018-06-27', 2);
 insert into mark values (180, 30, 20, 3, 3, '2018-06-28', 3);
 
+#триггер для автоматического создания оценок при создании экзамена
+drop trigger onExamInsert;
+delimiter //
+create trigger onExamInsert
+after insert on exam
+for each row begin
+	declare done integer default false; #создаём переменную для handler
+	declare studentId int;
+	declare cur cursor for select num from student where gr=new.gr; #курсор для получения идентификаторов студентов, которые состоят в группе, для которой проводится экзамен
+	declare continue handler for not found set done = true; #создание handler (нужен для проверки, что данные в курсоре закончились)
+	open cur; #открываем курсор
+
+	while done=false do
+		fetch cur into studentId; #считываем идентификатор в studenId
+		insert into mark values (default, new.id, studentId, new.id_t, if(new.mark_st=1, 0, 2), new.ddate, 1); #создаем оценку для этого пользователя
+	end while;
+	close cur;
+end //
+delimiter ;
+
 select * from groupp;
 select * from user;
 select * from exam;

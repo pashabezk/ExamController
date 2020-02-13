@@ -289,14 +289,14 @@ public class DatabaseHandler
         return al;
     }
 
-    public static ObservableList<Mark> getMarksByEID(int id) //возвращает список оценок, привязанных к идентификатору экзамена
+    public static ArrayList<MarkTableList> getMarksByEID(int id) //возвращает список оценок, привязанных к идентификатору экзамена
     {
-        ObservableList<Mark> list = FXCollections.observableArrayList();
+        ArrayList<MarkTableList> list = new ArrayList<>();
         try {
-            ResultSet result = getDBConnection().createStatement().executeQuery("select * from mark where exam=" + id + ";"); //получение списка экзаменов
+            ResultSet result = getDBConnection().createStatement().executeQuery("select mark.id, exam, exam.name as exam_name, num_rb, CONCAT(student.surname, \" \", student.name, \" \", student.patronymic) as student, mark.id_t, CONCAT(user.surname, \" \", user.name, \" \", user.patronymic) as teacher, mark, mark.ddate, max(retake) as retake from mark, exam, student, user where mark.exam=exam.id and num_rb=num and mark.id_t=user.id and mark.exam=" + id + " group by num_rb order by student, retake"); //получение списка экзаменов
             while(result.next()) {
-                list.add(new Mark(result.getInt("id"), result.getInt("exam"),
-                        result.getInt("num_rb"), result.getInt("id_t"),
+                list.add(new MarkTableList(result.getInt("id"), result.getInt("exam"), result.getString("exam_name"),
+                        result.getInt("num_rb"), result.getString("student"), result.getInt("id_t"), result.getString("teacher"),
                         result.getInt("mark"), result.getString("ddate"), result.getInt("retake")));
             }
             closeDB();
@@ -304,15 +304,15 @@ public class DatabaseHandler
         return list;
     }
 
-    public static void updateMark(Mark mark) //обновление данных об оценке
+    public static void updateMark(int id, int mark) //обновление данных об оценке
     {
         try {
-            getDBConnection().prepareStatement("update mark set mark="+mark.getMark()+" where id="+mark.getId()+";").executeUpdate();
+            getDBConnection().prepareStatement("update mark set mark=" + mark + " where id=" + id + ";").executeUpdate();
             closeDB();
         } catch(SQLException e) {e.printStackTrace();}
     }
 
-    public static void createMark(int examId, int studentId, int teacherId, int mark, int retake) //создание пересдачи (внесение новой оценки в таблицу)
+    public static void createMark(int examId, int studentId, int teacherId, int mark, int retake) //создание оценки (пересдачи)
     {
         try {
             getDBConnection().prepareStatement("insert into mark values (default, " + examId + ", "+

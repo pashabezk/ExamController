@@ -55,8 +55,10 @@ public class AuthorizationController implements Initializable
                     FXMLLoader loader = new FXMLLoader();
                     switch (GLOBAL.user.getType()) //загрузка разных страниц в зависимости, от типа пользователя
                     {
-                        case 1: loader.setLocation(getClass().getResource("/DMainWindow.fxml")); break;
-                        case 2: loader.setLocation(getClass().getResource("/TMainWindow.fxml")); break;
+//                        case 1: loader.setLocation(getClass().getResource("/DMainWindow.fxml")); break;
+//                        case 2: loader.setLocation(getClass().getResource("/TMainWindow.fxml")); break;
+                        case 1:
+                        case 2: loader.setLocation(getClass().getResource("/MainWindow.fxml")); break;
                         case 3: loader.setLocation(getClass().getResource("/AMainWindow.fxml")); break;
                     }
 
