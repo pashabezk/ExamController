@@ -14,8 +14,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 public class DatabaseHandler
 {
@@ -293,7 +291,7 @@ public class DatabaseHandler
     {
         ArrayList<MarkTableList> list = new ArrayList<>();
         try {
-            ResultSet result = getDBConnection().createStatement().executeQuery("select mark.id, exam, exam.name as exam_name, num_rb, CONCAT(student.surname, \" \", student.name, \" \", student.patronymic) as student, mark.id_t, CONCAT(user.surname, \" \", user.name, \" \", user.patronymic) as teacher, mark, mark.ddate, max(retake) as retake from mark, exam, student, user where mark.exam=exam.id and num_rb=num and mark.id_t=user.id and mark.exam=" + id + " group by num_rb order by student, retake"); //получение списка экзаменов
+            ResultSet result = getDBConnection().createStatement().executeQuery("select id, exam, exam_name, num_rb, student, id_t, teacher, mark, ddate, max(retake) as retake from (select mark.id, exam, exam.name as exam_name, num_rb, CONCAT(student.surname, \" \", student.name, \" \", student.patronymic) as student, mark.id_t, CONCAT(user.surname, \" \", user.name, \" \", user.patronymic) as teacher, mark, mark.ddate, retake from mark, exam, student, user where mark.exam=exam.id and num_rb=num and mark.id_t=user.id and mark.exam=" + id + " order by student, -retake) t group by num_rb;"); //получение списка оценок
             while(result.next()) {
                 list.add(new MarkTableList(result.getInt("id"), result.getInt("exam"), result.getString("exam_name"),
                         result.getInt("num_rb"), result.getString("student"), result.getInt("id_t"), result.getString("teacher"),
@@ -312,13 +310,15 @@ public class DatabaseHandler
         } catch(SQLException e) {e.printStackTrace();}
     }
 
-    public static void createMark(int examId, int studentId, int teacherId, int mark, int retake) //создание оценки (пересдачи)
+    public static int createMark(int examId, int studentId, int teacherId, int mark, int retake) //создание оценки (пересдачи)
     {
+        int success = 1;
         try {
             getDBConnection().prepareStatement("insert into mark values (default, " + examId + ", "+
                     studentId + ", " + teacherId + ", " + mark + ", curdate(), " + retake +");").execute();
             closeDB();
-        } catch(SQLException e) {e.printStackTrace();}
+        } catch(SQLException e) {e.printStackTrace(); success=0;} //установка success в ноль - не удалось удалить
+        return success;
     }
 
     public static int getNumberOfRetakes(int studentId, int examId) //получить количество сдач у студента за данный экзамен
@@ -502,8 +502,8 @@ public class DatabaseHandler
                 c = result.getInt(1);
             closeDB();
         } catch(SQLException e) {e.printStackTrace();}
-        if (c==0) return 1; //студента можно удалять
+        if (c==0) return 1; //экзамен можно удалять
         else if (c==-1) return -1; //не удалось подключиться к БД/ошибка в выполнении запроса
-        else return 0; //студента нельзя удалить
+        else return 0; //экзамен нельзя удалить
     }
 }

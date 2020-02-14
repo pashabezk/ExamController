@@ -75,7 +75,7 @@ insert into user values (5, 'kyzya', '1234', 2, 'Кузьмин', 'Игорь', 
 insert into user values (6, 'sharova', '1234', 2, 'Шарова', 'Елена', 'Равильевна', '89455941258', 'sharova@mail.ru');
 insert into user values (7, 'grigoreva', '1234', 2, 'Григорьева', 'Ольга', 'Ивановна', '89074851269', 'grolg@gmail.com');
 insert into user values (8, 'sedlova', '1234', 2, 'Седлова', 'Лилия', 'Евгеньевна', '89012457841', 'lovelov@mail.ru');
-insert into user values (9, 'zhuk', '1234', 3, 'Жульчик', 'Евгений', 'Романович', '89474581536', 'zhukoman@mail.ru');
+insert into user values (9, 'evgen', '1234', 3, 'Жульчик', 'Евгений', 'Романович', '89474581536', 'zhukoman@mail.ru');
 
 insert into exam values (1, 'Математика', 2, 5, 1, '2016-01-15');
 insert into exam values (2, 'Математика', 2, 6, 2, '2016-01-16');
@@ -290,7 +290,7 @@ insert into mark values (179, 30, 20, 3, 2, '2018-06-27', 2);
 insert into mark values (180, 30, 20, 3, 3, '2018-06-28', 3);
 
 #триггер для автоматического создания оценок при создании экзамена
-drop trigger onExamInsert;
+#drop trigger onExamInsert;
 delimiter //
 create trigger onExamInsert
 after insert on exam

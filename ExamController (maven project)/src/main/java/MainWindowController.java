@@ -1,19 +1,22 @@
 import TableLists.MarkTableList;
+import animations.Attenuation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -22,6 +25,8 @@ public class MainWindowController implements Initializable
 {
     @FXML private ListView<String> TMListView;
     @FXML private TableView<MarkTableList> tblMarks;
+    @FXML private Label labelPushUp;
+    @FXML private Button btnMonitor;
 
     private Exam examSelected; //поле, в котором содерижтся объект экзамена, для которого выводдятся оценки
     private ArrayList<Exam> exam; //список экзаменов преподавателя
@@ -39,50 +44,71 @@ public class MainWindowController implements Initializable
     }
 
     @FXML
+    private void handleButtonMonitor(ActionEvent event)
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/MonitoringWindow.fxml"));
+        try{
+            loader.load();
+        } catch (IOException ex) {ex.printStackTrace();}
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle(GLOBAL.TITLE + " - мониторинг деятельности");
+        stage.setMinWidth(560);
+        stage.setMinHeight(400);
+        stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
+        stage.show();
+    }
+
+    @FXML
     public void handleButtonRetake(ActionEvent actionEvent)
     {
+        Attenuation pushUp = new Attenuation(labelPushUp); //добавление эффекта затухания
+        labelPushUp.setTextFill(Color.web("#ff0000"));
+
         if(markItem.getRetake()<3) //если сдач экзамена меньше 3
         {
-            DatabaseHandler.createMark(markItem.getExamID(), markItem.getStudentID(), GLOBAL.user.getId(), 0, markItem.getRetake()+1); //создание пересдачи
-
+            if(DatabaseHandler.createMark(markItem.getExamID(), markItem.getStudentID(), GLOBAL.user.getId(),
+                    examSelected.getMark_st() == 1 ? 0 : 2, //если экзамен недифференцированный, то по умолчанию ставится 0, если экзамен дифференцированный, то ставится 2
+                    markItem.getRetake()+1) == 1) //создание пересдачи
+            {
+                labelPushUp.setTextFill(Color.web("#0000ff"));
+                labelPushUp.setText("Пересдача успешно создана");
+            }
+            else labelPushUp.setText("ОШИБКА: не удалось подключиться к БД");
             initTableMarks(); //перерисовка таблицы с оценками
         }
-        else
-        {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Нельзя сдавать предмет больше трёх раз");
-            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image(ExamController.class.getResourceAsStream("/icon.png")));
-            alert.showAndWait();
-        }
-        System.out.println(markItem.getId() + "");
+        else labelPushUp.setText("ОШИБКА: максимальное количество пересдач равняется трём");
+        pushUp.playAnim();
     }
 
     @FXML
     public void handleButtonDelete(ActionEvent actionEvent)
     {
+        Attenuation pushUp = new Attenuation(labelPushUp); //добавление эффекта затухания
+        labelPushUp.setTextFill(Color.web("#ff0000"));
+
         if(markItem.getRetake()>1) //если сдач экзамена больше 1
         {
-            DatabaseHandler.deleteMark(markItem.getId()); //удаление пересдачи
+            if(DatabaseHandler.deleteMark(markItem.getId()) == 1) //удаление пересдачи
+            {
+                labelPushUp.setTextFill(Color.web("#0000ff"));
+                labelPushUp.setText("Пересдача успешно удалена");
+            }
+            else labelPushUp.setText("ОШИБКА: не удалось подключиться к БД");
             initTableMarks(); //перерисовка таблицы с оценками
         }
-        else
-        {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Нельзя иметь меньше одной сдачи");
-            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image(ExamController.class.getResourceAsStream("/icon.png")));
-            alert.showAndWait();
-        }
+        else labelPushUp.setText("ОШИБКА: минимальное количество попыток сдачи равняется одному");
+        pushUp.playAnim();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        if(GLOBAL.user.getType()!=1) btnMonitor.setVisible(false); //если авторизовался не "сотрудник администрации", то кнопка "мониторинг" скрывается
+
         initExamList(); //отображения списка экзаменов
         initTableMarks(); //отображение таблицы с оценками
         tblMarks.setEditable(true); //разрешение редактирования таблицу
