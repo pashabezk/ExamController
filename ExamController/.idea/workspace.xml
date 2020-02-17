@@ -2,31 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1120430-246d-46c5-836c-55a2e0e3f734" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/ExamController.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/MainStylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AMainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AMainWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Authorization.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Authorization.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MainWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MonitoringWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MonitoringWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ExamController-snapshot-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ExamController-snapshot-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ExamController-snapshot.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ExamController-snapshot.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AMainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AMainWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MainStylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MainStylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Authorization.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Authorization.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MainWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/MonitoringWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MonitoringWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -61,6 +59,9 @@
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
@@ -102,6 +103,7 @@
       <option name="presentableId" value="Default" />
       <updated>1581243468814</updated>
       <workItem from="1581930440767" duration="3898000" />
+      <workItem from="1581946847820" duration="4407000" />
     </task>
     <servers />
   </component>
@@ -125,30 +127,30 @@
       <screen x="0" y="22" width="1440" height="878" />
     </state>
     <state x="478" y="196" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.22.1440.878@0.22.1440.878" timestamp="1581931549099" />
-    <state width="1358" height="47" key="GridCell.Tab.0.bottom" timestamp="1581939312064">
+    <state width="1358" height="47" key="GridCell.Tab.0.bottom" timestamp="1581952394072">
       <screen x="0" y="22" width="1440" height="878" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.bottom/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.bottom/0.0.1301.768@0.0.1301.768" timestamp="1581331534284" />
-    <state width="1358" height="47" key="GridCell.Tab.0.bottom/0.22.1440.878@0.22.1440.878" timestamp="1581939312064" />
-    <state width="1358" height="47" key="GridCell.Tab.0.center" timestamp="1581939312062">
+    <state width="1358" height="47" key="GridCell.Tab.0.bottom/0.22.1440.878@0.22.1440.878" timestamp="1581952394072" />
+    <state width="1358" height="47" key="GridCell.Tab.0.center" timestamp="1581952394070">
       <screen x="0" y="22" width="1440" height="878" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.center/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.center/0.0.1301.768@0.0.1301.768" timestamp="1581331534283" />
-    <state width="1358" height="47" key="GridCell.Tab.0.center/0.22.1440.878@0.22.1440.878" timestamp="1581939312062" />
-    <state width="1358" height="47" key="GridCell.Tab.0.left" timestamp="1581939312061">
+    <state width="1358" height="47" key="GridCell.Tab.0.center/0.22.1440.878@0.22.1440.878" timestamp="1581952394070" />
+    <state width="1358" height="47" key="GridCell.Tab.0.left" timestamp="1581952394069">
       <screen x="0" y="22" width="1440" height="878" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.left/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.left/0.0.1301.768@0.0.1301.768" timestamp="1581331534283" />
-    <state width="1358" height="47" key="GridCell.Tab.0.left/0.22.1440.878@0.22.1440.878" timestamp="1581939312061" />
-    <state width="1358" height="47" key="GridCell.Tab.0.right" timestamp="1581939312063">
+    <state width="1358" height="47" key="GridCell.Tab.0.left/0.22.1440.878@0.22.1440.878" timestamp="1581952394069" />
+    <state width="1358" height="47" key="GridCell.Tab.0.right" timestamp="1581952394071">
       <screen x="0" y="22" width="1440" height="878" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.right/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.right/0.0.1301.768@0.0.1301.768" timestamp="1581331534283" />
-    <state width="1358" height="47" key="GridCell.Tab.0.right/0.22.1440.878@0.22.1440.878" timestamp="1581939312063" />
+    <state width="1358" height="47" key="GridCell.Tab.0.right/0.22.1440.878@0.22.1440.878" timestamp="1581952394071" />
     <state x="151" y="27" key="SettingsEditor" timestamp="1581246898683">
       <screen x="0" y="0" width="1301" height="768" />
     </state>
@@ -157,10 +159,10 @@
       <screen x="0" y="22" width="1440" height="878" />
     </state>
     <state width="500" height="445" key="SwitcherDM/0.22.1440.878@0.22.1440.878" timestamp="1581935099055" />
-    <state x="396" y="275" key="com.intellij.ide.util.TipDialog" timestamp="1581930441316">
+    <state x="396" y="275" key="com.intellij.ide.util.TipDialog" timestamp="1581946851055">
       <screen x="0" y="22" width="1440" height="878" />
     </state>
-    <state x="396" y="275" key="com.intellij.ide.util.TipDialog/0.22.1440.878@0.22.1440.878" timestamp="1581930441316" />
+    <state x="396" y="275" key="com.intellij.ide.util.TipDialog/0.22.1440.878@0.22.1440.878" timestamp="1581946851055" />
     <state x="421" y="87" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1581244029722">
       <screen x="0" y="0" width="1301" height="768" />
     </state>

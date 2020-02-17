@@ -8,11 +8,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="400.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AuthorizationController">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="400.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AuthorizationController">
     <children>
       <Label contentDisplay="TOP" layoutX="168.0" layoutY="62.0" prefHeight="44.0" prefWidth="65.0" styleClass="main_title" text="Вход" AnchorPane.leftAnchor="168.0" AnchorPane.topAnchor="62.0">
          <font>
-            <Font name="Segoe Script" size="24.0" />
+            <Font size="24.0" />
          </font>
       </Label>
       <TextField fx:id="tfLogin" layoutX="81.0" layoutY="153.0" prefHeight="30.0" prefWidth="240.0" promptText="Логин" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="79.0" AnchorPane.topAnchor="153.0">
@@ -25,12 +25,12 @@
             <Font size="14.0" />
          </font>
       </PasswordField>
-        <Button layoutX="140.0" layoutY="308.0" onAction="#handleButtonAauthorization" prefHeight="30.0" prefWidth="120.0" styleClass="ybtn" text="Войти" AnchorPane.bottomAnchor="62.0" AnchorPane.rightAnchor="140.0">
+        <Button layoutX="140.0" layoutY="324.0" onAction="#handleButtonAauthorization" prefHeight="30.0" prefWidth="120.0" styleClass="ybtn" text="Войти" AnchorPane.bottomAnchor="96.0" AnchorPane.rightAnchor="140.0">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="lbMsgAuth" alignment="CENTER_RIGHT" layoutX="26.0" layoutY="170.0" prefHeight="30.0" prefWidth="220.0" textFill="RED" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="100.0">
+      <Label fx:id="lbMsgAuth" alignment="CENTER_RIGHT" layoutX="81.0" layoutY="266.0" prefHeight="30.0" prefWidth="240.0" textAlignment="CENTER" textFill="#ff5200" AnchorPane.bottomAnchor="154.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="79.0">
          <font>
             <Font size="14.0" />
          </font>
