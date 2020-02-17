@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a1120430-246d-46c5-836c-55a2e0e3f734" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1XZAuqfzkeCgMGQtatVV63fpggL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
+  </component>
+  <component name="RunManager">
+    <configuration name="ExamController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ExamController" />
+      <module name="ExamController" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ExamController" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a1120430-246d-46c5-836c-55a2e0e3f734" name="Default Changelist" comment="" />
+      <created>1581243468814</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581243468814</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="367" y="43" key="#ExamController" timestamp="1581331181830">
+      <screen x="0" y="0" width="1301" height="768" />
+    </state>
+    <state x="367" y="43" key="#ExamController/0.0.1301.768@0.0.1301.768" timestamp="1581331181830" />
+    <state x="380" y="160" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1581243742214">
+      <screen x="0" y="0" width="1301" height="768" />
+    </state>
+    <state x="380" y="160" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1301.768@0.0.1301.768" timestamp="1581243742214" />
+    <state width="991" height="220" key="GridCell.Tab.0.bottom" timestamp="1581929317426">
+      <screen x="0" y="0" width="1300" height="768" />
+    </state>
+    <state width="991" height="220" key="GridCell.Tab.0.bottom/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
+    <state width="1258" height="192" key="GridCell.Tab.0.bottom/0.0.1301.768@0.0.1301.768" timestamp="1581331534284" />
+    <state width="991" height="220" key="GridCell.Tab.0.center" timestamp="1581929317426">
+      <screen x="0" y="0" width="1300" height="768" />
+    </state>
+    <state width="991" height="220" key="GridCell.Tab.0.center/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
+    <state width="1258" height="192" key="GridCell.Tab.0.center/0.0.1301.768@0.0.1301.768" timestamp="1581331534283" />
+    <state width="991" height="220" key="GridCell.Tab.0.left" timestamp="1581929317426">
+      <screen x="0" y="0" width="1300" height="768" />
+    </state>
+    <state width="991" height="220" key="GridCell.Tab.0.left/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
+    <state width="1258" height="192" key="GridCell.Tab.0.left/0.0.1301.768@0.0.1301.768" timestamp="1581331534283" />
+    <state width="991" height="220" key="GridCell.Tab.0.right" timestamp="1581929317426">
+      <screen x="0" y="0" width="1300" height="768" />
+    </state>
+    <state width="991" height="220" key="GridCell.Tab.0.right/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
+    <state width="1258" height="192" key="GridCell.Tab.0.right/0.0.1301.768@0.0.1301.768" timestamp="1581331534283" />
+    <state x="151" y="27" key="SettingsEditor" timestamp="1581246898683">
+      <screen x="0" y="0" width="1301" height="768" />
+    </state>
+    <state x="151" y="27" key="SettingsEditor/0.0.1301.768@0.0.1301.768" timestamp="1581246898683" />
+    <state x="421" y="87" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1581244029722">
+      <screen x="0" y="0" width="1301" height="768" />
+    </state>
+    <state x="421" y="87" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1301.768@0.0.1301.768" timestamp="1581244029722" />
+    <state x="313" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1581244780306">
+      <screen x="0" y="0" width="1301" height="768" />
+    </state>
+    <state x="313" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1301.768@0.0.1301.768" timestamp="1581244780306" />
+  </component>
+</project>

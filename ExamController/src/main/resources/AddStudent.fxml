@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddStudentController">
+    <children>
+      <Button layoutX="218.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonCancel" text="Отмена" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="30.0" />
+      <Label layoutX="30.0" layoutY="80.0" text="Фамилия:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="45.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="43.0" text="Имя:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="80.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="119.0" text="Отчество:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="115.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="161.0" text="Телефон:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="150.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="200.0" text="Почта:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="185.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="224.0" text="Группа:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="220.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="sSurname" layoutX="119.0" layoutY="76.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="45.0" />
+      <TextField fx:id="sName" layoutX="119.0" layoutY="39.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="80.0" />
+      <TextField fx:id="sPatronymic" layoutX="119.0" layoutY="115.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="115.0" />
+      <TextField fx:id="sPhone" layoutX="119.0" layoutY="157.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="150.0" />
+      <TextField fx:id="sMail" layoutX="119.0" layoutY="196.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="185.0" />
+      <ComboBox fx:id="sGroup" layoutX="120.0" layoutY="218.0" prefWidth="90.0" promptText="Группа" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="220.0" />
+      <Label alignment="CENTER" layoutX="180.0" layoutY="14.0" text="Создание профиля студента" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button layoutX="156.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonCreate" text="Создать" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="100.0" />
+      <Label fx:id="sErrMsg" layoutX="181.0" layoutY="349.0" textFill="RED" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="170.0" />
+   </children>
+</AnchorPane>
