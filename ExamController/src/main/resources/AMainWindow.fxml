@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AMainWindowController">
+<AnchorPane id="AnchorPane" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="1000.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AMainWindowController">
    <children>
       <SplitPane fx:id="fxSplitPane" dividerPositions="0.2" layoutX="77.0" layoutY="89.0" prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
         <items>
@@ -26,26 +26,21 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <ButtonBar layoutX="422.0" layoutY="520.0" prefHeight="40.0" prefWidth="197.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0">
+                  <ButtonBar layoutX="422.0" layoutY="520.0" prefHeight="40.0" prefWidth="248.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0">
                     <buttons>
-                      <Button mnemonicParsing="false" onAction="#handleButtonDelete" text="Удалить" />
-                        <Button mnemonicParsing="false" onAction="#handleButtonAdd" text="Добавить" />
+                      <Button minWidth="68.0" mnemonicParsing="false" onAction="#handleButtonDelete" prefHeight="28.0" prefWidth="111.0" styleClass="wbtn" text="Удалить" />
+                        <Button mnemonicParsing="false" onAction="#handleButtonAdd" styleClass="ybtn" text="Добавить" />
                     </buttons>
                   </ButtonBar>
                </children>
             </AnchorPane>
         </items>
       </SplitPane>
-      <ButtonBar layoutX="775.0" layoutY="-16.0" prefHeight="40.0" prefWidth="215.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+      <ButtonBar layoutX="775.0" layoutY="-16.0" prefHeight="40.0" prefWidth="240.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
         <buttons>
-          <Button mnemonicParsing="false" onAction="#handleButtonSettings" text="Настройки" />
-            <Button mnemonicParsing="false" onAction="#handleButtonExit" text="Выход" />
+          <Button mnemonicParsing="false" onAction="#handleButtonSettings" prefHeight="30.0" prefWidth="131.0" styleClass="wbtn" text="Настройки" />
+            <Button mnemonicParsing="false" onAction="#handleButtonExit" prefHeight="30.0" styleClass="wbtn" text="Выход" />
         </buttons>
       </ButtonBar>
-      <Label alignment="TOP_LEFT" layoutY="-2.0" prefHeight="43.0" prefWidth="213.0" text="Exam Controller" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
-         <font>
-            <Font name="Segoe Script" size="23.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

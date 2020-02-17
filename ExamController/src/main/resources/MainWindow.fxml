@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainWindowController">
+<AnchorPane id="AnchorPane" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="1000.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainWindowController">
     <children>
         <SplitPane dividerPositions="0.29797979797979796" layoutX="77.0" layoutY="89.0" prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
             <items>
@@ -21,10 +21,10 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                     <children>
                         <TableView fx:id="tblMarks" layoutX="83.0" layoutY="63.0" prefHeight="558.0" prefWidth="698.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <ButtonBar layoutX="432.0" layoutY="530.0" prefHeight="40.0" prefWidth="197.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0">
+                        <ButtonBar layoutX="432.0" layoutY="530.0" prefHeight="40.0" prefWidth="233.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0">
                             <buttons>
-                                <Button mnemonicParsing="false" onAction="#handleButtonRetake" text="Пересдача" />
-                                <Button mnemonicParsing="false" onAction="#handleButtonDelete" text="Удалить" />
+                                <Button mnemonicParsing="false" onAction="#handleButtonDelete" styleClass="wbtn" text="Удалить" />
+                                <Button mnemonicParsing="false" onAction="#handleButtonRetake" prefHeight="28.0" prefWidth="117.0" styleClass="ybtn" text="Пересдача" />
                             </buttons>
                         </ButtonBar>
                   <Label fx:id="labelPushUp" layoutX="487.0" layoutY="540.0" textFill="BLUE" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="10.0">
@@ -36,17 +36,12 @@
                 </AnchorPane>
             </items>
         </SplitPane>
-        <ButtonBar layoutX="775.0" layoutY="-16.0" prefHeight="40.0" prefWidth="215.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+        <ButtonBar layoutX="775.0" layoutY="-16.0" prefHeight="40.0" prefWidth="233.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
             <buttons>
-                <Button mnemonicParsing="false" onAction="#handleButtonSettings" text="Настройки" />
-                <Button mnemonicParsing="false" onAction="#handleButtonExit" text="Выход" />
+                <Button mnemonicParsing="false" onAction="#handleButtonSettings" prefHeight="28.0" prefWidth="125.0" styleClass="wbtn" text="Настройки" />
+                <Button mnemonicParsing="false" onAction="#handleButtonExit" styleClass="wbtn" text="Выход" />
             </buttons>
         </ButtonBar>
-        <Label alignment="TOP_LEFT" layoutY="-2.0" prefHeight="43.0" prefWidth="213.0" text="Exam Controller" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
-            <font>
-                <Font name="Segoe Script" size="23.0" />
-            </font>
-        </Label>
-      <Button fx:id="btnMonitor" layoutX="33.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleButtonMonitor" text="Мониторинг" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="8.0" />
+      <Button fx:id="btnMonitor" layoutX="33.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleButtonMonitor" styleClass="wbtn" text="Мониторинг" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="8.0" />
     </children>
 </AnchorPane>

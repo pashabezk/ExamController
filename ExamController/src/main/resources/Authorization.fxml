@@ -5,36 +5,27 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="220.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AuthorizationController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="400.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AuthorizationController">
     <children>
-      <Label contentDisplay="TOP" layoutX="-1.0" layoutY="14.0" prefHeight="44.0" prefWidth="245.0" text="Exam Controller" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="10.0">
+      <Label contentDisplay="TOP" layoutX="168.0" layoutY="62.0" prefHeight="44.0" prefWidth="65.0" styleClass="main_title" text="Вход" AnchorPane.leftAnchor="168.0" AnchorPane.topAnchor="62.0">
          <font>
             <Font name="Segoe Script" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="tfLogin" layoutX="85.0" layoutY="66.0" prefHeight="25.0" prefWidth="235.0" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="75.0">
+      <TextField fx:id="tfLogin" layoutX="81.0" layoutY="153.0" prefHeight="30.0" prefWidth="240.0" promptText="Логин" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="79.0" AnchorPane.topAnchor="153.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="tfPassword" layoutX="88.0" layoutY="120.0" prefWidth="235.0" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="120.0">
+      <PasswordField fx:id="tfPassword" layoutX="80.0" layoutY="202.0" prefHeight="30.0" prefWidth="240.0" promptText="Пароль" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="202.0">
          <font>
             <Font size="14.0" />
          </font>
       </PasswordField>
-      <Label layoutX="21.0" layoutY="69.0" prefHeight="30.0" prefWidth="43.0" text="Логин" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="75.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="22.0" layoutY="99.0" prefHeight="30.0" prefWidth="48.0" text="Пароль" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="120.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-        <Button onAction="#handleButtonAauthorization" prefHeight="9.0" prefWidth="65.0" text="Войти" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="30.0">
+        <Button layoutX="140.0" layoutY="308.0" onAction="#handleButtonAauthorization" prefHeight="30.0" prefWidth="120.0" styleClass="ybtn" text="Войти" AnchorPane.bottomAnchor="62.0" AnchorPane.rightAnchor="140.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -44,5 +35,7 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffdf8a" height="3.0" layoutX="80.0" layoutY="182.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="240.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffdf8a" height="3.0" layoutX="80.0" layoutY="231.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="240.0" />
     </children>
 </AnchorPane>
