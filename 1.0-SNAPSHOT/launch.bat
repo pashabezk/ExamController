@@ -1,1 +1,0 @@
-java -jar ExamController-1.0-SNAPSHOT-jar-with-dependencies.jar
