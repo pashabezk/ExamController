@@ -81,7 +81,7 @@ public class AddUserController implements Initializable
         }
     }
 
-    public class UserType
+    private class UserType
     {
         public int code;
         private String name;
