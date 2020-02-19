@@ -25,7 +25,12 @@ public class Group
     public String getName() {return name;}
     public int getCourse() {return course;}
     public int getYear() {return year;}
-    
+
+    public void setName(String name) {this.name = name;}
+    public void setCourse(int course) {this.course = course;}
+    public void setYear(int year) {this.year = year;}
+
     @Override
     public String toString() {return this.name;}
 }
+

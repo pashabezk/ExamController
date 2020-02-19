@@ -173,6 +173,19 @@ public class DatabaseHandler
         return success;
     }
 
+    public static int updateUser(UsersTableList user)
+    {
+        int success = 1;
+        try {
+            getDBConnection().prepareStatement("update user set type=" + user.getType() + ", surname='" + user.getSurname() +
+                    "', name='" + user.getName() + "', patronymic='" + user.getPatronymic() +
+                    "', phone='" + user.getPhone() + "', mail='" + user.getMail() +
+                    "' where id=" + user.getId() + ";").execute();
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace(); success=0;} //установка success в ноль - не удалось обновить
+        return success;
+    }
+
     public static ArrayList<ExamTableList> getExams() //возвращает список всех экзаменов
     {
         ArrayList<ExamTableList> al = new ArrayList<>();
@@ -377,6 +390,17 @@ public class DatabaseHandler
             closeDB();
         } catch(SQLException e) {e.printStackTrace();}
         return gr;
+    }
+
+    public static int updateGroup(Group group)
+    {
+        int success = 1;
+        try {
+            getDBConnection().prepareStatement("update groupp set name='" + group.getName() +
+                    "', course=" + group.getCourse() + ", year=" + group.getYear() + " where id=" + group.getId() + ";").execute();
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace(); success=0;} //установка success в ноль - не удалось обновить
+        return success;
     }
 
     public static ArrayList<RatingStudentTableList> getRatingStudents() //возвращает список с рейтингом студентов

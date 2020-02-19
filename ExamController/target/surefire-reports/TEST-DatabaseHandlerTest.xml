@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="35" failures="0" name="DatabaseHandlerTest" time="1.078" errors="0" skipped="0">
+<testsuite tests="35" failures="0" name="DatabaseHandlerTest" time="1.271" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_231\jre\bin"/>
     <property name="java.vm.version" value="25.231-b11"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Lyolya\Documents\GitHub\ExamController\ExamController"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\pasha\Desktop\ExamController"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,12 +16,12 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\Lyolya\Documents\GitHub\ExamController\ExamController"/>
+    <property name="user.dir" value="C:\Users\pasha\Desktop\ExamController"/>
     <property name="java.runtime.version" value="1.8.0_231-b11"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_231\jre\lib\endorsed"/>
     <property name="os.arch" value="amd64"/>
-    <property name="java.io.tmpdir" value="C:\Users\Lyolya\AppData\Local\Temp\"/>
+    <property name="java.io.tmpdir" value="C:\Users\pasha\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
@@ -30,24 +30,24 @@
     <property name="maven.ext.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.2\plugins\maven\lib\maven-event-listener.jar"/>
     <property name="classworlds.conf" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.2\plugins\maven\lib\maven3\bin\m2.conf"/>
     <property name="sun.jnu.encoding" value="Cp1251"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_231\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\dotnet\;C:\Program Files\MySQL\MySQL Server 5.5\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Java\jdk1.8.0_231\bin;C:\MinGW64\bin;C:\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;C:\Users\Lyolya\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\Lyolya\AppData\Local\Programs\Python\Python37\;C:\Users\Lyolya\AppData\Local\Microsoft\WindowsApps;C:\Users\Lyolya\AppData\Roaming\npm;C:\nasm;C:\Program Files\qemu;C:\Program Files\Java\jdk1.8.0_231\bin;C:\MinGW64\bin;C:\Users\Lyolya\AppData\Local\GitHubDesktop\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.2\bin;;C:\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_231\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\MySQL\MySQL Server 5.5\bin;C:\Program Files\Git\cmd;C:\Users\pasha\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\pasha\AppData\Local\Programs\Python\Python37-32\;C:\Users\pasha\AppData\Local\Microsoft\WindowsApps;;."/>
     <property name="maven.conf" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.2\plugins\maven\lib\maven3/conf"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="os.version" value="10.0"/>
     <property name="idea.version2019.3.2" value="true"/>
-    <property name="user.home" value="C:\Users\Lyolya"/>
+    <property name="user.home" value="C:\Users\pasha"/>
     <property name="user.timezone" value="Europe/Moscow"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="java.specification.version" value="1.8"/>
     <property name="file.encoding" value="UTF-8"/>
-    <property name="user.name" value="Lyolya"/>
+    <property name="user.name" value="pasha"/>
     <property name="java.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.2\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.2\lib\idea_rt.jar"/>
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_231\jre"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version2019.3.2 install"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version2019.3.2 package"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="ru"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -64,39 +64,39 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="DatabaseHandlerTest" name="deleteStudent" time="0.61"/>
-  <testcase classname="DatabaseHandlerTest" name="getRatingStudents" time="0.015"/>
-  <testcase classname="DatabaseHandlerTest" name="getStudentsByGrID" time="0.016"/>
-  <testcase classname="DatabaseHandlerTest" name="getNumberOfRetakes" time="0"/>
-  <testcase classname="DatabaseHandlerTest" name="getUsers_NO_NULL" time="0.015"/>
+  <testcase classname="DatabaseHandlerTest" name="deleteStudent" time="0.708"/>
+  <testcase classname="DatabaseHandlerTest" name="getRatingStudents" time="0.031"/>
+  <testcase classname="DatabaseHandlerTest" name="getStudentsByGrID" time="0.047"/>
+  <testcase classname="DatabaseHandlerTest" name="getNumberOfRetakes" time="0.016"/>
+  <testcase classname="DatabaseHandlerTest" name="getUsers_NO_NULL" time="0"/>
   <testcase classname="DatabaseHandlerTest" name="getStudents_NO_NULL" time="0.016"/>
-  <testcase classname="DatabaseHandlerTest" name="getGroupByID" time="0.016"/>
-  <testcase classname="DatabaseHandlerTest" name="getExams_NO_NULL" time="0.015"/>
-  <testcase classname="DatabaseHandlerTest" name="deleteGroup" time="0.016"/>
-  <testcase classname="DatabaseHandlerTest" name="signIn" time="0.015"/>
-  <testcase classname="DatabaseHandlerTest" name="isUserCanBeDeleted" time="0"/>
-  <testcase classname="DatabaseHandlerTest" name="checkPassword" time="0.016"/>
+  <testcase classname="DatabaseHandlerTest" name="getGroupByID" time="0.015"/>
+  <testcase classname="DatabaseHandlerTest" name="getExams_NO_NULL" time="0.016"/>
+  <testcase classname="DatabaseHandlerTest" name="deleteGroup" time="0.015"/>
+  <testcase classname="DatabaseHandlerTest" name="signIn" time="0"/>
+  <testcase classname="DatabaseHandlerTest" name="isUserCanBeDeleted" time="0.016"/>
+  <testcase classname="DatabaseHandlerTest" name="checkPassword" time="0"/>
   <testcase classname="DatabaseHandlerTest" name="updateUserLoginAndPassword" time="0.016"/>
   <testcase classname="DatabaseHandlerTest" name="getExpellList" time="0.015"/>
   <testcase classname="DatabaseHandlerTest" name="createGroup" time="0"/>
-  <testcase classname="DatabaseHandlerTest" name="isStudentCanBeDeleted" time="0.016"/>
-  <testcase classname="DatabaseHandlerTest" name="isLoginExists" time="0"/>
-  <testcase classname="DatabaseHandlerTest" name="updateMark" time="0.031"/>
+  <testcase classname="DatabaseHandlerTest" name="isStudentCanBeDeleted" time="0"/>
+  <testcase classname="DatabaseHandlerTest" name="isLoginExists" time="0.016"/>
+  <testcase classname="DatabaseHandlerTest" name="updateMark" time="0.047"/>
   <testcase classname="DatabaseHandlerTest" name="updateUser" time="0.031"/>
-  <testcase classname="DatabaseHandlerTest" name="createStudent" time="0.016"/>
+  <testcase classname="DatabaseHandlerTest" name="createStudent" time="0"/>
   <testcase classname="DatabaseHandlerTest" name="getGroups_NO_NULL" time="0"/>
   <testcase classname="DatabaseHandlerTest" name="getRatingGroups" time="0.016"/>
   <testcase classname="DatabaseHandlerTest" name="isExamCanBeDeleted" time="0"/>
-  <testcase classname="DatabaseHandlerTest" name="getMarksByEID" time="0.031"/>
-  <testcase classname="DatabaseHandlerTest" name="getStipendList" time="0.016"/>
-  <testcase classname="DatabaseHandlerTest" name="createExam" time="0.015"/>
+  <testcase classname="DatabaseHandlerTest" name="getMarksByEID" time="0.047"/>
+  <testcase classname="DatabaseHandlerTest" name="getStipendList" time="0.015"/>
+  <testcase classname="DatabaseHandlerTest" name="createExam" time="0.016"/>
   <testcase classname="DatabaseHandlerTest" name="createMark" time="0"/>
-  <testcase classname="DatabaseHandlerTest" name="createUser" time="0.016"/>
-  <testcase classname="DatabaseHandlerTest" name="isGroupCanBeDeleted" time="0"/>
-  <testcase classname="DatabaseHandlerTest" name="deleteExam" time="0.015"/>
-  <testcase classname="DatabaseHandlerTest" name="deleteMark" time="0.032"/>
-  <testcase classname="DatabaseHandlerTest" name="deleteUser" time="0.031"/>
+  <testcase classname="DatabaseHandlerTest" name="createUser" time="0.015"/>
+  <testcase classname="DatabaseHandlerTest" name="isGroupCanBeDeleted" time="0.016"/>
+  <testcase classname="DatabaseHandlerTest" name="deleteExam" time="0.016"/>
+  <testcase classname="DatabaseHandlerTest" name="deleteMark" time="0.047"/>
+  <testcase classname="DatabaseHandlerTest" name="deleteUser" time="0.015"/>
   <testcase classname="DatabaseHandlerTest" name="getUserByID" time="0"/>
-  <testcase classname="DatabaseHandlerTest" name="getMarks_NO_NULL" time="0.016"/>
-  <testcase classname="DatabaseHandlerTest" name="getExamsByUID" time="0.015"/>
+  <testcase classname="DatabaseHandlerTest" name="getMarks_NO_NULL" time="0.031"/>
+  <testcase classname="DatabaseHandlerTest" name="getExamsByUID" time="0.032"/>
 </testsuite>

@@ -12,7 +12,7 @@ flush privileges;
 # UPDATE user SET Host='%' WHERE User='root' AND Host='localhost';
 # FLUSH PRIVILEGES;
 
-drop database sessia;
+drop database if exists sessia;
 
 create database sessia default charset cp1251;
 use sessia;

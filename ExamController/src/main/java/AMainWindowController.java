@@ -5,6 +5,7 @@ import TableLists.UsersTableList;
 import animations.Attenuation;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -24,7 +25,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
@@ -35,6 +35,8 @@ public class AMainWindowController implements Initializable
     @FXML private TableView AMTable;
     @FXML private Label labelPushUp;
     @FXML private SplitPane fxSplitPane;
+
+    private Attenuation pushUp; //объект анимации пуш-ап уведомления
 
     private int selectedItemId = 0; //идентификатор объекта, на который было совершено нажатие
     MarkTableList selectedMark; //оценка, которая была выбрана
@@ -117,8 +119,7 @@ public class AMainWindowController implements Initializable
     @FXML
     private void handleButtonDelete(ActionEvent event) //кнопка "удалить"
     {
-        Attenuation pushUp = new Attenuation(labelPushUp); //добавление эффекта затухания
-        labelPushUp.setTextFill(Color.web("#ff0000"));
+        labelPushUp.setTextFill(GLOBAL.RED);
 
         switch(selectedTableName) //удаление в зависимости от выбранного элемента списка
         {
@@ -129,7 +130,7 @@ public class AMainWindowController implements Initializable
                         if (DatabaseHandler.deleteUser(selectedItemId) == 1)
                         {
                             labelPushUp.setText("Запись удалёна");
-                            labelPushUp.setTextFill(Color.web("#0000ff"));
+                            labelPushUp.setTextFill(GLOBAL.BLUE);
                             initTableUsers(); //перерисовка таблицы
                         }
                         else labelPushUp.setText("ОШИБКА: удалить запись не удалось");
@@ -146,7 +147,7 @@ public class AMainWindowController implements Initializable
                         if (DatabaseHandler.deleteGroup(selectedItemId) == 1)
                         {
                             labelPushUp.setText("Запись удалёна");
-                            labelPushUp.setTextFill(Color.web("#0000ff"));
+                            labelPushUp.setTextFill(GLOBAL.BLUE);
                             initTableGroups(); //перерисовка таблицы
                         }
                         else labelPushUp.setText("ОШИБКА: удалить запись не удалось");
@@ -164,7 +165,7 @@ public class AMainWindowController implements Initializable
                         if (DatabaseHandler.deleteStudent(selectedItemId) == 1)
                         {
                             labelPushUp.setText("Запись удалёна");
-                            labelPushUp.setTextFill(Color.web("#0000ff"));
+                            labelPushUp.setTextFill(GLOBAL.BLUE);
                             initTableStudents(); //перерисовка таблицы
                         }
                         else labelPushUp.setText("ОШИБКА: удалить запись не удалось");
@@ -181,7 +182,7 @@ public class AMainWindowController implements Initializable
                         if (DatabaseHandler.deleteExam(selectedItemId) == 1)
                         {
                             labelPushUp.setText("Запись удалёна");
-                            labelPushUp.setTextFill(Color.web("#0000ff"));
+                            labelPushUp.setTextFill(GLOBAL.BLUE);
                             initTableExams(); //перерисовка таблицы
                         }
                         else labelPushUp.setText("ОШИБКА: удалить запись не удалось");
@@ -200,7 +201,7 @@ public class AMainWindowController implements Initializable
                     if (DatabaseHandler.deleteMark(selectedItemId) == 1)
                     {
                         labelPushUp.setText("Запись удалёна");
-                        labelPushUp.setTextFill(Color.web("#0000ff"));
+                        labelPushUp.setTextFill(GLOBAL.BLUE);
                         initTableMarks(); //перерисовка таблицы
                     }
                     else labelPushUp.setText("ОШИБКА: удалить запись не удалось");
@@ -213,6 +214,8 @@ public class AMainWindowController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        pushUp = new Attenuation(labelPushUp); //применение анимации пуш-ап уведомления к labelPushUp
+
         ObservableList<String> list = FXCollections.observableArrayList(); //список, из которого будет происходить вывод на экран
         list.add("Пользователи");
         list.add("Студенты");
@@ -264,7 +267,7 @@ public class AMainWindowController implements Initializable
     {
         class UserType
         {
-            public int code;
+            private int code;
             private String name;
 
             public UserType(int code, String name) {
@@ -279,8 +282,6 @@ public class AMainWindowController implements Initializable
             public String toString() {return this.name;}
         }
 
-        Attenuation pushUp = new Attenuation(labelPushUp); //добавление эффекта затухания
-
         AMTable.getColumns().clear(); //очистка таблицы
 
         //создание колонок таблицы
@@ -288,12 +289,12 @@ public class AMainWindowController implements Initializable
         TableColumn<UsersTableList, String> surnameColumn = new TableColumn<>("Фамилия");
         TableColumn<UsersTableList, String> nameColumn = new TableColumn<>("Имя");
         TableColumn<UsersTableList, String> patronymicColumn = new TableColumn<>("Отчество");
-        TableColumn<UsersTableList, String> typeColumn = new TableColumn<>("Тип пользователя");
+        TableColumn<UsersTableList, UserType> typeColumn = new TableColumn<>("Тип пользователя");
         TableColumn<UsersTableList, String> phoneColumn = new TableColumn<>("Телефон");
         TableColumn<UsersTableList, String> mailColumn = new TableColumn<>("Почта");
         TableColumn<UsersTableList, Void> btnColumn = new TableColumn("Пароль");
 
-        //заполнение колонок таблицы
+        //привязка фабрик для автоматического заполнения таблицы
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         surnameColumn.setCellValueFactory(new PropertyValueFactory<>("surname"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -304,54 +305,52 @@ public class AMainWindowController implements Initializable
 
         //добавление опции редактирования ячеек
         surnameColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования фамилии
-        surnameColumn.setOnEditCommit(event -> //прослушиватель на изменение
+        surnameColumn.setOnEditCommit(event -> //применение обработчика
         {
-            //DatabaseHandler.updateMark(event.getRowValue().getId(), event.getNewValue()); //внесение редактированной записи в базу данных
-            labelPushUp.setText("Запись обновлена");
-            pushUp.playAnim();
+            UsersTableList user = event.getRowValue();
+            user.setSurname(event.getNewValue());
+            updateNotification(DatabaseHandler.updateUser(user));
         });
 
         nameColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования имени
-        nameColumn.setOnEditCommit(event -> //прослушиватель на изменение
+        nameColumn.setOnEditCommit(event -> //применение обработчика
         {
-            //DatabaseHandler.updateMark(event.getRowValue().getId(), event.getNewValue()); //внесение редактированной записи в базу данных
-            labelPushUp.setText("Запись обновлена");
-            pushUp.playAnim();
+            UsersTableList user = event.getRowValue();
+            user.setName(event.getNewValue());
+            updateNotification(DatabaseHandler.updateUser(user));
         });
 
         patronymicColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования отчества
-        patronymicColumn.setOnEditCommit(event -> //прослушиватель на изменение
+        patronymicColumn.setOnEditCommit(event -> //применение обработчика
         {
-            //DatabaseHandler.updateMark(event.getRowValue().getId(), event.getNewValue()); //внесение редактированной записи в базу данных
-            labelPushUp.setText("Запись обновлена");
-            pushUp.playAnim();
-        });
-
-        typeColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList("Сотрудник администрации", "Преподаватель", "Администратор БД"))); //добавление возможности редактирования типа пользователя
-        typeColumn.setOnEditCommit(event ->
-        {
-            //DatabaseHandler.updateMark(event.getRowValue().getId(), event.getNewValue()); //внесение редактированной записи в базу данных
-            labelPushUp.setText("Запись обновлена");
-            pushUp.playAnim();
+            UsersTableList user = event.getRowValue();
+            user.setPatronymic(event.getNewValue());
+            updateNotification(DatabaseHandler.updateUser(user));
         });
 
         phoneColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования телефона
-        phoneColumn.setOnEditCommit(event -> //прослушиватель на изменение
+        phoneColumn.setOnEditCommit(event -> //применение обработчика
         {
-            //DatabaseHandler.updateMark(event.getRowValue().getId(), event.getNewValue()); //внесение редактированной записи в базу данных
-            labelPushUp.setText("Запись обновлена");
-            pushUp.playAnim();
+            UsersTableList user = event.getRowValue();
+            user.setPhone(event.getNewValue());
+            updateNotification(DatabaseHandler.updateUser(user));
         });
 
         mailColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования почты
-        mailColumn.setOnEditCommit(event -> //прослушиватель на изменение
+        mailColumn.setOnEditCommit(event -> //применение обработчика
         {
-            //DatabaseHandler.updateMark(event.getRowValue().getId(), event.getNewValue()); //внесение редактированной записи в базу данных
-            labelPushUp.setText("Запись обновлена");
-            pushUp.playAnim();
+            UsersTableList user = event.getRowValue();
+            user.setMail(event.getNewValue());
+            updateNotification(DatabaseHandler.updateUser(user));
         });
 
-        //new UserType(1, "Сотрудник администрации"), new UserType(2, "Преподаватель"), new UserType(3, "Администратор БД")
+        typeColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(new UserType(1, "Сотрудник администрации"), new UserType(2, "Преподаватель"), new UserType(3, "Администратор БД")))); //добавление возможности редактирования типа пользователя
+        typeColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            UsersTableList user = event.getRowValue();
+            user.setType(event.getNewValue().getCode());
+            updateNotification(DatabaseHandler.updateUser(user));
+        });
 
         //добавление кнопок "восстановить пароль"
         Callback<TableColumn<UsersTableList, Void>, TableCell<UsersTableList, Void>> cellFactoryRestorePassword = new CallbackImplRestorePassword();
@@ -389,15 +388,46 @@ public class AMainWindowController implements Initializable
     private void initTableGroups()
     {
         AMTable.getColumns().clear(); //очистка таблицы
+
+        //создание колонок таблицы
         TableColumn<Group, Integer> idColumn = new TableColumn<>("id");
         TableColumn<Group, Integer> courseColumn = new TableColumn<>("Курс");
         TableColumn<Group, String> grouppColumn = new TableColumn<>("Название");
         TableColumn<Group, Integer> yearColumn = new TableColumn<>("Год начала обучения");
 
+        //привязка фабрик для автоматического заполнения таблицы
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         courseColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
         grouppColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
+
+        //добавление опции редактирования ячеек
+        grouppColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования названия группы
+        grouppColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            Group group = event.getRowValue();
+            group.setName(event.getNewValue());
+            updateNotification(DatabaseHandler.updateGroup(group));
+        });
+
+        courseColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(1, 2, 3, 4))); //добавление возможности редактирования курса
+        courseColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            Group group = event.getRowValue();
+            group.setCourse(event.getNewValue());
+            updateNotification(DatabaseHandler.updateGroup(group));
+        });
+
+        ObservableList list = FXCollections.observableArrayList();
+        for (int i = Calendar.getInstance().get(Calendar.YEAR); i>1999; i--) //получение текущего года и создание списка
+            list.add(i); //заполнение списка "год начала обучения"
+        yearColumn.setCellFactory(ComboBoxTableCell.forTableColumn(list)); //добавление возможности редактирования года начала обучения
+        yearColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            Group group = event.getRowValue();
+            group.setYear(event.getNewValue());
+            updateNotification(DatabaseHandler.updateGroup(group));
+        });
 
         AMTable.setItems(FXCollections.observableArrayList(DatabaseHandler.getGroups())); //добавление информации в таблицу
         AMTable.getColumns().addAll(idColumn, courseColumn, grouppColumn, yearColumn); //добавление колонок
@@ -453,6 +483,21 @@ public class AMainWindowController implements Initializable
         idColumn.setSortType(TableColumn.SortType.DESCENDING); //установка сортировки по умолчанию
     }
 
+    private void updateNotification (int success) //уведомление об статусе редактирования
+    {
+        if (success==1) //внесение редактированной записи в базу данных
+        {
+            labelPushUp.setTextFill(GLOBAL.BLUE);
+            labelPushUp.setText(GLOBAL.SUCCESS_UPDATE);
+        }
+        else //при неудавшемся обновлении данных
+        {
+            labelPushUp.setTextFill(GLOBAL.RED);
+            labelPushUp.setText(GLOBAL.ERROR_DB_CONNECTION);
+        }
+        pushUp.playAnim();
+    }
+
     private class CallbackImplRestorePassword implements Callback<TableColumn<UsersTableList, Void>, TableCell<UsersTableList, Void>> //работа с кнопкой "пересдача"
     {
         public CallbackImplRestorePassword() {}
@@ -487,8 +532,8 @@ public class AMainWindowController implements Initializable
                             else
                             {
                                 labelPushUp.setText("ОШИБКА: восстановить пароль не удалось");
-                                labelPushUp.setTextFill(Color.web("#ff0000"));
-                                new Attenuation(labelPushUp).playAnim(); //добавление эффекта затухания
+                                labelPushUp.setTextFill(GLOBAL.RED);
+                                pushUp.playAnim(); //добавление эффекта затухания
                             }
                         }
                     });
