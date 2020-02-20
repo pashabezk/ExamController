@@ -11,6 +11,14 @@
     -fx-focus-color: none;
 }
 
+.text-field {
+    -fx-accent: #ffdf8a;
+}
+
+.table-view .text-field {
+    -fx-accent: #ff8a00;
+}
+
 .main_title {
     -fx-text-fill: #3e3e3e;
     -fx-font-size: 15pt;
@@ -131,6 +139,13 @@
 .table-row-cell:even {
     -fx-background-color: #f3f3f3;
     -fx-table-cell-border-color: #f3f3f3;
+}
+
+TextFieldTableCell > *:focused  {
+    /*-fx-background-color: #FF8A00;*/
+    /*-fx-table-cell-border-color: #FF8A00;*/
+    -fx-background-color: #ffdf8a;
+    -fx-table-cell-border-color: #ffdf8a;
 }
 
 
