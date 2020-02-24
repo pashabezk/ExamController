@@ -51,7 +51,7 @@ public class AddStudentController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        sGroup.setItems(FXCollections.observableArrayList(new DatabaseHandler().getGroups())); //получение списка групп
+        sGroup.setItems(FXCollections.observableArrayList(DatabaseHandler.getGroups())); //получение списка групп
     }
 }
 

@@ -281,6 +281,19 @@ public class DatabaseHandler
         return success;
     }
 
+    public static int updateStudent(StudentTableList student)
+    {
+        int success = 1;
+        try {
+            getDBConnection().prepareStatement("update student set surname='" + student.getSurname() +
+                    "',name='" + student.getName() + "',patronymic='" + student.getPatronymic() + "',gr=" + student.getGroupID() +
+                    ",status=" + student.getStatus() + ",phone='" + student.getPhone() + "',mail='" + student.getMail() +
+                    "' where num=" + student.getId() + ";").execute();
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace(); success=0;} //установка success в ноль - не удалось обновить
+        return success;
+    }
+
     public static int deleteStudent(int id) //удаление студента
     {
         int success = 1;

@@ -42,6 +42,23 @@ public class AMainWindowController implements Initializable
     MarkTableList selectedMark; //оценка, которая была выбрана
     private String selectedTableName = "Пользователи";
 
+    private class CodeName
+    {
+        private int code;
+        private String name;
+
+        public CodeName(int code, String name) {
+            this.code = code;
+            this.name = name;
+        }
+
+        public int getCode() {return code;}
+        public String getName() {return name;}
+
+        @Override
+        public String toString() {return this.name;}
+    }
+
     @FXML
     private void handleButtonSettings(javafx.event.ActionEvent event) //кнопка "настройки"
     {AllUserActions.openSettingsWindow();}
@@ -265,23 +282,6 @@ public class AMainWindowController implements Initializable
 
     public void initTableUsers()
     {
-        class UserType
-        {
-            private int code;
-            private String name;
-
-            public UserType(int code, String name) {
-                this.code = code;
-                this.name = name;
-            }
-
-            public int getCode() {return code;}
-            public String getName() {return name;}
-
-            @Override
-            public String toString() {return this.name;}
-        }
-
         AMTable.getColumns().clear(); //очистка таблицы
 
         //создание колонок таблицы
@@ -289,7 +289,7 @@ public class AMainWindowController implements Initializable
         TableColumn<UsersTableList, String> surnameColumn = new TableColumn<>("Фамилия");
         TableColumn<UsersTableList, String> nameColumn = new TableColumn<>("Имя");
         TableColumn<UsersTableList, String> patronymicColumn = new TableColumn<>("Отчество");
-        TableColumn<UsersTableList, UserType> typeColumn = new TableColumn<>("Тип пользователя");
+        TableColumn<UsersTableList, CodeName> typeColumn = new TableColumn<>("Тип пользователя");
         TableColumn<UsersTableList, String> phoneColumn = new TableColumn<>("Телефон");
         TableColumn<UsersTableList, String> mailColumn = new TableColumn<>("Почта");
         TableColumn<UsersTableList, Void> btnColumn = new TableColumn("Пароль");
@@ -344,7 +344,7 @@ public class AMainWindowController implements Initializable
             updateNotification(DatabaseHandler.updateUser(user));
         });
 
-        typeColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(new UserType(1, "Сотрудник администрации"), new UserType(2, "Преподаватель"), new UserType(3, "Администратор БД")))); //добавление возможности редактирования типа пользователя
+        typeColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(new CodeName(1, UsersTableList.TYPE_ADMINISTRATION_STAFF), new CodeName(2, UsersTableList.TYPE_TEACHER), new CodeName(3, UsersTableList.TYPE_DATABASE_ADMINISTRATION)))); //добавление возможности редактирования типа пользователя
         typeColumn.setOnEditCommit(event -> //применение обработчика
         {
             UsersTableList user = event.getRowValue();
@@ -363,17 +363,20 @@ public class AMainWindowController implements Initializable
     private void initTableStudents()
     {
         AMTable.getColumns().clear(); //очистка таблицы
+
+        //создание колонок таблицы
         TableColumn<UsersTableList, Integer> idColumn = new TableColumn<>("id");
-        TableColumn<StudentTableList, String> grouppColumn = new TableColumn<>("Группа");
+        TableColumn<StudentTableList, Group> groupColumn = new TableColumn<>("Группа");
         TableColumn<StudentTableList, String> surnameColumn = new TableColumn<>("Фамилия");
         TableColumn<StudentTableList, String> nameColumn = new TableColumn<>("Имя");
         TableColumn<StudentTableList, String> patronymicColumn = new TableColumn<>("Отчество");
-        TableColumn<StudentTableList, String> statusColumn = new TableColumn<>("Статус");
+        TableColumn<StudentTableList, CodeName> statusColumn = new TableColumn<>("Статус");
         TableColumn<StudentTableList, String> phoneColumn = new TableColumn<>("Телефон");
         TableColumn<StudentTableList, String> mailColumn = new TableColumn<>("Почта");
 
+        //привязка фабрик для автоматического заполнения таблицы
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        grouppColumn.setCellValueFactory(new PropertyValueFactory<>("group"));
+        groupColumn.setCellValueFactory(new PropertyValueFactory<>("group"));
         surnameColumn.setCellValueFactory(new PropertyValueFactory<>("surname"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         patronymicColumn.setCellValueFactory(new PropertyValueFactory<>("patronymic"));
@@ -381,8 +384,65 @@ public class AMainWindowController implements Initializable
         phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
         mailColumn.setCellValueFactory(new PropertyValueFactory<>("mail"));
 
+        //добавление опции редактирования ячеек
+        surnameColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования фамилии
+        surnameColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            StudentTableList student = event.getRowValue();
+            student.setSurname(event.getNewValue());
+            updateNotification(DatabaseHandler.updateStudent(student));
+        });
+
+        nameColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования имени
+        nameColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            StudentTableList student = event.getRowValue();
+            student.setName(event.getNewValue());
+            updateNotification(DatabaseHandler.updateStudent(student));
+        });
+
+        patronymicColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования отчества
+        patronymicColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            StudentTableList student = event.getRowValue();
+            student.setPatronymic(event.getNewValue());
+            updateNotification(DatabaseHandler.updateStudent(student));
+        });
+
+        phoneColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования телефона
+        phoneColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            StudentTableList student = event.getRowValue();
+            student.setPhone(event.getNewValue());
+            updateNotification(DatabaseHandler.updateStudent(student));
+        });
+
+        mailColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования почты
+        mailColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            StudentTableList student = event.getRowValue();
+            student.setMail(event.getNewValue());
+            updateNotification(DatabaseHandler.updateStudent(student));
+        });
+
+        statusColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(new CodeName(1, StudentTableList.STATUS_EDUCATION), new CodeName(2, StudentTableList.STATUS_EXPEL), new CodeName(3, StudentTableList.STATUS_ACADEMIC_LEAVE), new CodeName(4, StudentTableList.STATUS_FINISH_EDUCATION)))); //добавление возможности редактирования статуса обучения студента
+        statusColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            StudentTableList student = event.getRowValue();
+            student.setStatus(event.getNewValue().getCode());
+            updateNotification(DatabaseHandler.updateStudent(student));
+        });
+
+        groupColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(DatabaseHandler.getGroups()))); //добавление возможности редактирования группы
+        groupColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            StudentTableList student = event.getRowValue();
+            student.setGroup(event.getNewValue().getId(), event.getNewValue().getName());
+            updateNotification(DatabaseHandler.updateStudent(student));
+        });
+
         AMTable.setItems(FXCollections.observableArrayList(DatabaseHandler.getStudents())); //добавление информации в таблицу
-        AMTable.getColumns().addAll(idColumn, grouppColumn, surnameColumn, nameColumn, patronymicColumn, statusColumn, phoneColumn, mailColumn); //добавление колонок
+        AMTable.getColumns().addAll(idColumn, groupColumn, surnameColumn, nameColumn, patronymicColumn, statusColumn, phoneColumn, mailColumn); //добавление колонок
     }
 
     private void initTableGroups()

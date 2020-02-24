@@ -2,6 +2,11 @@ package TableLists;
 
 public class UsersTableList
 {
+    //тип пользователя
+    public static String TYPE_ADMINISTRATION_STAFF = "Сотрудник администрации";
+    public static String TYPE_TEACHER = "Преподаватель";
+    public static String TYPE_DATABASE_ADMINISTRATION = "Администратор БД";
+
     private int id; //идентификатор
     private int type; //тип пользователя
     /* 1 - сотрудник администрации
@@ -17,12 +22,12 @@ public class UsersTableList
     public UsersTableList(int id, int type, String name, String surname, String patronymic, String phone, String mail)
     {
         this.id = id;
-        this.setType(type);
-        this.setName(name);
-        this.setSurname(surname);
-        this.setPatronymic(patronymic);
-        this.setPhone(phone);
-        this.setMail(mail);
+        this.type = type;
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.phone = phone;
+        this.mail = mail;
         setTypeSTR();
     }
 
@@ -39,9 +44,9 @@ public class UsersTableList
     {
         switch (type)
         {
-            case 1: typeSTR = "Cотрудник администрации"; break;
-            case 2: typeSTR = "Преподаватель"; break;
-            case 3: typeSTR = "Администратор БД"; break;
+            case 1: typeSTR = TYPE_ADMINISTRATION_STAFF; break;
+            case 2: typeSTR = TYPE_TEACHER; break;
+            case 3: typeSTR = TYPE_DATABASE_ADMINISTRATION; break;
         }
     }
     public void setType(int type)
