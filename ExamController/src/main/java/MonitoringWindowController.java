@@ -68,7 +68,7 @@ public class MonitoringWindowController implements Initializable
         examColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         teacherColumn.setCellValueFactory(new PropertyValueFactory<>("teacher"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<>("mark_st"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("markStSTR"));
 
         tblStatement.setItems(FXCollections.observableArrayList(DatabaseHandler.getExams())); //добавление информации в таблицу
         tblStatement.getColumns().addAll(groupColumn, examColumn, teacherColumn, dateColumn, typeColumn); //добавление колонок

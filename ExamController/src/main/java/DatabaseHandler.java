@@ -227,6 +227,18 @@ public class DatabaseHandler
         return success;
     }
 
+    public static int updateExam(ExamTableList exam)
+    {
+        int success = 1;
+        try {
+            getDBConnection().prepareStatement("update exam set name='" + exam.getName() +
+                    "',mark_st=" + exam.getMarkSt() + ",id_t=" + exam.getTeacherID() +
+                    ",gr=" + exam.getGroupID() + ",ddate='" + exam.getDate() +"' where id=" + exam.getId() +";").execute();
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace(); success=0;} //установка success в ноль - не удалось обновить
+        return success;
+    }
+
     public static int deleteExam(int id) //удаление экзамена
     {
         int success = 1;
@@ -343,6 +355,18 @@ public class DatabaseHandler
         } catch(SQLException e) {e.printStackTrace();success = 0;}
         return success;
     }
+
+//    public static int updateMark(MarkTableList mark)
+//    {
+//        int success = 1;
+//        try {
+//            getDBConnection().prepareStatement("update mark set exam=" + mark +
+//                    ",num_rb=" + mark + ",id_t=" + mark + ",mark=" + mark + ",ddate='" + mark +
+//                    "',retake=" + mark + " where id=" + mark + ";").execute();
+//            closeDB();
+//        } catch(SQLException e) {e.printStackTrace(); success=0;} //установка success в ноль - не удалось обновить
+//        return success;
+//    }
 
     public static int createMark(int examId, int studentId, int teacherId, int mark, int retake) //создание оценки (пересдачи)
     {

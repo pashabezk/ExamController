@@ -65,7 +65,7 @@ public class AddMarkController implements Initializable
             @Override
             public void changed(ObservableValue<? extends ExamTableList> observable, ExamTableList oldValue, ExamTableList newValue)
             {
-                if(newValue.getMark_st().equals(ExamTableList.MARK_ST_DIFF)) //если зачёт дифференцированный
+                if(newValue.getMarkStSTR().equals(ExamTableList.MARK_ST_DIFF)) //если зачёт дифференцированный
                     fxMark.setItems(FXCollections.observableArrayList(2, 3, 4, 5)); //создание списка оценок: 2, 3, 4, 5
                 else fxMark.setItems(FXCollections.observableArrayList(0, 1)); //зачёт недифференцированный: 0 - незач, 1 - зачёт
             }

@@ -496,19 +496,63 @@ public class AMainWindowController implements Initializable
     private void initTableExams()
     {
         AMTable.getColumns().clear(); //очистка таблицы
+
+        //создание колонок таблицы
         TableColumn<ExamTableList, Integer> idColumn = new TableColumn<>("id");
         TableColumn<ExamTableList, String> examColumn = new TableColumn<>("Экзамен");
-        TableColumn<ExamTableList, String> groupColumn = new TableColumn<>("Группа");
-        TableColumn<ExamTableList, String> teacherColumn = new TableColumn<>("Преподаватель");
+        TableColumn<ExamTableList, Group> groupColumn = new TableColumn<>("Группа");
+        TableColumn<ExamTableList, UsersTableList> teacherColumn = new TableColumn<>("Преподаватель");
         TableColumn<ExamTableList, String> dateColumn = new TableColumn<>("Дата");
-        TableColumn<ExamTableList, String> typeColumn = new TableColumn<>("Тип экзамена");
+        TableColumn<ExamTableList, CodeName> typeColumn = new TableColumn<>("Тип экзамена");
 
+        //привязка фабрик для автоматического заполнения таблицы
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         groupColumn.setCellValueFactory(new PropertyValueFactory<>("group"));
         examColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         teacherColumn.setCellValueFactory(new PropertyValueFactory<>("teacher"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<>("mark_st"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("markStSTR"));
+
+        //добавление опции редактирования ячеек
+        groupColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(DatabaseHandler.getGroups()))); //добавление возможности редактирования группы
+        groupColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            ExamTableList exam = event.getRowValue();
+            exam.setGroup(event.getNewValue().getId(), event.getNewValue().getName());
+            updateNotification(DatabaseHandler.updateExam(exam));
+        });
+
+        examColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования названия экзамена
+        examColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            ExamTableList exam = event.getRowValue();
+            exam.setName(event.getNewValue());
+            updateNotification(DatabaseHandler.updateExam(exam));
+        });
+
+        teacherColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(DatabaseHandler.getUsers()))); //добавление возможности редактирования преподавателя
+        teacherColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            ExamTableList exam = event.getRowValue();
+            exam.setTeacher(event.getNewValue().getId(), event.getNewValue().toString());
+            updateNotification(DatabaseHandler.updateExam(exam));
+        });
+
+        dateColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования даты
+        dateColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            ExamTableList exam = event.getRowValue();
+            exam.setDate(event.getNewValue());
+            updateNotification(DatabaseHandler.updateExam(exam));
+        });
+
+        typeColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(new CodeName(1, ExamTableList.MARK_ST_DIFF), new CodeName(2, ExamTableList.MARK_ST_NOT_DIFF)))); //добавление возможности редактирования статуса оценки
+        typeColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            ExamTableList exam = event.getRowValue();
+            exam.setMarkSt(event.getNewValue().getCode());
+            updateNotification(DatabaseHandler.updateExam(exam));
+        });
 
         AMTable.setItems(FXCollections.observableArrayList(DatabaseHandler.getExams())); //добавление информации в таблицу
         AMTable.getColumns().addAll(idColumn, groupColumn, examColumn, teacherColumn, dateColumn, typeColumn); //добавление колонок
@@ -520,6 +564,8 @@ public class AMainWindowController implements Initializable
     private void initTableMarks()
     {
         AMTable.getColumns().clear(); //очистка таблицы
+
+        //создание колонок таблицы
         TableColumn<MarkTableList, Integer> idColumn = new TableColumn<>("id");
         TableColumn<MarkTableList, String> examColumn = new TableColumn<>("Экзамен");
         TableColumn<MarkTableList, String> studentColumn = new TableColumn<>("ФИО студента");
@@ -528,6 +574,7 @@ public class AMainWindowController implements Initializable
         TableColumn<MarkTableList, String> dateColumn = new TableColumn<>("Дата");
         TableColumn<MarkTableList, Integer> retakeColumn = new TableColumn<>("№ пересдачи");
 
+        //привязка фабрик для автоматического заполнения таблицы
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         examColumn.setCellValueFactory(new PropertyValueFactory<>("exam"));
         studentColumn.setCellValueFactory(new PropertyValueFactory<>("student"));
@@ -535,6 +582,9 @@ public class AMainWindowController implements Initializable
         markColumn.setCellValueFactory(new PropertyValueFactory<>("mark"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         retakeColumn.setCellValueFactory(new PropertyValueFactory<>("retake"));
+
+        //добавление опции редактирования ячеек
+
 
         AMTable.setItems(FXCollections.observableArrayList(DatabaseHandler.getMarks())); //добавление информации в таблицу
         AMTable.getColumns().addAll(idColumn, examColumn, studentColumn, teacherColumn, markColumn, dateColumn, retakeColumn); //добавление колонок
