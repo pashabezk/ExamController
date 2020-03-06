@@ -546,7 +546,7 @@ public class AMainWindowController implements Initializable
             updateNotification(DatabaseHandler.updateExam(exam));
         });
 
-        typeColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(new CodeName(1, ExamTableList.MARK_ST_DIFF), new CodeName(2, ExamTableList.MARK_ST_NOT_DIFF)))); //добавление возможности редактирования статуса оценки
+        typeColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(new CodeName(1, ExamTableList.MARK_ST_DIFF), new CodeName(2, ExamTableList.MARK_ST_NOT_DIFF)))); //добавление возможности редактирования типа экзамена (диф/не диф)
         typeColumn.setOnEditCommit(event -> //применение обработчика
         {
             ExamTableList exam = event.getRowValue();
@@ -567,9 +567,9 @@ public class AMainWindowController implements Initializable
 
         //создание колонок таблицы
         TableColumn<MarkTableList, Integer> idColumn = new TableColumn<>("id");
-        TableColumn<MarkTableList, String> examColumn = new TableColumn<>("Экзамен");
-        TableColumn<MarkTableList, String> studentColumn = new TableColumn<>("ФИО студента");
-        TableColumn<MarkTableList, String> teacherColumn = new TableColumn<>("ФИО преподавателя");
+        TableColumn<MarkTableList, ExamTableList> examColumn = new TableColumn<>("Экзамен");
+        TableColumn<MarkTableList, StudentTableList> studentColumn = new TableColumn<>("ФИО студента");
+        TableColumn<MarkTableList, UsersTableList> teacherColumn = new TableColumn<>("ФИО преподавателя");
         TableColumn<MarkTableList, Integer> markColumn = new TableColumn<>("Оценка");
         TableColumn<MarkTableList, String> dateColumn = new TableColumn<>("Дата");
         TableColumn<MarkTableList, Integer> retakeColumn = new TableColumn<>("№ пересдачи");
@@ -584,7 +584,62 @@ public class AMainWindowController implements Initializable
         retakeColumn.setCellValueFactory(new PropertyValueFactory<>("retake"));
 
         //добавление опции редактирования ячеек
+        examColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(DatabaseHandler.getExams()))); //добавление возможности редактирования группы
+        examColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            MarkTableList mark = event.getRowValue();
+            mark.setExam(event.getNewValue().getId(), event.getNewValue().getName());
+            updateNotification(DatabaseHandler.updateMark(mark));
+        });
 
+        studentColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(DatabaseHandler.getStudents()))); //добавление возможности редактирования студента
+        studentColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            MarkTableList mark = event.getRowValue();
+            mark.setStudent(event.getNewValue().getId(), event.getNewValue().toString());
+            updateNotification(DatabaseHandler.updateMark(mark));
+        });
+
+        teacherColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(DatabaseHandler.getUsers()))); //добавление возможности редактирования преподавателя
+        teacherColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            MarkTableList mark = event.getRowValue();
+            mark.setUser(event.getNewValue().getId(), event.getNewValue().toString());
+            updateNotification(DatabaseHandler.updateMark(mark));
+        });
+
+        markColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(0, 1, 2, 3, 4, 5))); //добавление возможности редактирования оценки
+        markColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            MarkTableList mark = event.getRowValue();
+            if (((mark.getMark() <= 1) && (event.getNewValue() <= 1)) || ((mark.getMark() >= 2) && (event.getNewValue() >= 2)))
+            {
+                mark.setMark(event.getNewValue());
+                updateNotification(DatabaseHandler.updateMark(mark));
+            }
+            else
+            {
+                labelPushUp.setTextFill(GLOBAL.RED);
+                labelPushUp.setText("ОШИБКА: тип экзамена и оценки должен совпадать");
+                pushUp.playAnim();
+            }
+        });
+
+        dateColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования даты
+        dateColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            MarkTableList mark = event.getRowValue();
+            mark.setDate(event.getNewValue());
+            updateNotification(DatabaseHandler.updateMark(mark));
+        });
+
+        retakeColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(1, 2, 3))); //добавление возможности редактирования номера пересдачи
+        retakeColumn.setOnEditCommit(event -> //применение обработчика
+        {
+            MarkTableList mark = event.getRowValue();
+            mark.setRetake(event.getNewValue());
+            updateNotification(DatabaseHandler.updateMark(mark));
+        });
 
         AMTable.setItems(FXCollections.observableArrayList(DatabaseHandler.getMarks())); //добавление информации в таблицу
         AMTable.getColumns().addAll(idColumn, examColumn, studentColumn, teacherColumn, markColumn, dateColumn, retakeColumn); //добавление колонок

@@ -201,6 +201,20 @@ public class DatabaseHandler
         return al;
     }
 
+    public static Exam getExam(int id) //возвращает экзамен по идентификатору
+    {
+        Exam exam = new Exam();
+        try {
+            ResultSet result = getDBConnection().createStatement().executeQuery("select * from exam where id=" + id + ";"); //получение экзамена
+            if(result.next()) //если экзамен получен
+                exam = new Exam(result.getInt("id"), result.getString("name"),
+                        result.getInt("mark_st"), result.getInt("id_t"),
+                        result.getInt("gr"), result.getString("ddate"));
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace();}
+        return exam;
+    }
+
     public static ArrayList<Exam> getExamsByUID(int id) //возвращает список экзаменов, привязанный к идентификатору пользователя
     {
         ArrayList<Exam> al = new ArrayList<>();
@@ -356,17 +370,17 @@ public class DatabaseHandler
         return success;
     }
 
-//    public static int updateMark(MarkTableList mark)
-//    {
-//        int success = 1;
-//        try {
-//            getDBConnection().prepareStatement("update mark set exam=" + mark +
-//                    ",num_rb=" + mark + ",id_t=" + mark + ",mark=" + mark + ",ddate='" + mark +
-//                    "',retake=" + mark + " where id=" + mark + ";").execute();
-//            closeDB();
-//        } catch(SQLException e) {e.printStackTrace(); success=0;} //установка success в ноль - не удалось обновить
-//        return success;
-//    }
+    public static int updateMark(MarkTableList mark)
+    {
+        int success = 1;
+        try {
+            getDBConnection().prepareStatement("update mark set exam=" + mark.getExamID() +
+                    ",num_rb=" + mark.getStudentID() + ",id_t=" + mark.getUserID() + ",mark=" + mark.getMark() +
+                    ",ddate='" + mark.getDate() + "',retake=" + mark.getRetake() + " where id=" + mark.getId() + ";").execute();
+            closeDB();
+        } catch(SQLException e) {e.printStackTrace(); success=0;} //установка success в ноль - не удалось обновить
+        return success;
+    }
 
     public static int createMark(int examId, int studentId, int teacherId, int mark, int retake) //создание оценки (пересдачи)
     {

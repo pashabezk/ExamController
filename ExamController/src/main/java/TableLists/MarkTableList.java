@@ -37,4 +37,26 @@ public class MarkTableList
     public int getMark() {return mark;}
     public String getDate() {return date;}
     public int getRetake() {return retake;}
+
+    public void setExam(int examID, String exam)
+    {
+        this.examID = examID;
+        this.exam = exam;
+    }
+
+    public void setStudent(int studentID, String student)
+    {
+        this.studentID = studentID;
+        this.student = student;
+    }
+
+    public void setUser(int userID, String user)
+    {
+        this.userID = userID;
+        this.user = user;
+    }
+
+    public void setMark(int mark) {this.mark = mark;}
+    public void setDate(String date) {this.date = date;}
+    public void setRetake(int retake) {this.retake = retake;}
 }
