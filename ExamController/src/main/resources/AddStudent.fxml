@@ -5,53 +5,29 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddStudentController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="600.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddStudentController">
     <children>
-      <Button layoutX="218.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonCancel" text="Отмена" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="30.0" />
-      <Label layoutX="30.0" layoutY="80.0" text="Фамилия:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="45.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="30.0" layoutY="43.0" text="Имя:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="80.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="30.0" layoutY="119.0" text="Отчество:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="115.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="30.0" layoutY="161.0" text="Телефон:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="150.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="30.0" layoutY="200.0" text="Почта:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="185.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="31.0" layoutY="224.0" text="Группа:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="220.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="sSurname" layoutX="119.0" layoutY="76.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="45.0" />
-      <TextField fx:id="sName" layoutX="119.0" layoutY="39.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="80.0" />
-      <TextField fx:id="sPatronymic" layoutX="119.0" layoutY="115.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="115.0" />
-      <TextField fx:id="sPhone" layoutX="119.0" layoutY="157.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="150.0" />
-      <TextField fx:id="sMail" layoutX="119.0" layoutY="196.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="185.0" />
-      <ComboBox fx:id="sGroup" layoutX="120.0" layoutY="218.0" prefWidth="90.0" promptText="Группа" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="220.0" />
-      <Label alignment="CENTER" layoutX="180.0" layoutY="14.0" text="Создание профиля студента" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+      <Button layoutX="196.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonCancel" prefHeight="30.0" prefWidth="90.0" styleClass="wbtn" text="Отмена" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="314.0" />
+      <TextField fx:id="sSurname" layoutX="150.0" layoutY="156.0" prefHeight="30.0" prefWidth="300.0" promptText="Фамилия" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="156.0" />
+      <TextField fx:id="sName" layoutX="150.0" layoutY="211.0" prefHeight="30.0" prefWidth="300.0" promptText="Имя" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="211.0" />
+      <TextField fx:id="sPatronymic" layoutX="150.0" layoutY="265.0" prefHeight="30.0" prefWidth="300.0" promptText="Отчество" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="265.0" />
+      <TextField fx:id="sPhone" layoutX="150.0" layoutY="320.0" prefHeight="30.0" prefWidth="300.0" promptText="Телефон" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="320.0" />
+      <TextField fx:id="sMail" layoutX="150.0" layoutY="376.0" prefHeight="30.0" prefWidth="300.0" promptText="Почта" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="376.0" />
+      <ComboBox fx:id="sGroup" layoutX="225.0" layoutY="444.0" prefHeight="30.0" prefWidth="150.0" promptText="Группа" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="444.0" />
+      <Label alignment="CENTER" layoutX="180.0" layoutY="14.0" styleClass="main_title" text="Создание профиля студента" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="156.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonCreate" text="Создать" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="100.0" />
-      <Label fx:id="sErrMsg" layoutX="181.0" layoutY="349.0" textFill="RED" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="170.0" />
+      <Button layoutX="319.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonCreate" prefHeight="30.0" prefWidth="90.0" styleClass="ybtn" text="Создать" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="191.0" />
+      <Label fx:id="sErrMsg" layoutX="200.0" layoutY="487.0" prefHeight="30.0" prefWidth="200.0" styleClass="error" AnchorPane.bottomAnchor="83.0" AnchorPane.rightAnchor="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="150.0" layoutY="187.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="150.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="150.0" layoutY="297.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="150.0" layoutY="352.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="150.0" layoutY="407.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
    </children>
 </AnchorPane>
