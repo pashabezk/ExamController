@@ -18,7 +18,7 @@
         <TextField fx:id="sMail" layoutX="150.0" layoutY="358.0" prefHeight="30.0" prefWidth="300.0" promptText="Почта" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="358.0" />
         <TextField fx:id="sLogin" layoutX="150.0" layoutY="414.0" prefHeight="30.0" prefWidth="300.0" promptText="Логин" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="414.0" />
         <ComboBox fx:id="sUserType" layoutX="209.0" layoutY="489.0" prefHeight="30.0" prefWidth="184.0" promptText="Тип пользователя" stylesheets="@MainStylesheet.css" AnchorPane.leftAnchor="209.0" AnchorPane.topAnchor="489.0" />
-        <Label alignment="CENTER" layoutX="180.0" layoutY="14.0" styleClass="main_title" text="Создание профиля студента" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+        <Label alignment="CENTER" layoutX="180.0" layoutY="14.0" styleClass="main_title" text="Создание пользователя" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
             <font>
                 <Font size="16.0" />
             </font>
