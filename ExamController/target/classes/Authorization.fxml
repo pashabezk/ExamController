@@ -15,27 +15,27 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="tfLogin" layoutX="81.0" layoutY="153.0" prefHeight="30.0" prefWidth="240.0" promptText="Логин" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="79.0" AnchorPane.topAnchor="153.0">
+      <TextField fx:id="tfLogin" layoutX="87.0" layoutY="175.0" prefHeight="30.0" prefWidth="240.0" promptText="Логин" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="175.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="tfPassword" layoutX="80.0" layoutY="202.0" prefHeight="30.0" prefWidth="240.0" promptText="Пароль" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="202.0">
+      <PasswordField fx:id="tfPassword" layoutX="86.0" layoutY="224.0" prefHeight="30.0" prefWidth="240.0" promptText="Пароль" AnchorPane.leftAnchor="86.0" AnchorPane.rightAnchor="74.0" AnchorPane.topAnchor="224.0">
          <font>
             <Font size="14.0" />
          </font>
       </PasswordField>
-        <Button layoutX="140.0" layoutY="324.0" onAction="#handleButtonAauthorization" prefHeight="30.0" prefWidth="120.0" styleClass="ybtn" text="Войти" AnchorPane.bottomAnchor="96.0" AnchorPane.rightAnchor="140.0">
+        <Button layoutX="140.0" layoutY="324.0" onAction="#handleButtonAauthorization" prefHeight="30.0" prefWidth="120.0" styleClass="ybtn" text="Войти" AnchorPane.bottomAnchor="70.0" AnchorPane.rightAnchor="140.0">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="lbMsgAuth" alignment="CENTER_RIGHT" layoutX="81.0" layoutY="266.0" prefHeight="30.0" prefWidth="240.0" textAlignment="CENTER" textFill="#ff5200" AnchorPane.bottomAnchor="154.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="79.0">
+      <Label fx:id="lbMsgAuth" alignment="CENTER_RIGHT" layoutX="87.0" layoutY="287.0" prefHeight="30.0" prefWidth="240.0" textAlignment="CENTER" textFill="#ff5200" AnchorPane.bottomAnchor="133.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="73.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffdf8a" height="3.0" layoutX="80.0" layoutY="182.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="240.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffdf8a" height="3.0" layoutX="80.0" layoutY="231.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="240.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffdf8a" height="3.0" layoutX="86.0" layoutY="204.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="240.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffdf8a" height="3.0" layoutX="86.0" layoutY="253.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="240.0" />
     </children>
 </AnchorPane>

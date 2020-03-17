@@ -42,6 +42,6 @@
                 <Button mnemonicParsing="false" onAction="#handleButtonExit" styleClass="wbtn" text="Выход" />
             </buttons>
         </ButtonBar>
-      <Button fx:id="btnMonitor" layoutX="33.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleButtonMonitor" styleClass="wbtn" text="Мониторинг" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="8.0" />
+      <Button fx:id="btnMonitor" layoutX="33.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleButtonMonitor" styleClass="ybtn" text="Мониторинг" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="8.0" />
     </children>
 </AnchorPane>
