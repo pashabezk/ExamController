@@ -192,9 +192,16 @@ TextFieldTableCell > *:focused  {
     -fx-background-radius: 2 0 0 2;
 }
 
+.userInfoText {
+    -fx-text-fill: #3e3e3e;
+    -fx-font-size: 13pt;
+}
 
-
-
+.userInfoTextBold {
+    -fx-text-fill: #3e3e3e;
+    -fx-font-size: 13pt;
+    -fx-font-weight: bold;
+}
 
 .choice-box, .date-picker, check-box, radio-button {
     -fx-background-color: whitesmoke;

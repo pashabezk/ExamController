@@ -26,6 +26,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
@@ -685,14 +686,32 @@ public class AMainWindowController implements Initializable
                             String password = ((int) (Math.random() * 900000) + 99999) + ""; //генерация пароля
                             if(DatabaseHandler.updateUserLoginAndPassword(data.getId(), login, password) == 1) //если восстановление логина и пароля удастся
                             {
-                                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                                alert.setTitle("Восстановление уч. записи");
-                                alert.setHeaderText(null);
-                                alert.setContentText("Учётная запись восстановлена.\nДанные для входа:\nЛогин: " +
-                                        login +"\nПароль: " + password);
-                                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+//                                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//                                alert.setTitle("Восстановление уч. записи");
+//                                alert.setHeaderText(null);
+//                                alert.setContentText("Логин: " +
+//                                        login +"\nПароль: " + password);
+////                                alert.initStyle(new StageStyle.);
+//                                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+////                                stage.initStyle();
+//                                stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
+//                                alert.showAndWait();
+                                FXMLLoader loader = new FXMLLoader();
+                                GLOBAL.temp_login = login;
+                                GLOBAL.temp_password = password;
+                                loader.setLocation(getClass().getResource("/UserInfo.fxml"));
+                                try{
+                                    loader.load();
+                                } catch (IOException ex) {ex.printStackTrace();}
+
+                                Parent root = loader.getRoot();
+                                Stage stage = new Stage();
+                                stage.setScene(new Scene(root));
+                                stage.setTitle("Восстановление уч. записи");
+                                stage.setMinWidth(300);
+                                stage.setMinHeight(200);
                                 stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
-                                alert.showAndWait();
+                                stage.show();
                             }
                             else
                             {

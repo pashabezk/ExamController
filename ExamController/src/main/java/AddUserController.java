@@ -1,4 +1,6 @@
 import animations.Shake;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,8 +10,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -62,15 +67,32 @@ public class AddUserController implements Initializable
                     DatabaseHandler.createUser(sLogin.getText(), paswrd+"", sUserType.getValue().getCode(),
                             sSurname.getText(), sName.getText(), sPatronymic.getText(),
                             sPhone.getText(), sMail.getText());
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Пользователь создан");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Данные для входа:\nЛогин: " +
-                            sLogin.getText()+"\nПароль: " + paswrd);
-                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+//                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//                    alert.setTitle("Пользователь создан");
+//                    alert.setHeaderText(null);
+//                    alert.setContentText("Логин: " +
+//                            sLogin.getText()+"\nПароль: " + paswrd);
+//                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+//                    stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
+//                    alert.showAndWait();
+//                    ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно
+
+                    FXMLLoader loader = new FXMLLoader();
+                    GLOBAL.temp_login = sLogin.getText();
+                    GLOBAL.temp_password = ""+paswrd;
+                    loader.setLocation(getClass().getResource("/UserInfo.fxml"));
+                    try{
+                        loader.load();
+                    } catch (IOException ex) {ex.printStackTrace();}
+
+                    Parent root = loader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.setTitle("Пользователь создан");
+                    stage.setMinWidth(300);
+                    stage.setMinHeight(200);
                     stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
-                    alert.showAndWait();
-                    ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно
+                    stage.show();
                     break;
 
                 default:

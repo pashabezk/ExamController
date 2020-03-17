@@ -18,6 +18,10 @@ public class GLOBAL
     //цвета
     public static Paint RED = Color.web("#ff0000");
     public static Paint BLUE = Color.web("#0000ff");
+
+    //временные логин и пароль
+    public static String temp_login = "";
+    public static String temp_password = "";
 }
 //на экране администратора БД (и у обычного пользователя) запись удалена появляется даже когда элементы не выбраны, но кнопка нажата
 
