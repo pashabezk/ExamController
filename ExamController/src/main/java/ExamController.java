@@ -12,6 +12,7 @@ public class ExamController extends Application
 //        } catch (FileNotFoundException e) {e.printStackTrace();}
 
         AllUserActions.exitAndAuth();
+
     }
     
     public static void main(String[] args)

@@ -1,6 +1,11 @@
 @font-face {
-    font-family: 'Rubik';
-    src: url('./Rubik/Rubik-Medium.ttf');
+    font-family: 'Rubik-Medium';
+    src: url('/Rubik/Rubik-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Rubik-Light';
+    src: url('/Rubik/Rubik-Light.ttf');
 }
 
 .root {
