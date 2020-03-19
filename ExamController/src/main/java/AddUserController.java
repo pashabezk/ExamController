@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -15,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -44,7 +42,7 @@ public class AddUserController implements Initializable
         int isLoginExists = DatabaseHandler.isLoginExists(sLogin.getText());
         if((sName.getText().equals(""))||(sSurname.getText().equals(""))||(sLogin.getText().equals("")))
         {
-            sErrMsg.setText("не все поля заполнены");
+            sErrMsg.setText(GLOBAL.ERROR_EMPTY_FIELDS);
             errMsgAnim.playAnim();
         }
         else if (sUserType.getValue()==null)
@@ -57,7 +55,7 @@ public class AddUserController implements Initializable
             switch (isLoginExists)
             {
                 case -1:
-                    sErrMsg.setText("не удалось подключиться к БД");
+                    sErrMsg.setText(GLOBAL.ERROR_DB_CONNECTION);
                     errMsgAnim.playAnim();
                     break;
 
@@ -67,20 +65,12 @@ public class AddUserController implements Initializable
                     DatabaseHandler.createUser(sLogin.getText(), paswrd+"", sUserType.getValue().getCode(),
                             sSurname.getText(), sName.getText(), sPatronymic.getText(),
                             sPhone.getText(), sMail.getText());
-//                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                    alert.setTitle("Пользователь создан");
-//                    alert.setHeaderText(null);
-//                    alert.setContentText("Логин: " +
-//                            sLogin.getText()+"\nПароль: " + paswrd);
-//                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-//                    stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
-//                    alert.showAndWait();
-//                    ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно
+                    ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно
 
                     FXMLLoader loader = new FXMLLoader();
-                    GLOBAL.temp_login = sLogin.getText();
-                    GLOBAL.temp_password = ""+paswrd;
-                    loader.setLocation(getClass().getResource("/UserInfo.fxml"));
+                    GLOBAL.TEMP_LOGIN = sLogin.getText();
+                    GLOBAL.TEMP_PASSWORD = ""+paswrd;
+                    loader.setLocation(getClass().getResource("/UserLoginData.fxml"));
                     try{
                         loader.load();
                     } catch (IOException ex) {ex.printStackTrace();}

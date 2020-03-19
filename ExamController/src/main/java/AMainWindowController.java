@@ -26,7 +26,6 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
@@ -659,7 +658,7 @@ public class AMainWindowController implements Initializable
         else //при неудавшемся обновлении данных
         {
             labelPushUp.setTextFill(GLOBAL.RED);
-            labelPushUp.setText(GLOBAL.ERROR_DB_CONNECTION);
+            labelPushUp.setText("ОШИБКА: " + GLOBAL.ERROR_DB_CONNECTION);
         }
         pushUp.playAnim();
     }
@@ -686,20 +685,10 @@ public class AMainWindowController implements Initializable
                             String password = ((int) (Math.random() * 900000) + 99999) + ""; //генерация пароля
                             if(DatabaseHandler.updateUserLoginAndPassword(data.getId(), login, password) == 1) //если восстановление логина и пароля удастся
                             {
-//                                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                                alert.setTitle("Восстановление уч. записи");
-//                                alert.setHeaderText(null);
-//                                alert.setContentText("Логин: " +
-//                                        login +"\nПароль: " + password);
-////                                alert.initStyle(new StageStyle.);
-//                                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-////                                stage.initStyle();
-//                                stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
-//                                alert.showAndWait();
                                 FXMLLoader loader = new FXMLLoader();
-                                GLOBAL.temp_login = login;
-                                GLOBAL.temp_password = password;
-                                loader.setLocation(getClass().getResource("/UserInfo.fxml"));
+                                GLOBAL.TEMP_LOGIN = login;
+                                GLOBAL.TEMP_PASSWORD = password;
+                                loader.setLocation(getClass().getResource("/UserLoginData.fxml"));
                                 try{
                                     loader.load();
                                 } catch (IOException ex) {ex.printStackTrace();}

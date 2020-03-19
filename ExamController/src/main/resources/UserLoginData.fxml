@@ -4,9 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="250.0" prefWidth="500.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInfoController">
+<AnchorPane prefHeight="250.0" prefWidth="500.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserLoginDataController">
    <children >
-      <Button fx:id="okBtn" onAction="#handleButtonOk" layoutX="187.0" layoutY="189.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" styleClass="ybtn" text="Ok" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="180.0" />
+      <Button onAction="#handleButtonOk" layoutX="187.0" layoutY="189.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" styleClass="ybtn" text="Ok" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="180.0" />
       <Label layoutX="131.0" layoutY="85.0" styleClass="userInfoText" text="Логин:" />
       <Label layoutX="120.0" layoutY="121.0" styleClass="userInfoText" text="Пароль:" />
       <Label fx:id="login" layoutX="203.0" layoutY="85.0" styleClass="userInfoTextBold" />

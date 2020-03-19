@@ -17,6 +17,11 @@ import java.util.Properties;
 
 public class DatabaseHandler
 {
+    public static String DBURL = ""; //URL сервера
+    public static String DBPORT = ""; //порт сервера
+    public static String DBNAME = ""; //название БД
+    public static String MYSQL_USER = ""; //пользователь MySQL
+    public static String MYSQL_PASSWORD = ""; //пароль пользователя MySQL
     private static Connection DBConnection = null;
 
     public static Connection getDBConnection() throws SQLException
@@ -24,11 +29,11 @@ public class DatabaseHandler
         if (DBConnection == null) //проверка не открыт ли уже доступ к БД
         {
             Properties p=new Properties(); //создание параметров для подключения к БД
-            p.setProperty("user","user1");
-            p.setProperty("password","1234");
+            p.setProperty("user", MYSQL_USER);
+            p.setProperty("password", MYSQL_PASSWORD);
             p.setProperty("useUnicode","true");
             p.setProperty("characterEncoding","cp1251");
-            DBConnection = DriverManager.getConnection("jdbc:mysql:"+GLOBAL.DBURL,p); //создание подключения к БД
+            DBConnection = DriverManager.getConnection("jdbc:mysql://" + DBURL + ":" + DBPORT + "/" + DBNAME,p); //создание подключения к БД
         }
         return DBConnection;
     }

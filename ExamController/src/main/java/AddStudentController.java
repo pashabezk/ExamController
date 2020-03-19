@@ -31,7 +31,7 @@ public class AddStudentController implements Initializable
         Shake errMsgAnim = new Shake(sErrMsg);
         if((sName.getText().equals(""))||(sSurname.getText().equals("")))
         {
-            sErrMsg.setText("не все поля заполнены");
+            sErrMsg.setText(GLOBAL.ERROR_EMPTY_FIELDS);
             errMsgAnim.playAnim();
         }
         else if (sGroup.getValue()==null)

@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1120430-246d-46c5-836c-55a2e0e3f734" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/ExamController.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ExamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ExamController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MainStylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MainStylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AMainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AMainWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AddStudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AddStudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AddUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AddUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AuthorizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AuthorizationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DatabaseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GLOBAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GLOBAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserLoginDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Authorization.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Authorization.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/UserInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UserLoginData.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/AMainWindowController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AMainWindowController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/AMainWindowController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AMainWindowController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/AMainWindowController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AMainWindowController$3.class" afterDir="false" />
@@ -13,18 +22,17 @@
       <change beforePath="$PROJECT_DIR$/target/classes/AMainWindowController$CallbackImplRestorePassword.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AMainWindowController$CallbackImplRestorePassword.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/AMainWindowController$CodeName.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AMainWindowController$CodeName.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/AMainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AMainWindowController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AddStudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AddStudentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/AddUserController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AddUserController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/AddUserController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AddUserController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/AddUserController$UserType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AddUserController$UserType.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/AddUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AddUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ExamController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ExamController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Authorization.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Authorization.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AuthorizationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AuthorizationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DatabaseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DatabaseHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/GLOBAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GLOBAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/MainStylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MainStylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/DatabaseHandlerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/DatabaseHandlerTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-DatabaseHandlerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-DatabaseHandlerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UserInfo.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UserInfoController.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +84,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -177,36 +185,40 @@
     </state>
     <state x="478" y="178" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1584564994736" />
     <state x="478" y="196" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.22.1440.878@0.22.1440.878" timestamp="1581931549099" />
-    <state width="1398" height="137" key="GridCell.Tab.0.bottom" timestamp="1584565633866">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="463" y="120" key="FileChooserDialogImpl" timestamp="1584643779172">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1584643779172" />
+    <state width="1323" height="112" key="GridCell.Tab.0.bottom" timestamp="1584661860758">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.bottom/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.bottom/0.0.1301.768@0.0.1301.768" timestamp="1581331534284" />
-    <state width="1323" height="170" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584466353472" />
+    <state width="1323" height="112" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584661860758" />
     <state width="1398" height="137" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1584565633866" />
     <state width="1398" height="137" key="GridCell.Tab.0.bottom/0.22.1440.878@0.22.1440.878" timestamp="1584565450313" />
-    <state width="1398" height="137" key="GridCell.Tab.0.center" timestamp="1584565633864">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1323" height="112" key="GridCell.Tab.0.center" timestamp="1584661860758">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.center/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.center/0.0.1301.768@0.0.1301.768" timestamp="1581331534283" />
-    <state width="1323" height="170" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584466353472" />
+    <state width="1323" height="112" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584661860758" />
     <state width="1398" height="137" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1584565633864" />
     <state width="1398" height="137" key="GridCell.Tab.0.center/0.22.1440.878@0.22.1440.878" timestamp="1584565450309" />
-    <state width="1398" height="137" key="GridCell.Tab.0.left" timestamp="1584565633863">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1323" height="112" key="GridCell.Tab.0.left" timestamp="1584661860758">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.left/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.left/0.0.1301.768@0.0.1301.768" timestamp="1581331534283" />
-    <state width="1323" height="170" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584466353472" />
+    <state width="1323" height="112" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584661860758" />
     <state width="1398" height="137" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1584565633863" />
     <state width="1398" height="137" key="GridCell.Tab.0.left/0.22.1440.878@0.22.1440.878" timestamp="1584565450307" />
-    <state width="1398" height="137" key="GridCell.Tab.0.right" timestamp="1584565633865">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1323" height="112" key="GridCell.Tab.0.right" timestamp="1584661860758">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.right/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.right/0.0.1301.768@0.0.1301.768" timestamp="1581331534283" />
-    <state width="1323" height="170" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584466353472" />
+    <state width="1323" height="112" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584661860758" />
     <state width="1398" height="137" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1584565633865" />
     <state width="1398" height="137" key="GridCell.Tab.0.right/0.22.1440.878@0.22.1440.878" timestamp="1584565450311" />
     <state width="1398" height="286" key="GridCell.Tab.1.bottom" timestamp="1584466823414">
