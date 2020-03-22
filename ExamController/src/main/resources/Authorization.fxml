@@ -11,19 +11,19 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="400.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AuthorizationController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="400.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AuthorizationController">
     <children>
-      <Label contentDisplay="TOP" layoutX="168.0" layoutY="62.0" prefHeight="44.0" prefWidth="65.0" styleClass="main_title" text="Вход" AnchorPane.leftAnchor="168.0" AnchorPane.topAnchor="62.0">
+      <Label contentDisplay="TOP" layoutX="169.0" layoutY="106.0" prefHeight="44.0" prefWidth="65.0" styleClass="main_title" text="Вход" AnchorPane.leftAnchor="169.0" AnchorPane.topAnchor="106.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="fxLogin" layoutX="87.0" layoutY="175.0" prefHeight="30.0" prefWidth="240.0" promptText="Логин" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="175.0">
+      <TextField fx:id="fxLogin" layoutX="88.0" layoutY="201.0" prefHeight="30.0" prefWidth="240.0" promptText="Логин" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="72.0" AnchorPane.topAnchor="201.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="fxPassword" layoutX="86.0" layoutY="224.0" prefHeight="30.0" prefWidth="240.0" promptText="Пароль" AnchorPane.leftAnchor="86.0" AnchorPane.rightAnchor="74.0" AnchorPane.topAnchor="224.0">
+      <PasswordField fx:id="fxPassword" layoutX="87.0" layoutY="250.0" prefHeight="30.0" prefWidth="240.0" promptText="Пароль" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="250.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -33,14 +33,14 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="fxErrMsg" alignment="CENTER_RIGHT" layoutX="87.0" layoutY="287.0" prefHeight="30.0" prefWidth="240.0" textAlignment="CENTER" textFill="#ff5200" AnchorPane.bottomAnchor="133.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="73.0">
+      <Label fx:id="fxErrMsg" alignment="CENTER_RIGHT" layoutX="93.0" layoutY="287.0" prefHeight="30.0" prefWidth="234.0" styleClass="error" textAlignment="CENTER" textFill="#ff5200" AnchorPane.bottomAnchor="133.0" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="73.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffdf8a" height="3.0" layoutX="86.0" layoutY="204.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="240.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffdf8a" height="3.0" layoutX="86.0" layoutY="253.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="240.0" />
-      <ImageView fx:id="fxSettings" fitHeight="37.0" fitWidth="37.0" layoutX="326.0" layoutY="14.0" onMouseClicked="#handleSettingsClicked" onMouseEntered="#handleSettingsMouseEntered" onMouseExited="#handleSettingsMouseExited" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffdf8a" height="3.0" layoutX="87.0" layoutY="230.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="240.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffdf8a" height="3.0" layoutX="87.0" layoutY="279.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="240.0" />
+        <ImageView fx:id="fxSettings" fitHeight="135.0" fitWidth="138.0" layoutX="333.0" layoutY="-53.0" onMouseClicked="#handleSettingsClicked" onMouseEntered="#handleSettingsMouseEntered" onMouseExited="#handleSettingsMouseExited" pickOnBounds="true" preserveRatio="true" rotate="-50.0" AnchorPane.rightAnchor="-68.0" AnchorPane.topAnchor="-53.0">
          <image>
             <Image url="@settings.png" />
          </image>
@@ -48,5 +48,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
+
     </children>
 </AnchorPane>

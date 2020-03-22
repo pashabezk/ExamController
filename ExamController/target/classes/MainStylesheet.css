@@ -215,6 +215,7 @@ TextFieldTableCell > *:focused  {
 
 .error {
     -fx-text-fill: #FF5200;
+    -fx-alignment: center;
 }
 
 

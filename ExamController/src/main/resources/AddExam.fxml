@@ -19,7 +19,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="sErrMsg" layoutX="205.0" layoutY="374.0" prefHeight="30.0" prefWidth="200.0" AnchorPane.bottomAnchor="96.0" AnchorPane.rightAnchor="195.0" />
+      <Label fx:id="sErrMsg" layoutX="205.0" layoutY="374.0" prefHeight="30.0" prefWidth="200.0" styleClass="error" AnchorPane.bottomAnchor="96.0" AnchorPane.rightAnchor="195.0" />
       <ComboBox fx:id="fxGroup" layoutX="150.0" layoutY="263.0" prefHeight="30.0" prefWidth="141.0" promptText="Группа" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="263.0" />
       <DatePicker fx:id="fxDate" layoutX="192.0" layoutY="319.0" prefHeight="30.0" prefWidth="237.0" AnchorPane.leftAnchor="192.0" AnchorPane.topAnchor="319.0" />
       <ComboBox fx:id="fxType" layoutX="310.0" layoutY="263.0" prefHeight="30.0" prefWidth="180.0" promptText="Тип" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="263.0" />

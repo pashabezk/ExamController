@@ -123,7 +123,7 @@ public class AuthorizationController implements Initializable
 
     @FXML
     private void handleSettingsMouseEntered(MouseEvent mouseEvent) //наведение мышки на кнопку настроек
-    {fxSettings.setRotate(60);} //поворот на 60 градусов
+    {fxSettings.setRotate(70);} //поворот на 70 градусов
 
     @FXML
     private void handleSettingsMouseExited(MouseEvent mouseEvent) //выход мышки с кнопки настроек

@@ -1,6 +1,7 @@
 /Users/alisakrylova/ExamController/ExamController/src/main/java/AuthorizationController.java
 /Users/alisakrylova/ExamController/ExamController/src/main/java/AMainWindowController.java
 /Users/alisakrylova/ExamController/ExamController/src/main/java/TableLists/MarkTableList.java
+/Users/alisakrylova/ExamController/ExamController/src/main/java/UserLoginDataController.java
 /Users/alisakrylova/ExamController/ExamController/src/main/java/ExamController.java
 /Users/alisakrylova/ExamController/ExamController/src/main/java/Student.java
 /Users/alisakrylova/ExamController/ExamController/src/main/java/animations/Shake.java
@@ -8,6 +9,7 @@
 /Users/alisakrylova/ExamController/ExamController/src/main/java/Group.java
 /Users/alisakrylova/ExamController/ExamController/src/main/java/AddExamController.java
 /Users/alisakrylova/ExamController/ExamController/src/main/java/AddStudentController.java
+/Users/alisakrylova/ExamController/ExamController/src/main/java/DBConfigController.java
 /Users/alisakrylova/ExamController/ExamController/src/main/java/MonitoringWindowController.java
 /Users/alisakrylova/ExamController/ExamController/src/main/java/MainWindowController.java
 /Users/alisakrylova/ExamController/ExamController/src/main/java/AddUserController.java
@@ -25,7 +27,6 @@
 /Users/alisakrylova/ExamController/ExamController/src/main/java/TableLists/RatingStudentTableList.java
 /Users/alisakrylova/ExamController/ExamController/src/main/java/Mark.java
 /Users/alisakrylova/ExamController/ExamController/src/main/java/GLOBAL.java
-/Users/alisakrylova/ExamController/ExamController/src/main/java/UserInfoController.java
 /Users/alisakrylova/ExamController/ExamController/src/main/java/SettingsController.java
 /Users/alisakrylova/ExamController/ExamController/src/main/java/User.java
 /Users/alisakrylova/ExamController/ExamController/src/main/java/AddGroupController.java
