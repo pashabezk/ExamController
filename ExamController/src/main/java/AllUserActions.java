@@ -1,7 +1,6 @@
 //класс хранит действия, которые являются общими для любого типа пользователя
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -16,9 +15,8 @@ public class AllUserActions
             loader.load();
         } catch (IOException ex) {ex.printStackTrace();}
 
-        Parent root = loader.getRoot();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root));
+        stage.setScene(new Scene(loader.getRoot()));
         stage.setTitle(GLOBAL.TITLE);
         stage.setResizable(false);
         stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
@@ -33,9 +31,8 @@ public class AllUserActions
             loader.load();
         } catch (IOException ex) {ex.printStackTrace();}
 
-        Parent root = loader.getRoot();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root));
+        stage.setScene(new Scene(loader.getRoot()));
         stage.setTitle(GLOBAL.TITLE + " - Настройки профиля");
         stage.setMinWidth(560);
         stage.setMinHeight(420);

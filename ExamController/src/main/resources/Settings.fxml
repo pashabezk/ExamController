@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.control.PasswordField?>
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SettingsController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SettingsController">
    <children>
       <Button layoutX="392.0" layoutY="571.0" mnemonicParsing="false" onAction="#handleButtonCancel" prefHeight="30.0" prefWidth="90.0" styleClass="wbtn" text="Отмена" AnchorPane.bottomAnchor="49.0" AnchorPane.rightAnchor="518.0" />
       <TextField fx:id="sSurname" layoutX="150.0" layoutY="138.0" prefHeight="30.0" prefWidth="300.0" promptText="Фамилия" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="138.0" />

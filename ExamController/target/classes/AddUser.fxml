@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="600.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddUserController">
+<AnchorPane prefHeight="650.0" prefWidth="600.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddUserController">
     <children>
         <Button layoutX="196.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonCancel" prefHeight="30.0" prefWidth="90.0" styleClass="wbtn" text="Отмена" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="314.0" />
         <TextField fx:id="sSurname" layoutX="150.0" layoutY="138.0" prefHeight="30.0" prefWidth="300.0" promptText="Фамилия" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="138.0" />

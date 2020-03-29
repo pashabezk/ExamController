@@ -1,4 +1,3 @@
-//в этом классе прописываются команды для управления БД
 import TableLists.ExamTableList;
 import TableLists.ExpellTableList;
 import TableLists.MarkTableList;
@@ -44,13 +43,50 @@ public class DatabaseHandler
         DBConnection = null;
     }
 
+    public static int createDatabase(String dbName) //создание БД
+    {
+        int ret = -1;
+        //-1 - не удалось подключиться к БД
+        // 0 - не удалось создать БД
+        // 1 - удачное создание БД
+
+        String statements[] = new String[]
+                {
+                    "create database " + dbName + " default charset cp1251;",
+                    "use " + dbName + ";",
+                    "create table groupp (id int primary key auto_increment, name char(5), course int, year int) engine=MyISAM;",
+                    "create table student (num int primary key auto_increment, surname char(64), name varchar(64), patronymic char(64), gr int, status int, phone char(11), mail char(64), foreign key(gr) references groupp(id)) engine=MyISAM;",
+                    "create table exam (id int primary key auto_increment, name char(64), mark_st int, id_t int, gr int, ddate date, foreign key(id_t) references user(id), foreign key(gr) references groupp(id)) engine=MyISAM;",
+                    "create table user (id int primary key auto_increment, login char(32), pswd char(32), type int, surname char(64), name char(64), patronymic char(64), phone char(11), mail char(64)) engine=MyISAM;",
+                    "create table mark (id int primary key auto_increment, exam int, num_rb int, id_t int, mark int, ddate date, retake int, foreign key(exam) references exam(id), foreign key(num_rb) references student(num), foreign key(id_t) references user(id)) engine=MyISAM;",
+                    "insert into user values (default, 'admin', 'admin', 3, '', '', '', '', '');"
+                };
+
+        try
+        {
+            Connection connection = getDBConnection(); //получение подключения к БД
+            try {
+                for (String st: statements)
+                    connection.createStatement().executeUpdate(st); //выполнение запросов на создание БД
+                closeDB();
+                ret = 1;
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                ret = 0; //установка ret в ноль - не удалось создать БД
+                connection.createStatement().executeUpdate("drop database if exists " + dbName + ";"); //попытка удалить недосозданную БД
+            }
+        } catch(SQLException e) {e.printStackTrace();}
+        return ret;
+    }
+
     public static int signIn(String login, String password)
     {
         int ret = -1;
-        /* -1 - не удалось подключиться к БД
-         * 0 - пользователь не найден (неправильный логин/пароль)
-         * в случае успешного подключения взвращается идентификатор пользователя
-         */
+        //-1 - не удалось подключиться к БД
+        // 0 - пользователь не найден (неправильный логин/пароль)
+        //в случае успешного подключения взвращается идентификатор пользователя
         try {
             Statement st = getDBConnection().createStatement();
             ResultSet result = st.executeQuery("select count(id) from user where login=\'"
@@ -73,10 +109,9 @@ public class DatabaseHandler
     public static int checkPassword(int id, String password)
     {
         int ret = -1;
-        /* -1 - не удалось подключиться к БД
-         * 0 - неправильный пароль
-         * 1 - правильный пароль
-         */
+        //-1 - не удалось подключиться к БД
+        // 0 - неправильный пароль
+        // 1 - правильный пароль
         try {
             Statement st = getDBConnection().createStatement();
             ResultSet result = st.executeQuery("select count(id) from user where id="

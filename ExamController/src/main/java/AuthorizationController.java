@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,6 +28,8 @@ public class AuthorizationController implements Initializable
     @FXML private PasswordField fxPassword;
     @FXML private Label fxErrMsg;
     @FXML private ImageView fxSettings;
+
+    Timer settingsRotate; //таймер для вращения изображения настроек
 
     @FXML
     private void handleButtonAuthorization(ActionEvent event)
@@ -123,11 +127,19 @@ public class AuthorizationController implements Initializable
 
     @FXML
     private void handleSettingsMouseEntered(MouseEvent mouseEvent) //наведение мышки на кнопку настроек
-    {fxSettings.setRotate(70);} //поворот на 70 градусов
+    {
+        settingsRotate = new Timer("Timer");
+        settingsRotate.schedule(new TimerTask() //создание задачи на поворот кнопки настроек
+        {
+            @Override
+            public void run()
+            {fxSettings.setRotate(fxSettings.getRotate()+1);}//поворот на 1 градус
+        }, 10, 10);
+    }
 
     @FXML
     private void handleSettingsMouseExited(MouseEvent mouseEvent) //выход мышки с кнопки настроек
-    {fxSettings.setRotate(0);} //возвращение в исходную позицию
+    {settingsRotate.cancel();} //отключение задачи на поворот кнопки настроек
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {} //точка запуска проекта

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="600.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DBConfigController">
+<AnchorPane prefHeight="650.0" prefWidth="600.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DBConfigController">
     <children>
         <Button layoutX="196.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonCancel" prefHeight="30.0" prefWidth="90.0" styleClass="wbtn" text="Отмена" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="314.0" />
         <TextField fx:id="fxURL" layoutX="147.0" layoutY="177.0" prefHeight="30.0" prefWidth="300.0" promptText="URL сервера" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="177.0" />
@@ -28,7 +29,9 @@
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="318.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="373.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="428.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-
-
+      <Label layoutX="207.0" layoutY="619.0" onMouseClicked="#handleCreateLabel" text="Мне нужно создать базу данных" underline="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Label>
     </children>
 </AnchorPane>

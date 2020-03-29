@@ -12,13 +12,15 @@ public class GLOBAL
     public static String DBCONFIGURL = "DB.conf"; //местоположение файла конфигурации БД
 
     //используемые строки
-    public static String ERROR_DB_CONNECTION = "не удалось подключиться к БД";
+    public static String ERROR_DB_CONNECTION = "не удалось подключиться к MySQL";
     public static String ERROR_EMPTY_FIELDS = "не все поля заполнены";
+    public static String ERROR_UNSUCCESSFUL_SAVE = "сохранить настройки не удалось";
     public static String SUCCESS_UPDATE = "Запись обновлена";
 
     //цвета
     public static Paint RED = Color.web("#ff0000");
     public static Paint BLUE = Color.web("#0000ff");
+    public static Paint BLACK = Color.web("#000000");
 
     //временные логин и пароль
     public static String TEMP_LOGIN = "";

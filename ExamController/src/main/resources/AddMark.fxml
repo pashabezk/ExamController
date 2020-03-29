@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddMarkController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddMarkController">
     <children>
       <Button layoutX="310.0" layoutY="413.0" mnemonicParsing="false" onAction="#handleButtonCancel" prefHeight="30.0" prefWidth="100.0" styleClass="wbtn" text="Отмена" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="190.0" />
       <ComboBox fx:id="fxExam" layoutX="151.0" layoutY="141.0" prefHeight="30.0" prefWidth="300.0" promptText="Экзамен" AnchorPane.leftAnchor="151.0" AnchorPane.rightAnchor="149.0" AnchorPane.topAnchor="141.0" />

@@ -1,11 +1,15 @@
 import animations.Shake;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -48,11 +52,31 @@ public class DBConfigController implements Initializable
             }
             catch (IOException e)
             {
-                fxErrMsg.setText("Сохранить настройки не удалось");
+                fxErrMsg.setText(GLOBAL.ERROR_UNSUCCESSFUL_SAVE);
                 e.printStackTrace();
             }
         }
         errMsgAnim.playAnim();
+    }
+
+    @FXML
+    private void handleCreateLabel(MouseEvent event) //нажатие на фразу "мне нужно создать базу данных"
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(AllUserActions.class.getResource("/DBCreate.fxml"));
+        try{
+            loader.load();
+        } catch (IOException ex) {ex.printStackTrace();}
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(loader.getRoot()));
+        stage.setTitle(GLOBAL.TITLE + " - создание БД");
+        stage.setMinWidth(560);
+        stage.setMinHeight(420);
+        stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
+        stage.show();
+
+        ((Stage)((Node) event.getSource()).getScene().getWindow()).close(); //закрыть текущее окно
     }
 
     @Override

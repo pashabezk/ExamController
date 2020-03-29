@@ -280,6 +280,13 @@ public class AMainWindowController implements Initializable
         });
     }
 
+    private void cancelEditCell()
+    {
+        labelPushUp.setText("Для сохранения необходимо нажимать  \"Enter\"");
+        labelPushUp.setTextFill(GLOBAL.BLACK);
+        pushUp.playAnim();
+    }
+
     public void initTableUsers()
     {
         AMTable.getColumns().clear(); //очистка таблицы
@@ -311,6 +318,7 @@ public class AMainWindowController implements Initializable
             user.setSurname(event.getNewValue());
             updateNotification(DatabaseHandler.updateUser(user));
         });
+        surnameColumn.setOnEditCancel(event -> cancelEditCell()); //добавление предупреждения о несохранении данных
 
         nameColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования имени
         nameColumn.setOnEditCommit(event -> //применение обработчика
@@ -319,6 +327,7 @@ public class AMainWindowController implements Initializable
             user.setName(event.getNewValue());
             updateNotification(DatabaseHandler.updateUser(user));
         });
+        nameColumn.setOnEditCancel(event -> cancelEditCell()); //добавление предупреждения о несохранении данных
 
         patronymicColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования отчества
         patronymicColumn.setOnEditCommit(event -> //применение обработчика
@@ -327,6 +336,7 @@ public class AMainWindowController implements Initializable
             user.setPatronymic(event.getNewValue());
             updateNotification(DatabaseHandler.updateUser(user));
         });
+        patronymicColumn.setOnEditCancel(event -> cancelEditCell()); //добавление предупреждения о несохранении данных
 
         phoneColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования телефона
         phoneColumn.setOnEditCommit(event -> //применение обработчика
@@ -335,6 +345,7 @@ public class AMainWindowController implements Initializable
             user.setPhone(event.getNewValue());
             updateNotification(DatabaseHandler.updateUser(user));
         });
+        phoneColumn.setOnEditCancel(event -> cancelEditCell()); //добавление предупреждения о несохранении данных
 
         mailColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования почты
         mailColumn.setOnEditCommit(event -> //применение обработчика
@@ -343,6 +354,7 @@ public class AMainWindowController implements Initializable
             user.setMail(event.getNewValue());
             updateNotification(DatabaseHandler.updateUser(user));
         });
+        mailColumn.setOnEditCancel(event -> cancelEditCell()); //добавление предупреждения о несохранении данных
 
         typeColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(new CodeName(1, UsersTableList.TYPE_ADMINISTRATION_STAFF), new CodeName(2, UsersTableList.TYPE_TEACHER), new CodeName(3, UsersTableList.TYPE_DATABASE_ADMINISTRATION)))); //добавление возможности редактирования типа пользователя
         typeColumn.setOnEditCommit(event -> //применение обработчика
@@ -392,6 +404,7 @@ public class AMainWindowController implements Initializable
             student.setSurname(event.getNewValue());
             updateNotification(DatabaseHandler.updateStudent(student));
         });
+        surnameColumn.setOnEditCancel(event -> cancelEditCell()); //добавление предупреждения о несохранении данных
 
         nameColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования имени
         nameColumn.setOnEditCommit(event -> //применение обработчика
@@ -400,6 +413,7 @@ public class AMainWindowController implements Initializable
             student.setName(event.getNewValue());
             updateNotification(DatabaseHandler.updateStudent(student));
         });
+        nameColumn.setOnEditCancel(event -> cancelEditCell()); //добавление предупреждения о несохранении данных
 
         patronymicColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования отчества
         patronymicColumn.setOnEditCommit(event -> //применение обработчика
@@ -408,6 +422,7 @@ public class AMainWindowController implements Initializable
             student.setPatronymic(event.getNewValue());
             updateNotification(DatabaseHandler.updateStudent(student));
         });
+        patronymicColumn.setOnEditCancel(event -> cancelEditCell()); //добавление предупреждения о несохранении данных
 
         phoneColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования телефона
         phoneColumn.setOnEditCommit(event -> //применение обработчика
@@ -416,6 +431,7 @@ public class AMainWindowController implements Initializable
             student.setPhone(event.getNewValue());
             updateNotification(DatabaseHandler.updateStudent(student));
         });
+        phoneColumn.setOnEditCancel(event -> cancelEditCell()); //добавление предупреждения о несохранении данных
 
         mailColumn.setCellFactory(TextFieldTableCell.forTableColumn()); //добавление возможности редактирования почты
         mailColumn.setOnEditCommit(event -> //применение обработчика
@@ -424,6 +440,7 @@ public class AMainWindowController implements Initializable
             student.setMail(event.getNewValue());
             updateNotification(DatabaseHandler.updateStudent(student));
         });
+        mailColumn.setOnEditCancel(event -> cancelEditCell()); //добавление предупреждения о несохранении данных
 
         statusColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(new CodeName(1, StudentTableList.STATUS_EDUCATION), new CodeName(2, StudentTableList.STATUS_EXPEL), new CodeName(3, StudentTableList.STATUS_ACADEMIC_LEAVE), new CodeName(4, StudentTableList.STATUS_FINISH_EDUCATION)))); //добавление возможности редактирования статуса обучения студента
         statusColumn.setOnEditCommit(event -> //применение обработчика
@@ -469,6 +486,7 @@ public class AMainWindowController implements Initializable
             group.setName(event.getNewValue());
             updateNotification(DatabaseHandler.updateGroup(group));
         });
+        grouppColumn.setOnEditCancel(event -> cancelEditCell()); //добавление предупреждения о несохранении данных
 
         courseColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(1, 2, 3, 4))); //добавление возможности редактирования курса
         courseColumn.setOnEditCommit(event -> //применение обработчика
@@ -529,6 +547,7 @@ public class AMainWindowController implements Initializable
             exam.setName(event.getNewValue());
             updateNotification(DatabaseHandler.updateExam(exam));
         });
+        examColumn.setOnEditCancel(event -> cancelEditCell()); //добавление предупреждения о несохранении данных
 
         teacherColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(DatabaseHandler.getUsers()))); //добавление возможности редактирования преподавателя
         teacherColumn.setOnEditCommit(event -> //применение обработчика
@@ -545,6 +564,7 @@ public class AMainWindowController implements Initializable
             exam.setDate(event.getNewValue());
             updateNotification(DatabaseHandler.updateExam(exam));
         });
+        dateColumn.setOnEditCancel(event -> cancelEditCell()); //добавление предупреждения о несохранении данных
 
         typeColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(new CodeName(1, ExamTableList.MARK_ST_DIFF), new CodeName(2, ExamTableList.MARK_ST_NOT_DIFF)))); //добавление возможности редактирования типа экзамена (диф/не диф)
         typeColumn.setOnEditCommit(event -> //применение обработчика
@@ -632,6 +652,7 @@ public class AMainWindowController implements Initializable
             mark.setDate(event.getNewValue());
             updateNotification(DatabaseHandler.updateMark(mark));
         });
+        dateColumn.setOnEditCancel(event -> cancelEditCell()); //добавление предупреждения о несохранении данных
 
         retakeColumn.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(1, 2, 3))); //добавление возможности редактирования номера пересдачи
         retakeColumn.setOnEditCommit(event -> //применение обработчика

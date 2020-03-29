@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="400.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AuthorizationController">
+<AnchorPane prefHeight="500.0" prefWidth="400.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AuthorizationController">
     <children>
       <Label contentDisplay="TOP" layoutX="169.0" layoutY="106.0" prefHeight="44.0" prefWidth="65.0" styleClass="main_title" text="Вход" AnchorPane.leftAnchor="169.0" AnchorPane.topAnchor="106.0">
          <font>
