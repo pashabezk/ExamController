@@ -69,7 +69,7 @@
 
 .table-view .button {
     -fx-background-color: #ffffff;
-    -fx-text-fill: #d6d6d6;
+    -fx-text-fill: #3e3e3e;
     /*-fx-border-color: #d6d6d6;*/
     -fx-border-radius: 10;
 }
@@ -121,7 +121,7 @@
     -fx-table-cell-border-color: #f3f3f3;
 }
 
-.table-view .table-cell:even {
+.table-view .table-cell:odd {
     -fx-background-color: #f3f3f3;
     -fx-table-cell-border-color: #f3f3f3;
 }
@@ -141,7 +141,7 @@
     -fx-table-cell-border-color: #f3f3f3;
 }
 
-.table-row-cell:even {
+.table-row-cell:odd {
     -fx-background-color: #f3f3f3;
     -fx-table-cell-border-color: #f3f3f3;
 }
