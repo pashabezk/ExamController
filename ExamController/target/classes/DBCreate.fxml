@@ -10,23 +10,57 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="650.0" prefWidth="600.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DBCreateController">
+<StackPane prefHeight="650.0" prefWidth="750.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DBCreateController">
    <children>
       <AnchorPane fx:id="fxStepOne" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button layoutX="196.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonCancel" prefHeight="30.0" prefWidth="90.0" styleClass="wbtn" text="Отмена" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="314.0" />
-            <Label alignment="CENTER" layoutX="180.0" layoutY="14.0" styleClass="main_title" text="Создание БД (шаг 1)" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+            <Button layoutX="196.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonCancel" prefHeight="30.0" prefWidth="90.0" styleClass="wbtn" text="Отмена" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="260.0" />
+            <Button layoutX="319.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonNext" prefHeight="30.0" prefWidth="90.0" styleClass="ybtn" text="Далее" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="260.0" />
+            <ScrollPane hbarPolicy="NEVER" layoutY="110.0" prefHeight="455.0" prefWidth="750.0" vbarPolicy="ALWAYS">
+               <content>
+                  <AnchorPane prefHeight="800.0" prefWidth="733.0" styleClass="white_bkg">
+                     <children>
+                        <Label layoutX="143.0" layoutY="191.0" styleClass="steps" text="Зайдите в MySQL" AnchorPane.bottomAnchor="730.0" AnchorPane.leftAnchor="200.0" />
+                        <Label layoutX="200.0" layoutY="248.0" styleClass="steps" text="Выберите базу данных MySQL" AnchorPane.bottomAnchor="680.0" AnchorPane.leftAnchor="200.0" />
+                        <Label layoutX="201.0" layoutY="326.0" styleClass="steps" text="Создайте пользователя" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="201.0" />
+                        <Label layoutX="87.0" layoutY="191.0" styleClass="number" text="1" AnchorPane.bottomAnchor="725.0" AnchorPane.leftAnchor="100.0" />
+                        <Label layoutX="100.0" layoutY="248.0" styleClass="number" text="2" AnchorPane.bottomAnchor="675.0" AnchorPane.leftAnchor="100.0" />
+                        <Label layoutX="100.0" layoutY="297.0" styleClass="number" text="3" AnchorPane.bottomAnchor="515.0" AnchorPane.leftAnchor="100.0" />
+                        <Label alignment="TOP_LEFT" layoutX="195.0" layoutY="254.0" prefHeight="70.0" prefWidth="386.0" styleClass="smallsteps" text="В этой базе данных хранится информация о пользователях и прочее" wrapText="true" AnchorPane.bottomAnchor="520.0" AnchorPane.leftAnchor="200.0" />
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="40.0" layoutX="200.0" layoutY="189.0" stroke="#d6d6d680" strokeType="INSIDE" width="400.0" AnchorPane.bottomAnchor="620.0" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="39.0" />
+                        <Label layoutX="222.0" layoutY="201.0" styleClass="code" text="use mysql;" AnchorPane.bottomAnchor="630.0" AnchorPane.leftAnchor="215.0" />
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="40.0" layoutX="195.0" layoutY="361.0" stroke="#d6d6d680" strokeType="INSIDE" width="440.0" AnchorPane.bottomAnchor="450.0" />
+                        <Label layoutX="216.0" layoutY="322.0" styleClass="code" text="create user              identified by" AnchorPane.bottomAnchor="460.0" AnchorPane.leftAnchor="215.0" />
+                        <Label alignment="TOP_LEFT" layoutX="308.0" layoutY="312.0" prefHeight="20.0" prefWidth="141.0" styleClass="boldcode" text="'newuser'@'%'" wrapText="true" AnchorPane.bottomAnchor="456.0" />
+                        <Label alignment="TOP_LEFT" layoutX="522.0" layoutY="312.0" prefHeight="20.0" prefWidth="141.0" styleClass="boldcode" text="'password';" wrapText="true" AnchorPane.bottomAnchor="456.0" />
+                        <Label alignment="TOP_LEFT" layoutX="211.0" layoutY="379.0" prefHeight="17.0" prefWidth="141.0" styleClass="boldcode" text="newuser" wrapText="true" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="215.0" />
+                        <Label alignment="TOP_LEFT" layoutX="215.0" layoutY="390.0" prefHeight="17.0" prefWidth="141.0" styleClass="boldcode" text="\%" wrapText="true" AnchorPane.bottomAnchor="370.0" AnchorPane.leftAnchor="215.0" />
+                        <Label alignment="TOP_LEFT" layoutX="207.0" layoutY="419.0" prefHeight="17.0" prefWidth="141.0" styleClass="boldcode" text="password" wrapText="true" AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="215.0" />
+                        <Label layoutX="280.0" layoutY="271.0" styleClass="code" text="– имя пользователя" AnchorPane.bottomAnchor="400.0" />
+                        <Label layoutX="238.0" layoutY="391.0" styleClass="code" text="– доступ с любого IP-адреса" AnchorPane.bottomAnchor="370.0" />
+                        <Label layoutX="286.0" layoutY="431.0" styleClass="code" text="– пароль" AnchorPane.bottomAnchor="340.0" />
+
+                        <Label layoutX="200.0" layoutY="550.0" styleClass="steps" text="Назначьте права на создание, редактирование, удаление" AnchorPane.bottomAnchor="290.0" AnchorPane.leftAnchor="200.0" />
+                        <Label layoutX="100.0" layoutY="545.0" styleClass="number" text="4" AnchorPane.bottomAnchor="285.0" />
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="40.0" layoutX="195.0" layoutY="590.0" stroke="#d6d6d680" strokeType="INSIDE" width="440.0" AnchorPane.bottomAnchor="230.0" />
+                        <Label layoutX="215.0" layoutY="600.0" styleClass="code" text="grant all privileges on       .* to 'newuser'@'%';" AnchorPane.bottomAnchor="240.0" />
+                        <Label alignment="TOP_LEFT" layoutX="405.0" layoutY="600.0" prefHeight="20.0" prefWidth="141.0" styleClass="boldcode" text="sessia" wrapText="true" AnchorPane.bottomAnchor="236.0" />
+                        <Label alignment="TOP_LEFT" layoutX="215.0" layoutY="660.0" prefHeight="17.0" prefWidth="141.0" styleClass="boldcode" text="sessia" wrapText="true" AnchorPane.bottomAnchor="190.0" />
+                        <Label alignment="TOP_LEFT" layoutX="200.0" layoutY="660.0" prefHeight="17.0" prefWidth="390.0" styleClass="code" text="         – название будущей базы данных" wrapText="true" AnchorPane.bottomAnchor="190.0" AnchorPane.leftAnchor="200.0" />
+
+                         <Label layoutX="200.0" layoutY="720.0" styleClass="steps" text="Установите привилегии" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="200.0" />
+                        <Label layoutX="100.0" layoutY="715.0" styleClass="number" text="5" AnchorPane.bottomAnchor="135.0" />
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="40.0" layoutX="196.0" layoutY="760.0" stroke="#d6d6d680" strokeType="INSIDE" width="440.0" AnchorPane.bottomAnchor="80.0" />
+                        <Label layoutX="216.0" layoutY="770.0" styleClass="code" text="flush privileges;" AnchorPane.bottomAnchor="90.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+            <Label alignment="CENTER" layoutX="-34.0" layoutY="90.0" styleClass="main_title" text="Шаг 1" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
                 <font>
                     <Font size="16.0" />
                 </font>
             </Label>
-            <Button layoutX="319.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonNext" prefHeight="30.0" prefWidth="90.0" styleClass="ybtn" text="Далее" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="191.0" />
-            <Label layoutX="159.0" layoutY="189.0" text="Инструкция по созданию пользователя" />
-            <ScrollPane layoutX="141.0" layoutY="232.0" prefHeight="236.0" prefWidth="128.0">
-               <content>
-                  <Label text="Инструкция по созданию пользователя" />
-               </content>
-            </ScrollPane>
          </children>
       </AnchorPane>
        <AnchorPane fx:id="fxStepTwo" prefHeight="200.0" prefWidth="200.0" visible="false">

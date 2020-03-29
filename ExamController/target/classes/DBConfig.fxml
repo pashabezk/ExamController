@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="600.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DBConfigController">
     <children>
-        <Button layoutX="196.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonCancel" prefHeight="30.0" prefWidth="90.0" styleClass="wbtn" text="Отмена" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="314.0" />
+        <Button layoutX="189.0" layoutY="520.0" mnemonicParsing="false" onAction="#handleButtonCancel" prefHeight="30.0" prefWidth="90.0" styleClass="wbtn" text="Отмена" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="321.0" />
         <TextField fx:id="fxURL" layoutX="147.0" layoutY="177.0" prefHeight="30.0" prefWidth="300.0" promptText="URL сервера" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="177.0" />
         <TextField fx:id="fxPort" layoutX="147.0" layoutY="232.0" prefHeight="30.0" prefWidth="300.0" promptText="Порт" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="232.0" />
         <TextField fx:id="fxDBName" layoutX="147.0" layoutY="286.0" prefHeight="30.0" prefWidth="300.0" promptText="Название базы данных" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="286.0" />
@@ -22,14 +22,14 @@
                 <Font size="16.0" />
             </font>
         </Label>
-        <Button layoutX="319.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonSave" prefHeight="30.0" prefWidth="90.0" styleClass="ybtn" text="Сохранить" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="191.0" />
-        <Label fx:id="fxErrMsg" layoutX="201.0" layoutY="534.0" prefHeight="30.0" prefWidth="200.0" styleClass="error" AnchorPane.bottomAnchor="86.0" AnchorPane.rightAnchor="199.0" />
+        <Button layoutX="312.0" layoutY="520.0" mnemonicParsing="false" onAction="#handleButtonSave" prefHeight="30.0" prefWidth="90.0" styleClass="ybtn" text="Сохранить" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="198.0" />
+        <Label fx:id="fxErrMsg" layoutX="197.0" layoutY="464.0" prefHeight="30.0" prefWidth="200.0" styleClass="error" AnchorPane.bottomAnchor="156.0" AnchorPane.rightAnchor="203.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="208.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="263.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="318.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="373.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="428.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-      <Label layoutX="207.0" layoutY="619.0" onMouseClicked="#handleCreateLabel" text="Мне нужно создать базу данных" underline="true">
+      <Label layoutX="192.0" layoutY="583.0" onMouseClicked="#handleCreateLabel" styleClass="smalltitle" text="Мне нужно создать базу данных" underline="true" AnchorPane.bottomAnchor="40.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Label>

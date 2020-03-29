@@ -218,4 +218,60 @@ TextFieldTableCell > *:focused  {
     -fx-alignment: center;
 }
 
+.smalltitle {
+    -fx-text-fill: #d6d6d6;
+    -fx-alignment: center;
+}
 
+.smalltitle:hover {
+    -fx-text-fill: #3e3e3e;
+    -fx-alignment: center;
+}
+
+.white_bkg {
+    -fx-background-color: #ffffff;
+}
+
+.scroll-pane {
+    -fx-border-color: #ffffff;
+}
+
+.scroll-pane .thumb {
+    -fx-background-color: #FFEEBF;
+    -fx-arc-height: 50;
+    -fx-arc-width: 50;
+    -fx-wid
+}
+
+.scroll-pane .track-background {
+    -fx-background-color: #ffffff;
+}
+
+.steps {
+    -fx-text-fill: #3e3e3e;
+    -fx-font-size: 12pt;
+    -fx-font-weight: bold;
+}
+
+.smallsteps {
+    -fx-text-fill: #3e3e3e;
+    -fx-font-size: 10pt;
+}
+
+.number {
+    /*-fx-text-fill: #3e3e3e;*/
+    -fx-text-fill: #FFEEBF;
+    -fx-font-size: 20pt;
+    -fx-font-weight: bold;
+}
+
+.code {
+    -fx-font-family: 'Courier';
+    -fx-font-weight: normal;
+    -fx-font-size: 10pt;
+}
+.boldcode {
+    -fx-font-family: 'Courier';
+    -fx-font-weight: bold;
+    -fx-font-size: 10pt;
+}
