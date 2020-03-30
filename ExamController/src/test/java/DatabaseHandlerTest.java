@@ -6,24 +6,60 @@ import TableLists.RatingStudentTableList;
 import TableLists.StipendTableList;
 import TableLists.StudentTableList;
 import TableLists.UsersTableList;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class DatabaseHandlerTest {
 
+    @FXML
+    private Label fxErrMsg;
+
+    @Test
+    public void hmm(){
+        File DBConfig = new File(GLOBAL.DBCONFIGURL);
+        if(DBConfig.exists()) //если файл конфигурации БД существует
+        {
+            try
+            {
+                FileReader fr = new FileReader(DBConfig);
+                BufferedReader reader = new BufferedReader(fr);
+                DatabaseHandler.DBURL = reader.readLine();
+                DatabaseHandler.DBPORT = reader.readLine();
+                DatabaseHandler.DBNAME = reader.readLine();
+                DatabaseHandler.MYSQL_USER = reader.readLine();
+                DatabaseHandler.MYSQL_PASSWORD = reader.readLine();
+            }
+            catch (IOException e) {e.printStackTrace();}
+
+            if (DatabaseHandler.DBURL == null || DatabaseHandler.DBPORT == null || DatabaseHandler.DBNAME == null || DatabaseHandler.MYSQL_USER == null || DatabaseHandler.MYSQL_PASSWORD == null)
+                fxErrMsg.setText("ошибка в настройках конфигурации");
+    }
+    }
+
+
     @Test
     public void signIn() throws SQLException {
+        hmm();
         int actual = DatabaseHandler.signIn("glad", "1234");
+        System.out.println("jdbc:mysql://" + DatabaseHandler.DBURL + ":" + DatabaseHandler.DBPORT + "/" + DatabaseHandler.DBNAME);
         int expected = 4;
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void checkPassword() throws SQLException {
+        hmm();
         int actual = DatabaseHandler.checkPassword(4, "1234");
         int expected = 1;
         Assert.assertEquals(expected, actual);
@@ -31,12 +67,14 @@ public class DatabaseHandlerTest {
 
     @Test
     public void getUsers_NO_NULL() {
+        hmm();
         ArrayList<UsersTableList> expected = DatabaseHandler.getUsers();
         Assert.assertNotNull(expected);
     }
 
     @Test
     public void getUserByID() throws SQLException {
+        hmm();
         User expected = new User ( 4, 2, "Ирина", "Гладышева", "Владиславовна", "glad", "89059568715", "irglad@mail.ru");
         User actual = DatabaseHandler.getUserByID(4);
         Assert.assertEquals(expected.getLogin(), actual.getLogin());
@@ -50,6 +88,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void isLoginExists() {
+        hmm();
         int expected = 1;
         int actual = DatabaseHandler.isLoginExists("glad");
         Assert.assertEquals(expected, actual);
@@ -57,6 +96,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void createUser() throws SQLException {//проверяет бд пользователей на наличие созданного id
+        hmm();
         int actual = DatabaseHandler.createUser("test", "1234", 2, "testova", "test","testovna","89059568715", "testd@mail.ru");
         int expected = 1;
         Assert.assertEquals(expected, actual);
@@ -65,6 +105,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void updateUserLoginAndPassword() {
+        hmm();
         int expected = 1;
         ArrayList<UsersTableList> users = DatabaseHandler.getUsers();
         int k = users.size();
@@ -74,6 +115,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void updateUser() {
+        hmm();
         int expected = 1;
         ArrayList<UsersTableList> users = DatabaseHandler.getUsers();
         int k = users.size();
@@ -83,6 +125,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void deleteUser() {//работает по-любому, делать проверку по бд?
+        hmm();
         int expected = 1;
         ArrayList<UsersTableList> users = DatabaseHandler.getUsers();
         int k = users.size();
@@ -92,12 +135,14 @@ public class DatabaseHandlerTest {
 
     @Test
     public void getExams_NO_NULL() {
+        hmm();
         ArrayList<ExamTableList> expected = DatabaseHandler.getExams();
         Assert.assertNotNull(expected);
     }
 
     @Test
     public void getExamsByUID() {
+        hmm();
         int act=1, exp=1, k=0, a;
         ArrayList<ExamTableList> exams = DatabaseHandler.getExams();
         ArrayList<Exam> examsid = DatabaseHandler.getExamsByUID(4);
@@ -118,6 +163,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void createExam() {
+        hmm();
         int actual = DatabaseHandler.createExam("Тест", 5, 2, 2, "2020-02-05");
         int expected =1;
         Assert.assertEquals(expected, actual);
@@ -125,6 +171,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void deleteExam() {
+        hmm();
         int expected = 1;
         ArrayList<ExamTableList> exams = DatabaseHandler.getExams();
         int k = exams.size();
@@ -134,12 +181,14 @@ public class DatabaseHandlerTest {
 
     @Test
     public void getStudents_NO_NULL() {
+        hmm();
         ArrayList<StudentTableList> expected = DatabaseHandler.getStudents();
         Assert.assertNotNull(expected);
     }
 
     @Test
     public void getStudentsByGrID() {
+        hmm();
         int act=1, exp=1, k=0, a;
         ArrayList<StudentTableList> studs = DatabaseHandler.getStudents();
         ArrayList<Student> studsid = DatabaseHandler.getStudentsByGrID(2);
@@ -159,6 +208,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void createStudent() {
+        hmm();
         int act = DatabaseHandler.createStudent("Дымченко", "Анастасия", "Сергеевна", 1, "89811063459", "test@mail.ru");
         int exp =1;
         Assert.assertEquals(exp, act);
@@ -166,6 +216,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void deleteStudent() {
+        hmm();
         int expected = 1;
         ArrayList<StudentTableList> studs = DatabaseHandler.getStudents();
         int actual = DatabaseHandler.deleteStudent(studs.size());
@@ -174,12 +225,14 @@ public class DatabaseHandlerTest {
 
     @Test
     public void getMarks_NO_NULL() {
+        hmm();
         ArrayList<MarkTableList> expected = DatabaseHandler.getMarks();
         Assert.assertNotNull(expected);
     }
 
     @Test
     public void getMarksByEID() {
+        hmm();
         int act=1, exp=1, k=0, a;
         ArrayList<MarkTableList> marks = DatabaseHandler.getMarks();
         ArrayList<MarkTableList> marksid = DatabaseHandler.getMarksByEID(4);
@@ -199,7 +252,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void createMark() {
-
+        hmm();
         int act =DatabaseHandler.createMark(1, 1, 2, 3, 1);
         int exp =1;
         Assert.assertEquals(exp, act);
@@ -207,6 +260,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void updateMark() {
+        hmm();
         int expected = 1;
         ArrayList<MarkTableList> marks = DatabaseHandler.getMarks();
         int actual = DatabaseHandler.updateMark(marks.size()+3, 5);
@@ -215,6 +269,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void getNumberOfRetakes() {
+        hmm();
         int act=0, exp=1;
         int actual = DatabaseHandler.getNumberOfRetakes(1,1);
         if(actual == 0){
@@ -229,6 +284,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void deleteMark() {
+        hmm();
         int expected = 1;
         ArrayList<MarkTableList> marks = DatabaseHandler.getMarks();
         int actual = DatabaseHandler.deleteMark(marks.size()+3);
@@ -237,12 +293,14 @@ public class DatabaseHandlerTest {
 
     @Test
     public void getGroups_NO_NULL() {
+        hmm();
         ArrayList<Group> expected = DatabaseHandler.getGroups();
         Assert.assertNotNull(expected);
     }
 
     @Test
     public void getGroupByID() {
+        hmm();
         Group expected = new Group (4, "Y2232", 2, 2017);
         Group actual = DatabaseHandler.getGroupByID(4);
         Assert.assertEquals(expected.getId(), actual.getId());
@@ -253,6 +311,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void getRatingStudents() throws SQLException {
+        hmm();
         ArrayList<RatingStudentTableList> expected = new ArrayList<>();
         try {
             ResultSet result = DatabaseHandler.getDBConnection().createStatement().executeQuery("select course, gr_name, CONCAT(surname, \" \", name, \" \", patronymic) as student, amark from student, (select num_rb, avg(mark) as amark from mark where mark.mark>=2 group by num_rb) t1, (select id, name as gr_name, course from groupp) t2 where num=num_rb and student.gr=t2.id order by gr, -amark;"); //получение списка рейтинга студентов
@@ -271,6 +330,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void createGroup() {
+        hmm();
         int act = DatabaseHandler.createGroup("Test", 1, 2020);
         int exp = 1;
         Assert.assertEquals(exp, act);
@@ -278,6 +338,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void deleteGroup() {
+        hmm();
         int expected = 1;
         ArrayList<Group> groups = DatabaseHandler.getGroups();
         int actual = DatabaseHandler.deleteGroup(groups.size());
@@ -286,6 +347,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void getRatingGroups() {
+        hmm();
         ArrayList<RatingGroupTableList> expected = new ArrayList<>();
         try {
             ResultSet result = DatabaseHandler.getDBConnection().createStatement().executeQuery("select course, gr_name, aamark from (select course, gr_name, avg(amark) as aamark from (select course, gr, gr_name, num, amark from student, (select num_rb, avg(mark) as amark from mark group by num_rb) t1, (select course, id, name as gr_name from groupp) t2 where num=t1.num_rb and t2.id=gr )t3 group by gr_name) t4 order by course, -aamark;"); //получение списка рейтинга студентов
@@ -302,6 +364,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void getExpellList() {
+        hmm();
         ArrayList<ExpellTableList> expected = new ArrayList<>();
         try {
             ResultSet result = DatabaseHandler.getDBConnection().createStatement().executeQuery("select CONCAT(surname, \" \", name, \" \", patronymic) as student, debt from student, (select num_rb, count(mark) as debt from mark where mark.mark=2 or mark.mark=0  group by num_rb having debt>2) t1 where num=num_rb;"); //получение списка студентов
@@ -318,6 +381,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void getStipendList() {
+        hmm();
         ArrayList<StipendTableList> expected = new ArrayList<>();
         try {
             ResultSet result = DatabaseHandler.getDBConnection().createStatement().executeQuery("select gr_name, CONCAT(surname, \" \", name, \" \", patronymic) as student, if(amark>=4, if(amark=5.0, 2000, 800), 0) as stipend from student, (select num, amark from student, (select num_rb, avg(mark) as amark from mark where mark.mark>=2 group by num_rb) t1 where num=num_rb) t1, (select course, id, name as gr_name from groupp) t2 where student.num=t1.num and t2.id=gr order by gr_name, student;"); //получение списка студентов
@@ -334,6 +398,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void isUserCanBeDeleted() {
+        hmm();
         int expected = 0;
         int actual = DatabaseHandler.isUserCanBeDeleted(4);
         if (actual == 0) {
@@ -355,6 +420,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void isGroupCanBeDeleted() {
+        hmm();
         int expected = 0;
         int actual = DatabaseHandler.isGroupCanBeDeleted(4);
         if (actual == 2) {
@@ -380,6 +446,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void isStudentCanBeDeleted() {
+        hmm();
         int expected = 0;
         int actual = DatabaseHandler.isStudentCanBeDeleted(4);
         if (actual == 0) {
@@ -401,6 +468,7 @@ public class DatabaseHandlerTest {
 
     @Test
     public void isExamCanBeDeleted() {
+        hmm();
         int expected = 0;
         int actual = DatabaseHandler.isExamCanBeDeleted(4);
         if (actual == 0) {
@@ -418,5 +486,5 @@ public class DatabaseHandlerTest {
             System.out.println("error");
         }
         Assert.assertEquals(expected, actual);
-    }
+      }
 }
