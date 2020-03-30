@@ -10,13 +10,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="650.0" prefWidth="750.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DBCreateController">
+<StackPane prefHeight="700.0" prefWidth="750.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DBCreateController">
    <children>
       <AnchorPane fx:id="fxStepOne" prefHeight="200.0" prefWidth="200.0">
          <children>
             <Button layoutX="196.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonCancel" prefHeight="30.0" prefWidth="90.0" styleClass="wbtn" text="Отмена" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="260.0" />
             <Button layoutX="319.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonNext" prefHeight="30.0" prefWidth="90.0" styleClass="ybtn" text="Далее" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="260.0" />
-            <ScrollPane hbarPolicy="NEVER" layoutY="110.0" prefHeight="455.0" prefWidth="750.0" vbarPolicy="ALWAYS">
+            <ScrollPane fx:id="fxScrollPane" hbarPolicy="NEVER" layoutY="110.0" prefHeight="492.0" prefWidth="750.0" vbarPolicy="ALWAYS">
                <content>
                   <AnchorPane prefHeight="800.0" prefWidth="733.0" styleClass="white_bkg">
                      <children>
@@ -39,7 +39,6 @@
                         <Label layoutX="280.0" layoutY="271.0" styleClass="code" text="– имя пользователя" AnchorPane.bottomAnchor="400.0" />
                         <Label layoutX="238.0" layoutY="391.0" styleClass="code" text="– доступ с любого IP-адреса" AnchorPane.bottomAnchor="370.0" />
                         <Label layoutX="286.0" layoutY="431.0" styleClass="code" text="– пароль" AnchorPane.bottomAnchor="340.0" />
-
                         <Label layoutX="200.0" layoutY="550.0" styleClass="steps" text="Назначьте права на создание, редактирование, удаление" AnchorPane.bottomAnchor="290.0" AnchorPane.leftAnchor="200.0" />
                         <Label layoutX="100.0" layoutY="545.0" styleClass="number" text="4" AnchorPane.bottomAnchor="285.0" />
                         <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="40.0" layoutX="195.0" layoutY="590.0" stroke="#d6d6d680" strokeType="INSIDE" width="440.0" AnchorPane.bottomAnchor="230.0" />
@@ -47,7 +46,6 @@
                         <Label alignment="TOP_LEFT" layoutX="405.0" layoutY="600.0" prefHeight="20.0" prefWidth="141.0" styleClass="boldcode" text="sessia" wrapText="true" AnchorPane.bottomAnchor="236.0" />
                         <Label alignment="TOP_LEFT" layoutX="215.0" layoutY="660.0" prefHeight="17.0" prefWidth="141.0" styleClass="boldcode" text="sessia" wrapText="true" AnchorPane.bottomAnchor="190.0" />
                         <Label alignment="TOP_LEFT" layoutX="200.0" layoutY="660.0" prefHeight="17.0" prefWidth="390.0" styleClass="code" text="         – название будущей базы данных" wrapText="true" AnchorPane.bottomAnchor="190.0" AnchorPane.leftAnchor="200.0" />
-
                          <Label layoutX="200.0" layoutY="720.0" styleClass="steps" text="Установите привилегии" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="200.0" />
                         <Label layoutX="100.0" layoutY="715.0" styleClass="number" text="5" AnchorPane.bottomAnchor="135.0" />
                         <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="40.0" layoutX="196.0" layoutY="760.0" stroke="#d6d6d680" strokeType="INSIDE" width="440.0" AnchorPane.bottomAnchor="80.0" />
@@ -65,31 +63,29 @@
       </AnchorPane>
        <AnchorPane fx:id="fxStepTwo" prefHeight="200.0" prefWidth="200.0" visible="false">
            <children>
-               <Button layoutX="196.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonBack" prefHeight="30.0" prefWidth="90.0" styleClass="wbtn" text="Назад" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="314.0" />
-               <TextField fx:id="fxURL" layoutX="147.0" layoutY="159.0" prefHeight="30.0" prefWidth="300.0" promptText="URL сервера" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="159.0" />
-               <TextField fx:id="fxPort" layoutX="147.0" layoutY="268.0" prefHeight="30.0" prefWidth="300.0" promptText="Порт" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="268.0" />
-               <TextField fx:id="fxDBName" layoutX="147.0" layoutY="396.0" prefHeight="30.0" prefWidth="300.0" promptText="Название базы данных" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="396.0" />
-               <TextField fx:id="fxUser" layoutX="147.0" layoutY="457.0" prefHeight="30.0" prefWidth="300.0" promptText="Пользователь MySQL" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="457.0" />
-               <PasswordField fx:id="fxPassword" layoutX="147.0" layoutY="513.0" prefHeight="30.0" prefWidth="300.0" promptText="Пароль пользователя MySQL" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="513.0" />
-               <Label alignment="CENTER" layoutX="180.0" layoutY="14.0" styleClass="main_title" text="Создание БД (шаг 2)" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+               <Button layoutX="196.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonBack" prefHeight="30.0" prefWidth="90.0" styleClass="wbtn" text="Назад" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="260.0" />
+               <TextField fx:id="fxURL" layoutX="225.0" layoutY="180.0" prefHeight="30.0" prefWidth="300.0" promptText="URL сервера" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="180.0" />
+               <TextField fx:id="fxPort" layoutX="225.0" layoutY="250.0" prefHeight="30.0" prefWidth="300.0" promptText="Порт" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="250.0" />
+               <TextField fx:id="fxDBName" layoutX="225.0" layoutY="320.0" prefHeight="30.0" prefWidth="300.0" promptText="Название базы данных" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="320.0" />
+               <TextField fx:id="fxUser" layoutX="225.0" layoutY="390.0" prefHeight="30.0" prefWidth="300.0" promptText="Созданный пользователь MySQL" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="390.0" />
+               <PasswordField fx:id="fxPassword" layoutX="225.0" layoutY="460.0" prefHeight="30.0" prefWidth="300.0" promptText="Пароль пользователя MySQL" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="460.0" />
+               <Label alignment="CENTER" layoutX="180.0" layoutY="14.0" styleClass="main_title" text="Шаг 2" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
                    <font>
                        <Font size="16.0" />
                    </font>
                </Label>
-               <Button layoutX="319.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonCreate" prefHeight="30.0" prefWidth="90.0" styleClass="ybtn" text="Создать" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="191.0" />
-               <Label fx:id="fxErrMsg" layoutX="200.0" layoutY="547.0" prefHeight="30.0" prefWidth="200.0" styleClass="error" AnchorPane.bottomAnchor="73.0" AnchorPane.rightAnchor="200.0" />
-               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="190.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="299.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="428.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="489.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="544.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-               <Label layoutX="147.0" layoutY="207.0" text="н-р: IP-адрес: 192.168.11.1" />
-               <Label layoutX="147.0" layoutY="234.0" text="или адрес хоста: mydatabase.com" />
-               <Label layoutX="147.0" layoutY="317.0" text="н-р: 3306" />
-               <Label layoutX="57.0" layoutY="354.0" text="Необходимо, чтобы название БД, пользователь и пароль совпадали с указанными в шаге 1" />
-               <Label layoutX="460.0" layoutY="403.0" text="н-р: sessia" />
-               <Label layoutX="460.0" layoutY="464.0" text="н-р: newuser" />
-               <Label layoutX="460.0" layoutY="520.0" text="н-р: password" />
+               <Button layoutX="319.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonCreate" prefHeight="30.0" prefWidth="90.0" styleClass="ybtn" text="Создать" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="260.0" />
+               <Label fx:id="fxErrMsg" alignment="CENTER" layoutY="554.0" prefHeight="30.0" prefWidth="200.0" styleClass="error" AnchorPane.bottomAnchor="116.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="225.0" layoutY="210.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" AnchorPane.topAnchor="210.0" />
+               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="225.0" layoutY="280.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" AnchorPane.topAnchor="280.0" />
+               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="225.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" AnchorPane.topAnchor="350.0" />
+               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="225.0" layoutY="420.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" AnchorPane.topAnchor="420.0" />
+               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="225.0" layoutY="490.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" AnchorPane.topAnchor="490.0" />
+               <Label fx:id="URLTip" visible="false" alignment="CENTER" layoutX="160.0" layoutY="219.0" styleClass="tip" text="например: IP-адрес: 192.168.11.1 или адрес хоста: mydatabase.com" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               <Label fx:id="PortTip" visible="false" layoutX="235.0" layoutY="288.0" styleClass="tip" text="например: 3306" />
+               <Label fx:id="DBTip" visible="false" layoutX="236.0" layoutY="357.0" styleClass="tip" text="например: sessia" />
+               <Label fx:id="UserTip" visible="false" layoutX="235.0" layoutY="428.0" styleClass="tip" text="например: newuser" />
+               <Label fx:id="PasswordTip" visible="false" layoutX="236.0" layoutY="498.0" styleClass="tip" text="например: password" />
            </children>
        </AnchorPane>
    </children>

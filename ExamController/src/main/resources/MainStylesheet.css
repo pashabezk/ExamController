@@ -213,11 +213,6 @@ TextFieldTableCell > *:focused  {
     -fx-cursor: hand;
 }
 
-.error {
-    -fx-text-fill: #FF5200;
-    -fx-alignment: center;
-}
-
 .smalltitle {
     -fx-text-fill: #d6d6d6;
     -fx-alignment: center;
@@ -234,13 +229,13 @@ TextFieldTableCell > *:focused  {
 
 .scroll-pane {
     -fx-border-color: #ffffff;
+    -fx-background-color: transparent;
 }
 
 .scroll-pane .thumb {
     -fx-background-color: #FFEEBF;
     -fx-arc-height: 50;
     -fx-arc-width: 50;
-    -fx-wid
 }
 
 .scroll-pane .track-background {
@@ -274,4 +269,16 @@ TextFieldTableCell > *:focused  {
     -fx-font-family: 'Courier';
     -fx-font-weight: bold;
     -fx-font-size: 10pt;
+}
+
+.error {
+    -fx-text-fill: #FF5200;
+    -fx-alignment: center;
+}
+
+.tip {
+    /*-fx-text-fill: #d3d3d3;*/
+    -fx-text-fill: #ffdf8a;
+    -fx-font-size: 10pt;
+    -fx-font-weight: bold;
 }

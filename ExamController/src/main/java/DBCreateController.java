@@ -1,4 +1,6 @@
+import animations.Fall;
 import animations.Shake;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -26,6 +29,12 @@ public class DBCreateController implements Initializable
     @FXML private TextField fxUser;
     @FXML private PasswordField fxPassword;
     @FXML private Label fxErrMsg;
+    @FXML private Label URLTip;
+    @FXML private Label PortTip;
+    @FXML private Label DBTip;
+    @FXML private Label UserTip;
+    @FXML private Label PasswordTip;
+    @FXML private ScrollPane fxScrollPane;
 
     @FXML
     private void handleButtonCancel(ActionEvent event) //кнопка "Отмена"
@@ -100,6 +109,44 @@ public class DBCreateController implements Initializable
         errMsgAnim.playAnim();
     }
 
+
+    private void focusState(boolean value, Label tip) {
+        if (value) {
+            URLTip.setVisible(false); //скрытие подсказки URL
+            PortTip.setVisible(false); //скрытие подсказки порта
+            DBTip.setVisible(false); //скрытие подсказки БД
+            UserTip.setVisible(false); //скрытие подсказки пользователя
+            PasswordTip.setVisible(false); //скрытие подсказки пароля
+            tip.setVisible(true); //отображение активной подсказки
+            Fall fallAnim = new Fall(tip);
+            fallAnim.playAnim();
+
+        }
+        else {
+            URLTip.setVisible(false); //скрытие подсказки URL
+            PortTip.setVisible(false); //скрытие подсказки порта
+            DBTip.setVisible(false); //скрытие подсказки БД
+            UserTip.setVisible(false); //скрытие подсказки пользователя
+            PasswordTip.setVisible(false); //скрытие подсказки пароля
+        }
+    }
+
     @Override
-    public void initialize(URL url, ResourceBundle rb) {}
+    public void initialize(URL url, ResourceBundle rb) {
+        fxURL.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+            focusState(newValue, URLTip);
+        });
+        fxPort.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+            focusState(newValue, PortTip);
+        });
+        fxDBName.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+            focusState(newValue, DBTip);
+        });
+        fxUser.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+            focusState(newValue, UserTip);
+        });
+        fxPassword.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+            focusState(newValue, PasswordTip);
+        });
+    }
 }

@@ -2,14 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1120430-246d-46c5-836c-55a2e0e3f734" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/DBCreationSuceedController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/animations/Fall.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/DBCreationSuceed.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/DBConfig.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DBConfig.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DBCreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DBCreateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AddExam.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AddExam.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AddGroup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AddGroup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AddMark.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AddMark.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AddStudent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AddStudent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AddUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AddUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Authorization.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Authorization.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/DBCreate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DBCreate.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/MainStylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MainStylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DBConfig.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DBConfig.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/settings.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/settings.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Authorization.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Authorization.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/DBCreate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DBCreate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GLOBAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GLOBAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DBCreateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DBCreateController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/MainStylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MainStylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/settings.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/settings.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,12 +87,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/java" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -124,7 +136,9 @@
       <workItem from="1584897771386" duration="55000" />
       <workItem from="1584897838047" duration="4550000" />
       <workItem from="1585491885929" duration="8005000" />
-      <workItem from="1585505007386" duration="4394000" />
+      <workItem from="1585505007386" duration="4511000" />
+      <workItem from="1585511484477" duration="1084000" />
+      <workItem from="1585521614260" duration="8011000" />
     </task>
     <servers />
   </component>
@@ -170,38 +184,38 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1584643779172" />
-    <state width="1398" height="128" key="GridCell.Tab.0.bottom" timestamp="1585509312760">
+    <state width="1398" height="128" key="GridCell.Tab.0.bottom" timestamp="1585530035948">
       <screen x="0" y="22" width="1440" height="878" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.bottom/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.bottom/0.0.1301.768@0.0.1301.768" timestamp="1581331534284" />
     <state width="1323" height="150" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585454597883" />
     <state width="1398" height="137" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1584565633866" />
-    <state width="1398" height="128" key="GridCell.Tab.0.bottom/0.22.1440.878@0.22.1440.878" timestamp="1585509312760" />
-    <state width="1398" height="128" key="GridCell.Tab.0.center" timestamp="1585509312759">
+    <state width="1398" height="128" key="GridCell.Tab.0.bottom/0.22.1440.878@0.22.1440.878" timestamp="1585530035948" />
+    <state width="1398" height="128" key="GridCell.Tab.0.center" timestamp="1585530035947">
       <screen x="0" y="22" width="1440" height="878" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.center/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.center/0.0.1301.768@0.0.1301.768" timestamp="1581331534283" />
     <state width="1323" height="150" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585454597883" />
     <state width="1398" height="137" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1584565633864" />
-    <state width="1398" height="128" key="GridCell.Tab.0.center/0.22.1440.878@0.22.1440.878" timestamp="1585509312759" />
-    <state width="1398" height="128" key="GridCell.Tab.0.left" timestamp="1585509312758">
+    <state width="1398" height="128" key="GridCell.Tab.0.center/0.22.1440.878@0.22.1440.878" timestamp="1585530035947" />
+    <state width="1398" height="128" key="GridCell.Tab.0.left" timestamp="1585530035946">
       <screen x="0" y="22" width="1440" height="878" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.left/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.left/0.0.1301.768@0.0.1301.768" timestamp="1581331534283" />
     <state width="1323" height="150" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585454597883" />
     <state width="1398" height="137" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1584565633863" />
-    <state width="1398" height="128" key="GridCell.Tab.0.left/0.22.1440.878@0.22.1440.878" timestamp="1585509312758" />
-    <state width="1398" height="128" key="GridCell.Tab.0.right" timestamp="1585509312759">
+    <state width="1398" height="128" key="GridCell.Tab.0.left/0.22.1440.878@0.22.1440.878" timestamp="1585530035946" />
+    <state width="1398" height="128" key="GridCell.Tab.0.right" timestamp="1585530035947">
       <screen x="0" y="22" width="1440" height="878" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.right/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.right/0.0.1301.768@0.0.1301.768" timestamp="1581331534283" />
     <state width="1323" height="150" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585454597883" />
     <state width="1398" height="137" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1584565633865" />
-    <state width="1398" height="128" key="GridCell.Tab.0.right/0.22.1440.878@0.22.1440.878" timestamp="1585509312759" />
+    <state width="1398" height="128" key="GridCell.Tab.0.right/0.22.1440.878@0.22.1440.878" timestamp="1585530035947" />
     <state width="1398" height="286" key="GridCell.Tab.1.bottom" timestamp="1584466823414">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

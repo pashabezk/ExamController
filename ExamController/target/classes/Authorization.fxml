@@ -33,7 +33,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="fxErrMsg" alignment="CENTER_RIGHT" layoutX="93.0" layoutY="287.0" prefHeight="30.0" prefWidth="234.0" styleClass="error" textAlignment="CENTER" textFill="#ff5200" AnchorPane.bottomAnchor="133.0" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="73.0">
+      <Label fx:id="fxErrMsg" alignment="CENTER" contentDisplay="CENTER" layoutX="93.0" layoutY="287.0" prefHeight="51.0" prefWidth="234.0" styleClass="error" textAlignment="CENTER" textFill="#ff5200" wrapText="true" AnchorPane.bottomAnchor="133.0" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="73.0">
          <font>
             <Font size="14.0" />
          </font>
