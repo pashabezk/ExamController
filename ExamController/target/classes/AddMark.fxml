@@ -9,18 +9,18 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="600.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddMarkController">
     <children>
-      <Button layoutX="310.0" layoutY="413.0" mnemonicParsing="false" onAction="#handleButtonCancel" prefHeight="30.0" prefWidth="100.0" styleClass="wbtn" text="Отмена" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="190.0" />
+      <Button layoutX="310.0" layoutY="413.0" mnemonicParsing="false" onAction="#handleButtonCancel" prefHeight="30.0" prefWidth="100.0" styleClass="wbtn" text="Отмена" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="180.0" />
       <ComboBox fx:id="fxExam" layoutX="151.0" layoutY="141.0" prefHeight="30.0" prefWidth="300.0" promptText="Экзамен" AnchorPane.leftAnchor="151.0" AnchorPane.rightAnchor="149.0" AnchorPane.topAnchor="141.0" />
       <Label alignment="CENTER" layoutY="39.0" styleClass="main_title" text="Добавление оценки" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="sErrMsg" layoutX="200.0" layoutY="385.0" prefHeight="30.0" prefWidth="200.0" styleClass="error" AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="200.0" />
+      <Label fx:id="sErrMsg" alignment="CENTER" contentDisplay="CENTER" layoutX="151.0" layoutY="379.0" prefHeight="40.0" prefWidth="300.0" styleClass="error" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="81.0" AnchorPane.rightAnchor="149.0" />
       <ComboBox fx:id="fxTeacher" layoutX="151.0" layoutY="203.0" prefHeight="30.0" prefWidth="300.0" promptText="Преподаватель" AnchorPane.leftAnchor="151.0" AnchorPane.rightAnchor="149.0" AnchorPane.topAnchor="203.0" />
       <ComboBox fx:id="fxStudent" layoutX="151.0" layoutY="266.0" prefHeight="30.0" prefWidth="300.0" promptText="Студент" AnchorPane.leftAnchor="151.0" AnchorPane.rightAnchor="149.0" AnchorPane.topAnchor="266.0" />
       <ComboBox fx:id="fxMark" layoutX="151.0" layoutY="335.0" prefHeight="30.0" prefWidth="120.0" promptText="Оценка" AnchorPane.leftAnchor="151.0" AnchorPane.topAnchor="335.0" />
       <DatePicker fx:id="fxDate" layoutX="295.0" layoutY="335.0" prefHeight="30.0" prefWidth="155.0" AnchorPane.leftAnchor="295.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="335.0" />
-      <Button layoutX="191.0" layoutY="413.0" mnemonicParsing="false" onAction="#handleButtonCreate" prefHeight="30.0" prefWidth="100.0" styleClass="ybtn" text="Создать" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="309.0" />
+      <Button layoutX="310.0" layoutY="445.0" mnemonicParsing="false" onAction="#handleButtonCreate" prefHeight="30.0" prefWidth="100.0" styleClass="ybtn" text="Создать" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="190.0" />
    </children>
 </AnchorPane>

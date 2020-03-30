@@ -83,6 +83,7 @@ public class DatabaseHandler
 
     public static int signIn(String login, String password)
     {
+
         int ret = -1;
         //-1 - не удалось подключиться к БД
         // 0 - пользователь не найден (неправильный логин/пароль)
@@ -103,6 +104,7 @@ public class DatabaseHandler
             else ret = 0;
             closeDB();
         } catch(SQLException e) {e.printStackTrace();}
+        System.out.println("jdbc:mysql://" + DatabaseHandler.DBURL + ":" + DatabaseHandler.DBPORT + "/" + DatabaseHandler.DBNAME);
         return ret;
     }
 
