@@ -28,11 +28,15 @@
                         <Label layoutX="100.0" layoutY="297.0" styleClass="number" text="3" AnchorPane.bottomAnchor="515.0" AnchorPane.leftAnchor="100.0" />
                         <Label alignment="TOP_LEFT" layoutX="195.0" layoutY="254.0" prefHeight="70.0" prefWidth="386.0" styleClass="smallsteps" text="В этой базе данных хранится информация о пользователях и прочее" wrapText="true" AnchorPane.bottomAnchor="520.0" AnchorPane.leftAnchor="200.0" />
                         <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="40.0" layoutX="200.0" layoutY="189.0" stroke="#d6d6d680" strokeType="INSIDE" width="400.0" AnchorPane.bottomAnchor="620.0" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="39.0" />
-                        <Label layoutX="222.0" layoutY="201.0" styleClass="code" text="use mysql;" AnchorPane.bottomAnchor="630.0" AnchorPane.leftAnchor="215.0" />
+                        <Label layoutX="222.0" layoutY="201.0" styleClass="code" text="use mysql;" AnchorPane.bottomAnchor="630.0" AnchorPane.leftAnchor="215.0">
+                           <font>
+                              <Font name="Courier" size="13.0" />
+                           </font></Label>
                         <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="40.0" layoutX="195.0" layoutY="361.0" stroke="#d6d6d680" strokeType="INSIDE" width="440.0" AnchorPane.bottomAnchor="450.0" />
-                        <Label layoutX="216.0" layoutY="322.0" styleClass="code" text="create user              identified by" AnchorPane.bottomAnchor="460.0" AnchorPane.leftAnchor="215.0" />
-                        <Label alignment="TOP_LEFT" layoutX="308.0" layoutY="312.0" prefHeight="20.0" prefWidth="141.0" styleClass="boldcode" text="'newuser'@'%'" wrapText="true" AnchorPane.bottomAnchor="456.0" />
-                        <Label alignment="TOP_LEFT" layoutX="522.0" layoutY="312.0" prefHeight="20.0" prefWidth="141.0" styleClass="boldcode" text="'password';" wrapText="true" AnchorPane.bottomAnchor="456.0" />
+                        <Label layoutX="216.0" layoutY="322.0" styleClass="code" text="create user 'newuser'@'%' identified by 'password';" AnchorPane.bottomAnchor="460.0" AnchorPane.leftAnchor="215.0">
+                           <font>
+                              <Font name="Courier" size="13.0" />
+                           </font></Label>
                         <Label alignment="TOP_LEFT" layoutX="211.0" layoutY="379.0" prefHeight="17.0" prefWidth="141.0" styleClass="boldcode" text="newuser" wrapText="true" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="215.0" />
                         <Label alignment="TOP_LEFT" layoutX="215.0" layoutY="390.0" prefHeight="17.0" prefWidth="141.0" styleClass="boldcode" text="\%" wrapText="true" AnchorPane.bottomAnchor="370.0" AnchorPane.leftAnchor="215.0" />
                         <Label alignment="TOP_LEFT" layoutX="207.0" layoutY="419.0" prefHeight="17.0" prefWidth="141.0" styleClass="boldcode" text="password" wrapText="true" AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="215.0" />
@@ -42,14 +46,19 @@
                         <Label layoutX="200.0" layoutY="550.0" styleClass="steps" text="Назначьте права на создание, редактирование, удаление" AnchorPane.bottomAnchor="290.0" AnchorPane.leftAnchor="200.0" />
                         <Label layoutX="100.0" layoutY="545.0" styleClass="number" text="4" AnchorPane.bottomAnchor="285.0" />
                         <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="40.0" layoutX="195.0" layoutY="590.0" stroke="#d6d6d680" strokeType="INSIDE" width="440.0" AnchorPane.bottomAnchor="230.0" />
-                        <Label layoutX="215.0" layoutY="600.0" styleClass="code" text="grant all privileges on       .* to 'newuser'@'%';" AnchorPane.bottomAnchor="240.0" />
-                        <Label alignment="TOP_LEFT" layoutX="405.0" layoutY="600.0" prefHeight="20.0" prefWidth="141.0" styleClass="boldcode" text="sessia" wrapText="true" AnchorPane.bottomAnchor="236.0" />
+                        <Label layoutX="215.0" layoutY="600.0" styleClass="code" text="grant all privileges on sessia.* to 'newuser'@'%';" AnchorPane.bottomAnchor="240.0">
+                           <font>
+                              <Font name="Courier" size="13.0" />
+                           </font></Label>
                         <Label alignment="TOP_LEFT" layoutX="215.0" layoutY="660.0" prefHeight="17.0" prefWidth="141.0" styleClass="boldcode" text="sessia" wrapText="true" AnchorPane.bottomAnchor="190.0" />
-                        <Label alignment="TOP_LEFT" layoutX="200.0" layoutY="660.0" prefHeight="17.0" prefWidth="390.0" styleClass="code" text="         – название будущей базы данных" wrapText="true" AnchorPane.bottomAnchor="190.0" AnchorPane.leftAnchor="200.0" />
+                        <Label alignment="TOP_LEFT" layoutX="200.0" layoutY="660.0" prefHeight="17.0" prefWidth="390.0" styleClass="code" text="         – название будущей базы данных" wrapText="true" AnchorPane.bottomAnchor="190.0" AnchorPane.leftAnchor="230.0" />
                          <Label layoutX="200.0" layoutY="720.0" styleClass="steps" text="Установите привилегии" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="200.0" />
                         <Label layoutX="100.0" layoutY="715.0" styleClass="number" text="5" AnchorPane.bottomAnchor="135.0" />
                         <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="40.0" layoutX="196.0" layoutY="760.0" stroke="#d6d6d680" strokeType="INSIDE" width="440.0" AnchorPane.bottomAnchor="80.0" />
-                        <Label layoutX="216.0" layoutY="770.0" styleClass="code" text="flush privileges;" AnchorPane.bottomAnchor="90.0" />
+                        <Label layoutX="216.0" layoutY="770.0" styleClass="code" text="flush privileges;" AnchorPane.bottomAnchor="90.0">
+                           <font>
+                              <Font name="Courier" size="13.0" />
+                           </font></Label>
                      </children>
                   </AnchorPane>
                </content>
@@ -81,11 +90,11 @@
                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="225.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" AnchorPane.topAnchor="350.0" />
                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="225.0" layoutY="420.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" AnchorPane.topAnchor="420.0" />
                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="225.0" layoutY="490.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" AnchorPane.topAnchor="490.0" />
-               <Label fx:id="URLTip" visible="false" alignment="CENTER" layoutX="160.0" layoutY="219.0" styleClass="tip" text="например: IP-адрес: 192.168.11.1 или адрес хоста: mydatabase.com" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-               <Label fx:id="PortTip" visible="false" layoutX="235.0" layoutY="288.0" styleClass="tip" text="например: 3306" />
-               <Label fx:id="DBTip" visible="false" layoutX="236.0" layoutY="357.0" styleClass="tip" text="например: sessia" />
-               <Label fx:id="UserTip" visible="false" layoutX="235.0" layoutY="428.0" styleClass="tip" text="например: newuser" />
-               <Label fx:id="PasswordTip" visible="false" layoutX="236.0" layoutY="498.0" styleClass="tip" text="например: password" />
+               <Label fx:id="URLTip" alignment="CENTER" layoutX="160.0" layoutY="219.0" styleClass="tip" text="например: IP-адрес: 192.168.11.1 или адрес хоста: mydatabase.com" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               <Label fx:id="PortTip" layoutX="235.0" layoutY="288.0" styleClass="tip" text="например: 3306" visible="false" />
+               <Label fx:id="DBTip" layoutX="236.0" layoutY="357.0" styleClass="tip" text="например: sessia" visible="false" />
+               <Label fx:id="UserTip" layoutX="235.0" layoutY="428.0" styleClass="tip" text="например: newuser" visible="false" />
+               <Label fx:id="PasswordTip" layoutX="236.0" layoutY="498.0" styleClass="tip" text="например: password" visible="false" />
            </children>
        </AnchorPane>
    </children>

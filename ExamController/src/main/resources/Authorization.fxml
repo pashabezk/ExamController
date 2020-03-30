@@ -40,7 +40,7 @@
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffdf8a" height="3.0" layoutX="87.0" layoutY="230.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="240.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffdf8a" height="3.0" layoutX="87.0" layoutY="279.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="240.0" />
-        <ImageView fx:id="fxSettings" fitHeight="135.0" fitWidth="138.0" layoutX="333.0" layoutY="-53.0" onMouseClicked="#handleSettingsClicked" onMouseEntered="#handleSettingsMouseEntered" onMouseExited="#handleSettingsMouseExited" pickOnBounds="true" preserveRatio="true" rotate="-50.0" AnchorPane.rightAnchor="-68.0" AnchorPane.topAnchor="-53.0">
+        <ImageView fx:id="fxSettings" fitHeight="135.0" fitWidth="138.0" layoutX="336.0" layoutY="-53.0" onMouseClicked="#handleSettingsClicked" onMouseEntered="#handleSettingsMouseEntered" onMouseExited="#handleSettingsMouseExited" pickOnBounds="true" preserveRatio="true" rotate="-50.0" AnchorPane.rightAnchor="-70.0">
          <image>
             <Image url="@settings.png" />
          </image>
