@@ -20,7 +20,7 @@
          </font>
       </Label>
       <Button layoutX="322.0" layoutY="445.0" mnemonicParsing="false" onAction="#handleButtonCreate" prefHeight="30.0" prefWidth="90.0" styleClass="ybtn" text="Создать" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="188.0" />
-      <Label fx:id="sErrMsg" layoutX="208.0" layoutY="285.0" prefHeight="30.0" prefWidth="200.0" styleClass="error" AnchorPane.rightAnchor="192.0" AnchorPane.topAnchor="285.0" />
+      <Label fx:id="sErrMsg" alignment="CENTER" contentDisplay="CENTER" layoutX="160.0" layoutY="278.0" prefHeight="47.0" prefWidth="300.0" styleClass="error" textAlignment="CENTER" wrapText="true" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="278.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="224.0" layoutY="149.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="165.0" />
    </children>
 </AnchorPane>
