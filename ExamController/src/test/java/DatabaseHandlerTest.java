@@ -107,9 +107,15 @@ public class DatabaseHandlerTest {
     public void updateUserLoginAndPassword() {
         hmm();
         int expected = 1;
+        int max=0;
         ArrayList<UsersTableList> users = DatabaseHandler.getUsers();
         int k = users.size();
-        int actual = DatabaseHandler.updateUserLoginAndPassword(k, "tset", "321");
+        for(int i=0; i<k; i++){
+            if(users.get(i).getId()>max){
+                max=users.get(i).getId();
+            }
+        }
+        int actual = DatabaseHandler.updateUserLoginAndPassword(max, "tset", "321");
         Assert.assertEquals(expected, actual);
     }
 
@@ -117,9 +123,15 @@ public class DatabaseHandlerTest {
     public void updateUser() {
         hmm();
         int expected = 1;
+        int max=0;
         ArrayList<UsersTableList> users = DatabaseHandler.getUsers();
         int k = users.size();
-        int actual = DatabaseHandler.updateUser(k, "tset", "321", 2, "Testing", "Test", "Testovna", "89811063459", "test@mail.ru");
+        for(int i=0; i<k; i++){
+            if(users.get(i).getId()>max){
+                max=users.get(i).getId();
+            }
+        }
+        int actual = DatabaseHandler.updateUser(max, "tset", "321", 2, "Testing", "Test", "Testovna", "89811063459", "test@mail.ru");
         Assert.assertEquals(expected, actual);
     }
 
@@ -127,9 +139,16 @@ public class DatabaseHandlerTest {
     public void deleteUser() {//работает по-любому, делать проверку по бд?
         hmm();
         int expected = 1;
+        int max=0;
         ArrayList<UsersTableList> users = DatabaseHandler.getUsers();
         int k = users.size();
-        int actual = DatabaseHandler.deleteUser(k);
+        for(int i=0; i<k; i++){
+            if(users.get(i).getId()>max){
+                max=users.get(i).getId();
+            }
+        }
+        System.out.println(max);
+        int actual = DatabaseHandler.deleteUser(max);
         Assert.assertEquals(expected, actual);
     }
 
@@ -175,7 +194,13 @@ public class DatabaseHandlerTest {
         int expected = 1;
         ArrayList<ExamTableList> exams = DatabaseHandler.getExams();
         int k = exams.size();
-        int actual = DatabaseHandler.deleteExam(k);
+        int max=0;
+        for(int i=0; i<k; i++){
+            if(exams.get(i).getId()>max){
+                max=exams.get(i).getId();
+            }
+        }
+        int actual = DatabaseHandler.deleteExam(max);
         Assert.assertEquals(expected, actual);
     }
 
@@ -219,7 +244,13 @@ public class DatabaseHandlerTest {
         hmm();
         int expected = 1;
         ArrayList<StudentTableList> studs = DatabaseHandler.getStudents();
-        int actual = DatabaseHandler.deleteStudent(studs.size());
+        int max=0;
+        for(int i=0; i<studs.size(); i++){
+            if(studs.get(i).getId()>max){
+                max=studs.get(i).getId();
+            }
+        }
+        int actual = DatabaseHandler.deleteStudent(max);
         Assert.assertEquals(expected, actual);
     }
 
@@ -263,7 +294,13 @@ public class DatabaseHandlerTest {
         hmm();
         int expected = 1;
         ArrayList<MarkTableList> marks = DatabaseHandler.getMarks();
-        int actual = DatabaseHandler.updateMark(marks.size()+3, 5);
+        int max=0;
+        for(int i=0; i<marks.size(); i++){
+            if(marks.get(i).getId()>max){
+                max=marks.get(i).getId();
+            }
+        }
+        int actual = DatabaseHandler.updateMark(max, 5);
         Assert.assertEquals(expected, actual);
     }
 
@@ -287,7 +324,13 @@ public class DatabaseHandlerTest {
         hmm();
         int expected = 1;
         ArrayList<MarkTableList> marks = DatabaseHandler.getMarks();
-        int actual = DatabaseHandler.deleteMark(marks.size()+3);
+        int max=0;
+        for(int i=0; i<marks.size(); i++){
+            if(marks.get(i).getId()>max){
+                max=marks.get(i).getId();
+            }
+        }
+        int actual = DatabaseHandler.deleteMark(max);
         Assert.assertEquals(expected, actual);
     }
 
@@ -341,7 +384,13 @@ public class DatabaseHandlerTest {
         hmm();
         int expected = 1;
         ArrayList<Group> groups = DatabaseHandler.getGroups();
-        int actual = DatabaseHandler.deleteGroup(groups.size());
+        int max=0;
+        for(int i=0; i<groups.size(); i++){
+            if(groups.get(i).getId()>max){
+                max=groups.get(i).getId();
+            }
+        }
+        int actual = DatabaseHandler.deleteGroup(max);
         Assert.assertEquals(expected, actual);
     }
 

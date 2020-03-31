@@ -83,7 +83,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ExamController">
+  <component name="RunManager" selected="JUnit.DatabaseHandlerTest">
     <configuration name="ExamController" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -102,40 +102,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DatabaseHandlerTest.getRatingStudents" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DatabaseHandlerTest.createExam" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ExamController" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="DatabaseHandlerTest" />
-      <option name="METHOD_NAME" value="getRatingStudents" />
+      <option name="METHOD_NAME" value="createExam" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DatabaseHandlerTest.signIn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DatabaseHandlerTest.createStudent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ExamController" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="DatabaseHandlerTest" />
-      <option name="METHOD_NAME" value="signIn" />
+      <option name="METHOD_NAME" value="createStudent" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DatabaseHandlerTestt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DatabaseHandlerTest.deleteExam" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ExamController" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="DatabaseHandlerTestt" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="DatabaseHandlerTest" />
+      <option name="METHOD_NAME" value="deleteExam" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DatabaseHandlerTestt.signIn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DatabaseHandlerTest.deleteStudent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ExamController" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="DatabaseHandlerTestt" />
-      <option name="METHOD_NAME" value="signIn" />
+      <option name="MAIN_CLASS_NAME" value="DatabaseHandlerTest" />
+      <option name="METHOD_NAME" value="deleteStudent" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -144,10 +145,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.DatabaseHandlerTest" />
-        <item itemvalue="JUnit.DatabaseHandlerTest.getRatingStudents" />
-        <item itemvalue="JUnit.DatabaseHandlerTest.signIn" />
-        <item itemvalue="JUnit.DatabaseHandlerTestt" />
-        <item itemvalue="JUnit.DatabaseHandlerTestt.signIn" />
+        <item itemvalue="JUnit.DatabaseHandlerTest.deleteStudent" />
+        <item itemvalue="JUnit.DatabaseHandlerTest.createStudent" />
+        <item itemvalue="JUnit.DatabaseHandlerTest.deleteExam" />
+        <item itemvalue="JUnit.DatabaseHandlerTest.createExam" />
       </list>
     </recent_temporary>
   </component>
@@ -232,36 +233,36 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1584643779172" />
-    <state width="1323" height="28" key="GridCell.Tab.0.bottom" timestamp="1585618814366">
+    <state width="1323" height="127" key="GridCell.Tab.0.bottom" timestamp="1585652499249">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.bottom/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.bottom/0.0.1301.768@0.0.1301.768" timestamp="1581331534284" />
-    <state width="1323" height="28" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585618814366" />
+    <state width="1323" height="127" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585652499249" />
     <state width="1398" height="137" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1584565633866" />
     <state width="1398" height="128" key="GridCell.Tab.0.bottom/0.22.1440.878@0.22.1440.878" timestamp="1585597296257" />
-    <state width="1323" height="28" key="GridCell.Tab.0.center" timestamp="1585618814366">
+    <state width="1323" height="127" key="GridCell.Tab.0.center" timestamp="1585652499247">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.center/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.center/0.0.1301.768@0.0.1301.768" timestamp="1581331534283" />
-    <state width="1323" height="28" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585618814366" />
+    <state width="1323" height="127" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585652499247" />
     <state width="1398" height="137" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1584565633864" />
     <state width="1398" height="128" key="GridCell.Tab.0.center/0.22.1440.878@0.22.1440.878" timestamp="1585597296250" />
-    <state width="1323" height="28" key="GridCell.Tab.0.left" timestamp="1585618814366">
+    <state width="1323" height="127" key="GridCell.Tab.0.left" timestamp="1585652499247">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.left/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.left/0.0.1301.768@0.0.1301.768" timestamp="1581331534283" />
-    <state width="1323" height="28" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585618814366" />
+    <state width="1323" height="127" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585652499247" />
     <state width="1398" height="137" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1584565633863" />
     <state width="1398" height="128" key="GridCell.Tab.0.left/0.22.1440.878@0.22.1440.878" timestamp="1585597296247" />
-    <state width="1323" height="28" key="GridCell.Tab.0.right" timestamp="1585618814366">
+    <state width="1323" height="127" key="GridCell.Tab.0.right" timestamp="1585652499248">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="991" height="220" key="GridCell.Tab.0.right/0.0.1300.768@0.0.1300.768" timestamp="1581929317426" />
     <state width="1258" height="192" key="GridCell.Tab.0.right/0.0.1301.768@0.0.1301.768" timestamp="1581331534283" />
-    <state width="1323" height="28" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585618814366" />
+    <state width="1323" height="127" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585652499248" />
     <state width="1398" height="137" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1584565633865" />
     <state width="1398" height="128" key="GridCell.Tab.0.right/0.22.1440.878@0.22.1440.878" timestamp="1585597296253" />
     <state width="1398" height="286" key="GridCell.Tab.1.bottom" timestamp="1585579611497">
@@ -302,9 +303,10 @@
       <screen x="0" y="22" width="1440" height="878" />
     </state>
     <state width="500" height="445" key="SwitcherDM/0.22.1440.878@0.22.1440.878" timestamp="1581935099055" />
-    <state x="396" y="259" key="com.intellij.ide.util.TipDialog" timestamp="1584558606836">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="376" y="210" key="com.intellij.ide.util.TipDialog" timestamp="1585647497985">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="376" y="210" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585647497985" />
     <state x="396" y="259" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1584558606836" />
     <state x="396" y="275" key="com.intellij.ide.util.TipDialog/0.22.1440.878@0.22.1440.878" timestamp="1581946851055" />
     <state x="509" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584480437371">
