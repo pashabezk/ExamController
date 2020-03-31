@@ -29,7 +29,7 @@
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="318.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="373.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3d584" height="3.0" layoutX="147.0" layoutY="428.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-      <Label layoutX="192.0" layoutY="583.0" onMouseClicked="#handleCreateLabel" styleClass="smalltitle" text="Мне нужно создать базу данных" underline="true" AnchorPane.bottomAnchor="40.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="583.0" onMouseClicked="#handleCreateLabel" prefHeight="17.0" prefWidth="600.0" styleClass="smalltitle" text="Мне нужно создать базу данных" textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Label>

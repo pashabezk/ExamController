@@ -117,17 +117,15 @@ public class AMainWindowController implements Initializable
         Parent root = loader.getRoot();
         stage.setScene(new Scene(root));
         stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
-        stage.setOnHidden(new EventHandler<WindowEvent>() { //действия при закрытии окна
-            @Override
-            public void handle(WindowEvent event) {
-                switch(selectedTableName) //обновление таблицы в зависимости от выбранного элемента списка
-                {
-                    case "Пользователи": initTableUsers(); break;
-                    case "Группы": initTableGroups(); break;
-                    case "Студенты": initTableStudents(); break;
-                    case "Экзамены": initTableExams(); break;
-                    case "Оценки": initTableMarks(); break;
-                }
+        stage.setOnHidden(event1 -> //действия при закрытии окна
+        {
+            switch(selectedTableName) //обновление таблицы в зависимости от выбранного элемента списка
+            {
+                case "Пользователи": initTableUsers(); break;
+                case "Группы": initTableGroups(); break;
+                case "Студенты": initTableStudents(); break;
+                case "Экзамены": initTableExams(); break;
+                case "Оценки": initTableMarks(); break;
             }
         });
         stage.show();

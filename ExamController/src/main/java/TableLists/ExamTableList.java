@@ -49,8 +49,8 @@ public class ExamTableList
 
     private void setMarkStSTR()
     {
-        if(markSt==1)  markStSTR = MARK_ST_DIFF;
-        else markStSTR = MARK_ST_NOT_DIFF;
+        if(markSt==1)  markStSTR = MARK_ST_NOT_DIFF;
+        else markStSTR = MARK_ST_DIFF;
     }
 
     public void setTeacher(int teacherId, String teacherFullName)

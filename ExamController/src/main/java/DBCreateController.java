@@ -102,7 +102,19 @@ public class DBCreateController implements Initializable
                     }
                     catch (IOException e) {e.printStackTrace();}
 
-                    ((Stage)((Node) aevent.getSource()).getScene().getWindow()).close(); //закрыть текущее окно
+                    //отображения окна об успешном создании БД
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(AllUserActions.class.getResource("/DBCreationSucceed.fxml"));
+                    try{
+                        loader.load();
+                    } catch (IOException ex) {ex.printStackTrace();}
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(loader.getRoot()));
+                    stage.setTitle(GLOBAL.TITLE);
+                    stage.setResizable(false);
+                    stage.getIcons().add(new Image(ExamController.class.getResourceAsStream(GLOBAL.ICONURL)));
+                    stage.setOnHidden(event -> {((Stage)((Node) aevent.getSource()).getScene().getWindow()).close();}); //закрыть текущее окно
+                    stage.show();
                     break;
             }
         }
@@ -110,8 +122,10 @@ public class DBCreateController implements Initializable
     }
 
 
-    private void focusState(boolean value, Label tip) {
-        if (value) {
+    private void focusState(boolean value, Label tip)
+    {
+        if (value)
+        {
             URLTip.setVisible(false); //скрытие подсказки URL
             PortTip.setVisible(false); //скрытие подсказки порта
             DBTip.setVisible(false); //скрытие подсказки БД
@@ -120,9 +134,9 @@ public class DBCreateController implements Initializable
             tip.setVisible(true); //отображение активной подсказки
             Fall fallAnim = new Fall(tip);
             fallAnim.playAnim();
-
         }
-        else {
+        else
+        {
             URLTip.setVisible(false); //скрытие подсказки URL
             PortTip.setVisible(false); //скрытие подсказки порта
             DBTip.setVisible(false); //скрытие подсказки БД
@@ -132,21 +146,12 @@ public class DBCreateController implements Initializable
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        fxURL.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
-            focusState(newValue, URLTip);
-        });
-        fxPort.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
-            focusState(newValue, PortTip);
-        });
-        fxDBName.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
-            focusState(newValue, DBTip);
-        });
-        fxUser.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
-            focusState(newValue, UserTip);
-        });
-        fxPassword.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
-            focusState(newValue, PasswordTip);
-        });
+    public void initialize(URL url, ResourceBundle rb)
+    {
+        fxURL.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {focusState(newValue, URLTip);});
+        fxPort.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {focusState(newValue, PortTip);});
+        fxDBName.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {focusState(newValue, DBTip);});
+        fxUser.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {focusState(newValue, UserTip);});
+        fxPassword.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {focusState(newValue, PasswordTip);});
     }
 }

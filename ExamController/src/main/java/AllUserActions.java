@@ -1,10 +1,10 @@
-//класс хранит действия, которые являются общими для любого типа пользователя
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+//класс хранит действия, которые являются общими для любого типа пользователя
 public class AllUserActions
 {
     public static void exitAndAuth()

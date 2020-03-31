@@ -104,7 +104,6 @@ public class DatabaseHandler
             else ret = 0;
             closeDB();
         } catch(SQLException e) {e.printStackTrace();}
-        System.out.println("jdbc:mysql://" + DatabaseHandler.DBURL + ":" + DatabaseHandler.DBPORT + "/" + DatabaseHandler.DBNAME);
         return ret;
     }
 

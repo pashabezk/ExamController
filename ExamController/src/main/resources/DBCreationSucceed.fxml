@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DBCreationSucceedController">
+        <children>
+            <Label alignment="CENTER" layoutX="180.0" layoutY="14.0" styleClass="main_title" text="База данных успешно создана" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
+            <Label alignment="CENTER" layoutY="178.0" styleClass="smallsteps" text="Для авторизации в системе используйте логин admin пароль admin" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="178.0" />
+            <Button layoutX="255.0" layoutY="430.0" mnemonicParsing="false" onAction="#handleButtonOK" prefHeight="30.0" prefWidth="90.0" styleClass="ybtn" text="Ok" AnchorPane.bottomAnchor="40.0" />
+            <Label alignment="CENTER" layoutX="65.0" layoutY="213.0" prefHeight="51.0" prefWidth="481.0" styleClass="smallstepssmallsteps" text="После первой авторизации в системе перейдите в настройки профиля, заполните свои данные и смените логин и пароль" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="65.0" />
+        </children>
+</AnchorPane>
